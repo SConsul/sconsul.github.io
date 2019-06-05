@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Sarthak Consul | Analog Sound Locator</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="css/owl.carousel.css" />
+	<link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<link rel="shortcut icon" href="./img/favicon.png" sizes="16x16">	
+<body>
+
+	<!-- Header -->
+	<header>
+
+		<!-- Nav -->
+		<nav id="nav" class="navbar">
+			<div class="container">
+
+				<div class="navbar-header">
+
+					<!-- Collapse nav button -->
+					<div class="nav-collapse">
+						<span></span>
+					</div>
+					<!-- /Collapse nav button -->
+				</div>
+
+				<!--  Main navigation  -->
+					<ul class="main-nav nav navbar-nav navbar-right">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="index.html#about">About</a></li>
+					<li><a href="index.html#projects">Projects</a></li>
+					<li><a href="index.html#CV">CV</a></li>
+					<li><a href="index.html#contact">Contact</a></li>
+				</ul>
+				<!-- /Main navigation -->
+
+			</div>
+		</nav>
+		<!-- /Nav -->
+
+		<!-- header wrapper -->
+		<div class="header-wrapper sm-padding bg-grey">
+			<div class="container">
+				<h2>Analog Sound Locator</h2>
+			</div>
+		</div>
+		<!-- /header wrapper -->
+
+	</header>
+	<!-- /Header -->
+
+	<!-- Blog -->
+	<div id="blog" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Main -->
+				<main id="main" class="col-md-9">
+					<div class="blog">
+						
+						<div class="blog-img">
+							<img class="img-responsive" src="./img/soundlocator_demo.gif" alt="" style="width:40em; height:20em">
+						</div>
+
+						<div class="blog-content">
+							<p>
+								Taking inspiration from mammalian bi-aural hearing, I built a prototype analog circuit that uses phase difference to locate sound sources.
+								<div class="blog-intext-img">
+									<img class="img-responsive" src="./img/SpatialAngle.jpg" alt="Phase Delay between 2 mics" style="width:40em; height:20em">
+								</div>
+								
+								The slightly separated microphones recieve sound signals that are slightly differ in phase. The goal of the circuit is to measure the phase differnce, which then be directly correlated to the spatial angle. <br><br>
+								To measure phase difference finding the amplitude of the signals, the 2 signals had their phases dynamicaly locked by passing them through voltage controlled delay circuits. The voltage-controlled delay circuits are essentially all pass filers with a variable resistance (realised used a JFET with varying gate potential).
+
+								<br>Extensive simulation was done on NgSpice to test the circuit design and components (esp. JFETs) were tested both in simulation and in hardware to obtain the variation of source-drain resistance with gate voltage and appropriately desing the remainder of the circuit. 
+								<br><br>
+
+								The final prototype was compact and converged quickly (<b>within a second</b>). It was one of the winning projects in the final course evaluation.
+								<br><br>
+								<i>This prototype has a lot of potential application. I personally plan to build a robot dog that utilises this circuit to locate the instruction source and fetch.</i>
+							</p>
+						</div>
+
+				</main>
+				<!-- /Main -->
+
+
+				<!-- Aside -->
+				<aside id="aside" class="col-md-3">
+
+					<!-- Category -->
+					<div class="widget">
+						<h3 class="title">Similar Projects</h3>
+						<div class="widget-category">
+							<a href="pulserate.html">Pulse Rate Sensor</a>
+						</div>
+					</div>
+					<!-- /Category -->
+
+					<!-- Tags -->
+					<div class="widget">
+						<h3 class="title">Concepts</h3>
+						<div class="widget-tags">
+							<a>Analog Circuits</a>
+							<a>NgSpice Simulation</a>
+							<a>JFETs</a>
+							<a>Phase Locked Loop</a>
+						</div>
+					</div>
+					<!-- /Tags -->
+
+				</aside>
+				<!-- /Aside -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+	<!-- /Blog -->
+
+	<!-- Footer -->
+	<footer id="footer" class="sm-padding bg-dark">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<div class="col-md-12">
+
+
+					<!-- footer follow -->
+					<ul class="footer-follow">
+						<li><a href="https://www.facebook.com/sarthakconsul/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+		                <li><a href="https://plus.google.com/104749971773878378428" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+		                <li><a href="https://in.linkedin.com/in/sarthak-consul-1483aa138" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+		                <li><a href="https://github.com/SConsul" target="_blank"><i class="fa fa-github"></i></a></li>
+		                <li><a href="skype:sarthakconsul?chat"><i class="fa fa-skype"></i></a><li>
+					</ul>
+					<!-- /footer follow -->
+
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<p>Copyright © 2017. All Rights Reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+					</div>
+					<!-- /footer copyright -->
+
+				</div>
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</footer>
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div id="back-to-top"></div>
+	<!-- /Back to top -->
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- /Preloader -->
+
+	<!-- jQuery Plugins -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>

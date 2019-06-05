@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Sarthak Consul | Image Refocussing</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="css/owl.carousel.css" />
+	<link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<link rel="shortcut icon" href="./img/favicon.png" sizes="16x16">	
+<body>
+
+	<!-- Header -->
+	<header>
+
+		<!-- Nav -->
+		<nav id="nav" class="navbar">
+			<div class="container">
+
+				<div class="navbar-header">
+
+					<!-- Collapse nav button -->
+					<div class="nav-collapse">
+						<span></span>
+					</div>
+					<!-- /Collapse nav button -->
+				</div>
+
+				<!--  Main navigation  -->
+					<ul class="main-nav nav navbar-nav navbar-right">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="index.html#about">About</a></li>
+					<li><a href="index.html#projects">Projects</a></li>
+					<li><a href="index.html#CV">CV</a></li>
+					<li><a href="index.html#contact">Contact</a></li>
+				</ul>
+				<!-- /Main navigation -->
+
+			</div>
+		</nav>
+		<!-- /Nav -->
+
+		<!-- header wrapper -->
+		<div class="header-wrapper sm-padding bg-grey">
+			<div class="container">
+				<h2>Tree based Stereo Matching for Postcapture Image Refocus</h2>
+			</div>
+		</div>
+		<!-- /header wrapper -->
+
+	</header>
+	<!-- /Header -->
+
+	<!-- Blog -->
+	<div id="blog" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Main -->
+				<main id="main" class="col-md-9">
+					<div class="blog">
+						
+						<div class="blog-img">
+							<img class="img-responsive" src="./img/oralcancer_ps.PNG" alt="" style="width:40em; height:20em">
+						</div>
+
+						<div class="blog-content">
+							<p align="justify">
+								This project is broken into two major steps:
+								<ol>
+									<li>1. Estimating Depth from stereo images</li>
+									<li>2. Applying blurring kernel using the estimated depth</li>
+								</ol> 
+							</p>
+								<br>
+								<p align="justify">
+								Stereo images are pairs of images taken from slightly displaced cameras. This has to be done carefully to maintain the epipolar constraint. For this project the stereo images were obtained from the publically available <a href="http://vision.middlebury.edu/stereo/data/">Middlebury Dataset</a>.
+								<br><br>
+								To obtain depth from the stero image pair, the two images have to be compared to obtained a per-pixel diparity. From trogonometry, it can be observed that the depth of the object is inversely proportional to the disparity.
+								<br><br>
+								</p>
+								<center><img class="img-responsive" src="./img/image_refocusing_flowchart.png" alt=""></center>
+								<p align="justify">
+								To reduce computation cost and speed up the process, a tree-based comparison has been employed. 
+								This has been done in 2 stages: a pixel level comparison and a region level comparison. To obtain the regions, <b>Simple Linear Iterative Clustering (SLIC)</b> is employed. Cost is calculated as a weighted sum of the difference of intensity and gradient magnitude at a pixel, at a horizontal shift 'd' between the 2 pixels of the left and right image. Classical techniques would require computing this cost for every pixel, for every possible 'd' and then picking the d that minimizes the cost. The tree based approach aggregates this cost, with the underlying assumption that the cost of a distant pixel has little influence on the disparity decision while local pixel cost would influence the decision. Thus a <b>minimum spanning tree</b> is generated using <b>Kruskal's Algorithm</b>. Each brach is exponentially weighted by the spatial separation of the corresponding node region and the cost can be aggregated by 2 passes of the MST
+								</p>
+								<center><img class="img-responsive" src="./img/dip_cost_aggr.png" alt=""></center>
+								<p align="justify">
+							</p>
+						</div>
+
+				</main>
+				<!-- /Main -->
+
+
+				<!-- Aside -->
+				<aside id="aside" class="col-md-3">
+
+					<!-- Category -->
+					<div class="widget">
+						<h3 class="title">Similar Projects</h3>
+						<div class="widget-category">
+							<a href="image_cartoonization.html">Image Cartoonization</a>
+						</div>
+					</div>
+					<!-- /Category -->
+
+					<!-- Tags -->
+					<div class="widget">
+						<h3 class="title">Concepts</h3>
+						<div class="widget-tags">
+							<a>Computer Vision</a>
+							<a>Shape from Stereo</a>
+							<a>Image Processing</a>
+							<a>MATLAB</a>
+						</div>
+					</div>
+					<!-- /Tags -->
+
+				</aside>
+				<!-- /Aside -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+	<!-- /Blog -->
+
+	<!-- Footer -->
+	<footer id="footer" class="sm-padding bg-dark">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<div class="col-md-12">
+
+
+					<!-- footer follow -->
+					<ul class="footer-follow">
+						<li><a href="https://www.facebook.com/sarthakconsul/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+		                <li><a href="https://plus.google.com/104749971773878378428" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+		                <li><a href="https://in.linkedin.com/in/sarthak-consul-1483aa138" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+		                <li><a href="https://github.com/SConsul" target="_blank"><i class="fa fa-github"></i></a></li>
+		                <li><a href="skype:sarthakconsul?chat"><i class="fa fa-skype"></i></a><li>
+					</ul>
+					<!-- /footer follow -->
+
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<p>Copyright © 2017. All Rights Reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+					</div>
+					<!-- /footer copyright -->
+
+				</div>
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</footer>
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div id="back-to-top"></div>
+	<!-- /Back to top -->
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- /Preloader -->
+
+	<!-- jQuery Plugins -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>
