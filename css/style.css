@@ -51,7 +51,7 @@ body {
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
-    color: #868F9B;
+    color: #10161A;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -758,6 +758,28 @@ header {
     transition-delay: 0s;
 }
 
+.work .work-content a {
+    display: block;
+    text-transform: uppercase;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    opacity: 0;
+    color: rgb(219, 220, 223);
+    margin-bottom: 5px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+.work:hover .work-content a {
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    transform: translateY(0%);
+    opacity: 1;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
 .work .work-link {
     text-align: center;
     margin-top: 20px;
@@ -1537,6 +1559,7 @@ ol1 > li > p
     font-size: 14px;
     text-transform: uppercase;
     margin: 0;
+    color:#FFF;
 }
 
 
