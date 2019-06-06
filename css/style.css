@@ -1192,6 +1192,7 @@ ol1 > li > p
 #main .blog .blog-img {
     margin-left: auto;
     margin-right: auto;
+    width: 90%;
 }
 
 #main .blog .blog-intext-img {
