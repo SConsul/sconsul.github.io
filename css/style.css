@@ -1563,6 +1563,11 @@ ol1 > li > p
     color:#FFF;
 }
 
+#main .footer-copyright .foot-img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
 
 /*------------------------------------*\
 	Responsive
