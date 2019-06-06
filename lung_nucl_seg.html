@@ -101,10 +101,10 @@
 						</div>
 
 						<div class="blog-content">
-							<p>
+							<p style="text-align:justify">
 								With the widespread, prevalance of Chest X-Rays (CXRs) in medical diagnosis, CXRs contribute to a majority of the workload of radiologists and other medical practitioners.<br>
 								<br>
-								During the summer of 2018, I worked on leveraging Fully Convolutional Networks (<b>Global Convolutional Network</b>, <b>VGG UNet, SegNet</b>, <b>HDC/DUC</b> and <b>Mask R-CNN</b> were tested) to segment lungs from CXRs. Used a hybrid loss function to achieve performance.<br><br>
+								During the summer of 2018, I worked on leveraging Fully Convolutional Networks (<b>Global Convolutional Network</b>, <b>VGG UNet, SegNet</b>, <b>HDC/DUC</b> and <b>Mask R-CNN</b> were tested) to segment lungs from CXRs. A hybrid loss function was employed to achieve performance.<br><br>
 								Such work has direct appliciations in various diagnosis such as cardiomegaly (enlargement of the heart), pneumothorax (lung collapse), pleural effusion, emphysema, etc.  Also this can act as an intermediary step in non-spatio-volumetric analysis like computer-aided detection of lung tumours from on CXR. 
 								
 								<br><br>
@@ -117,16 +117,14 @@
 						</div>
 
 						<div class="blog-img">
-							<img class="img-responsive" src="./img/Flowchart_NucleusSeg.PNG" alt="" style="width:40em; height:20em">
+							<img class="img-responsive" src="./img/Flowchart_NucleusSeg.PNG" alt="" style="width:80em; height:20em">
 						</div>
 						
 						<div class="blog-content">
-							<p>
-								I also worked on applying the same models to segment out Nuclei from h/he stained histopathological sections of organs <br>
-								<br>
-								Challenge was to be able to generalise nuclei detection across various organs. Finetuning of the models along with conventional image processing techniques as post-processing enabled us to improve the state of the art results of nuclei segmentation to a F1 score of <b>85%</b>
+							<p style="text-align:justify">
+								I also worked on applying the same models to segment out Nuclei from h/he stained histopathological sections of various organs. The goal was to be able to generalise nuclei detection across various organs. Finetuning of the models along with conventional image processing techniques as post-processing enabled us to improve the state of the art results of nuclei segmentation to a F1 score to <b>85%</b>
 								<br><br>								
-								Such work has direct appliciations as a crucial step in cancer detection from histopathology images.
+								Such work has direct appliciations in detection cancerous cells (eg. by getting a measure of the density of cells) in organs from their histopathology images. This work was used to host the <a href="https://monuseg.grand-challenge.org/">MoNuSeg</a> (Multi-Organ Nuclei-Segmentation) Challenge at <a href="https://www.miccai2018.org/en/">MICCAI 2018</a>.
 								
 								<br><br>
 
