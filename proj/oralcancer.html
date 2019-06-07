@@ -7,27 +7,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Sarthak Consul | Analog Sound Locator</title>
+	<title>Sarthak Consul | Oral Cancer Detection</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
 
 	<!-- Owl Carousel -->
-	<link type="text/css" rel="stylesheet" href="css/owl.carousel.css" />
-	<link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
+	<link type="text/css" rel="stylesheet" href="../css/owl.carousel.css" />
+	<link type="text/css" rel="stylesheet" href="../css/owl.theme.default.css" />
 
 	<!-- Magnific Popup -->
-	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+	<link type="text/css" rel="stylesheet" href="../css/magnific-popup.css" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
-
+	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,7 +35,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<link rel="shortcut icon" href="./img/favicon.png" sizes="16x16">	
+<link rel="shortcut icon" href="../img/favicon.png" sizes="16x16">	
 <body>
 
 	<!-- Header -->
@@ -57,11 +56,11 @@
 
 				<!--  Main navigation  -->
 					<ul class="main-nav nav navbar-nav navbar-right">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="index.html#about">About</a></li>
-					<li><a href="projects.html">Projects</a></li>
-					<li><a href="pdf/CV-sarthak_consul.pdf" target="_blank">CV</a></li>
-					<li><a href="index.html#contact">Contact</a></li>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../index.html#about">About</a></li>
+					<li><a href="../projects.html">Projects</a></li>
+					<li><a href="../pdf/CV-sarthak_consul.pdf" target="_blank">CV</a></li>
+					<li><a href="../index.html#contact">Contatc</a></li>
 				</ul>
 				<!-- /Main navigation -->
 
@@ -72,7 +71,7 @@
 		<!-- header wrapper -->
 		<div class="header-wrapper sm-padding bg-grey">
 			<div class="container">
-				<h2>Analog Sound Locator</h2>
+				<h2>Screening of pre-cancerous lesions in Oral Cavity</h2>
 			</div>
 		</div>
 		<!-- /header wrapper -->
@@ -94,25 +93,17 @@
 					<div class="blog">
 						
 						<div class="blog-img">
-							<img class="img-responsive" src="./img/soundlocator_demo.gif" alt="" style="width:60em; height:40em">
+							<img class="img-responsive" src="../img/oralcancer_ps.PNG" alt="" style="width:40em; height:20em">
 						</div>
 
 						<div class="blog-content">
-							<p style="text-align:justify">
-								Taking inspiration from mammalian bi-aural hearing, I built a prototype analog circuit that uses phase difference to locate sound sources.
-								<!-- <div class="blog-intext-img">
-									<img class="img-responsive" src="./img/SpatialAngle.jpg" alt="Phase Delay between 2 mics" style="width:40em; height:20em">
-								</div> -->
-								
-								The slightly separated microphones recieve sound signals that are slightly differ in phase. The goal of the circuit is to measure the phase differnce, which then be directly correlated to the spatial angle. <br><br>
-								To measure phase difference finding the amplitude of the signals, the 2 signals had their phases dynamicaly locked by passing them through voltage controlled delay circuits. The voltage-controlled delay circuits are essentially all pass filers with a variable resistance (realised used a JFET with varying gate potential).
-
-								<br>Extensive simulation was done on NgSpice to test the circuit design and components (esp. JFETs) were tested both in simulation and in hardware to obtain the variation of source-drain resistance with gate voltage and appropriately desing the remainder of the circuit. 
+							<p>
+								Oral cancer is major public health problem in the Indian subcontinent, where it ranks among the top three types of cancer in the India. This is largely due to the widespread of chewing paan, tobacco, and areca, coupled with poor oral hygiene practices in rural India.<br>
+								What makes Oral Cancer more deadly is the fact that often, there are mild symptoms, that often are disregarded, in the early stages. As such, in India patients only approach hospitals when the symptoms get severe.
 								<br><br>
-
-								The final prototype was compact and converged quickly (<b>within a second</b>). It was one of the winning projects in the final course evaluation.
+								Our goal is to make a screening model that can be run on mobile phones to remotely diagnose patients. This would allow timely intervention and treatment of patients, improving survival rates.
 								<br><br>
-								<i>This prototype was a proof-of-concept. While it can be applied to robotics, further work and analysis (especially against digital systems) has to be done.</i>
+								I have been part of team annotating and pre-processing data from arround 900 patients. I am currently working on segmenting the oral cavity from images which would be then fed to a neural network to classify the lesion.
 							</p>
 						</div>
 
@@ -127,8 +118,7 @@
 					<div class="widget">
 						<h3 class="title">Similar Projects</h3>
 						<div class="widget-category">
-							<a href="pulserate.html">Pulse Rate Sensor</a>
-							<a href="dpac.html">Digitally Programmable Analog Computer</a>
+							<a href="lung_nucl_seg.html">Semantic Segmentation of Medical Images</a>
 						</div>
 					</div>
 					<!-- /Category -->
@@ -137,17 +127,15 @@
 					<div class="widget">
 						<h3 class="title">Concepts</h3>
 						<div class="widget-tags">
-							<a>Analog Circuits</a>
-							<a>NgSpice Simulation</a>
-							<a>JFETs</a>
-							<a>Phase Locked Loop</a>
+							<a>Deep Learning</a>
+							<a>PyTorch</a>
+							<a>OpenCV</a>
+							<a>Classification</a>
+							<a>Segmentation</a>
 						</div>
 					</div>
 					<!-- /Tags -->
-					<p><br><br><br><br><br><br><br><br><br><br></p>
-					<div class="blog-intext-img">
-							<img class="img-responsive" src="./img/SpatialAngle.jpg" alt="Phase Delay between 2 mics" style="width:40em; height:20em">
-					</div>
+
 				</aside>
 				<!-- /Aside -->
 
@@ -215,11 +203,11 @@
 	<!-- /Preloader -->
 
 	<!-- jQuery Plugins -->
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.magnific-popup.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
 
 </body>
 

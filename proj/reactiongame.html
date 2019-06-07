@@ -7,26 +7,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Sarthak Consul | Oral Cancer Detection</title>
+	<title>Sarthak Consul | Reaction Game</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" />
 
 	<!-- Owl Carousel -->
-	<link type="text/css" rel="stylesheet" href="css/owl.carousel.css" />
-	<link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
+	<link type="text/css" rel="stylesheet" href="../css/owl.carousel.css" />
+	<link type="text/css" rel="stylesheet" href="../css/owl.theme.default.css" />
 
 	<!-- Magnific Popup -->
-	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+	<link type="text/css" rel="stylesheet" href="../css/magnific-popup.css" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +35,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<link rel="shortcut icon" href="./img/favicon.png" sizes="16x16">	
+<link rel="shortcut icon" href="../img/favicon.png" sizes="16x16">	
 <body>
 
 	<!-- Header -->
@@ -56,11 +56,11 @@
 
 				<!--  Main navigation  -->
 					<ul class="main-nav nav navbar-nav navbar-right">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="index.html#about">About</a></li>
-					<li><a href="projects.html">Projects</a></li>
-					<li><a href="pdf/CV-sarthak_consul.pdf" target="_blank">CV</a></li>
-					<li><a href="index.html#contact">Contatc</a></li>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../index.html#about">About</a></li>
+					<li><a href="../projects.html">Projects</a></li>
+					<li><a href="../pdf/CV-sarthak_consul.pdf" target="_blank">CV</a></li>
+					<li><a href="../index.html#contact">Contact</a></li>
 				</ul>
 				<!-- /Main navigation -->
 
@@ -71,7 +71,7 @@
 		<!-- header wrapper -->
 		<div class="header-wrapper sm-padding bg-grey">
 			<div class="container">
-				<h2>Screening of pre-cancerous lesions in Oral Cavity</h2>
+				<h2>Reaction Game</h2>
 			</div>
 		</div>
 		<!-- /header wrapper -->
@@ -93,17 +93,24 @@
 					<div class="blog">
 						
 						<div class="blog-img">
-							<img class="img-responsive" src="./img/oralcancer_ps.PNG" alt="" style="width:40em; height:20em">
+							<img class="img-responsive" src="../img/reactiongame.gif" alt="" style="width:40em; height:20em">
 						</div>
 
 						<div class="blog-content">
 							<p>
-								Oral cancer is major public health problem in the Indian subcontinent, where it ranks among the top three types of cancer in the India. This is largely due to the widespread of chewing paan, tobacco, and areca, coupled with poor oral hygiene practices in rural India.<br>
-								What makes Oral Cancer more deadly is the fact that often, there are mild symptoms, that often are disregarded, in the early stages. As such, in India patients only approach hospitals when the symptoms get severe.
-								<br><br>
-								Our goal is to make a screening model that can be run on mobile phones to remotely diagnose patients. This would allow timely intervention and treatment of patients, improving survival rates.
-								<br><br>
-								I have been part of team annotating and pre-processing data from arround 900 patients. I am currently working on segmenting the oral cavity from images which would be then fed to a neural network to classify the lesion.
+								The goal of this project was to build a reaction game on the Krypton CPLD Board. Reaction games are part standard testing paradimgs employed by neurologists, psychlogists and physiotherapists to test human visual reaction. To do this, a finite state machine was implemented in VHDL. 
+								RTL abstraction was used to realise the control flow.
+								<br>
+								While making this reaction game, the following points should be taken into consideration:
+									<li>Need to ensure proper time intervals between trainsition to next state of FSM</li>
+									<li>A timeout should be called if no reaction is observed to an LED lighting within a window of 2.5s after stimuli</li>
+									<li>Failsafe against button mashing by having a check against multiple reacts and reacts in the absence of LED stimuli</li>
+									<li>Debouncing the button: As multiple presses result in failing, the mechanical swithces have to be debounced <br>
+										This is done by only considering signal levels that are maintained for 2 consecutive clock periods of around 100Hz </li>
+									<li>The delays between LED lighting up should be random. This has been approximated by generating a pseudo-random number by sampling a fast sequence</li>
+
+									<br><br>
+									The game works by finding the average reaction time to an LED lighting up in 8 trials and printing the said time on the LCD.
 							</p>
 						</div>
 
@@ -116,22 +123,22 @@
 
 					<!-- Category -->
 					<div class="widget">
-						<h3 class="title">Similar Projects</h3>
-						<div class="widget-category">
-							<a href="lung_nucl_seg.html">Semantic Segmentation of Medical Images</a>
+							<h3 class="title">Similar Projects</h3>
+							<div class="widget-category">
+								<a href="risc.html">VHDL implementation of Pipelined and Multicycle RISC Architecture</a>
+								<a href="dpac.html">Digitally Programmable Analog Computer</a>
+							</div>
 						</div>
-					</div>
-					<!-- /Category -->
+						<!-- /Category -->
 
 					<!-- Tags -->
 					<div class="widget">
 						<h3 class="title">Concepts</h3>
 						<div class="widget-tags">
-							<a>Deep Learning</a>
-							<a>PyTorch</a>
-							<a>OpenCV</a>
-							<a>Classification</a>
-							<a>Segmentation</a>
+							<a>Digital System Design</a>
+							<a>VHDL</a>
+							<a>RTL</a>
+							<a>Finite State Machine</a>
 						</div>
 					</div>
 					<!-- /Tags -->
@@ -203,11 +210,11 @@
 	<!-- /Preloader -->
 
 	<!-- jQuery Plugins -->
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.magnific-popup.js"></script>
+	<script type="text/javascript" src="../js/main.js"></script>
 
 </body>
 
