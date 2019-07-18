@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<title>Sarthak Consul | Lung Segmentation</title>
+	<title>Sarthak Consul | Audio Separation</title>
 
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
@@ -71,7 +71,10 @@
 		<!-- header wrapper -->
 		<div class="header-wrapper sm-padding bg-grey">
 			<div class="container">
-				<h2>Semantic Segmentation of Medical Images</h2>
+				<h2>Audio Source Separation</h2>
+				<br><br><p>with P. Khirwadkar and A. Prasad and D. Gopalan</p>
+				<br><p><i>Course Project for CS419 - Introduction to Machine Learning, Autumn 2018</i></p>
+				<p>[<a href="https://github.com/SConsul/audio-source-separation" target="_blank">code</a>]</p>
 			</div>
 		</div>
 		<!-- /header wrapper -->
@@ -91,40 +94,32 @@
 				<!-- Main -->
 				<main id="main" class="col-md-9">
 					<div class="blog">
-						
-						<div class="blog-subheading">
-							<h1>Lung Segmentation from Chest X Rays</h1>
-						</div>
-						code can be found <a href="https://github.com/MEDAL-IITB/Lung-Segmentation" target="_blank">here</a>
+							<div class="blog-content">
+									<p style="text-align:justify">
+										The project aimed to isolate the various instruments playing in harmony an audio file. We implemented and subsequently modified the approach proposed in <a href="https://link.springer.com/chapter/10.1007%2F978-3-319-53547-0_25" target="_blank">this</a> paper.
+									</p>
+								</div>
 						<div class="blog-img">
-							<img class="img-responsive" src="../img/Flowchart_lungseg.PNG" alt="" style="width:40em; height:20em">
+							<img class="img-responsive" src="../img/audio-sep-flowchart.PNG" alt="" style="width:40em; height:20em">
 						</div>
 
 						<div class="blog-content">
 							<p style="text-align:justify">
-								With the widespread, prevalance of Chest X-Rays (CXRs) in medical diagnosis, CXRs contribute to a majority of the workload of radiologists and other medical practitioners. Thus, it becomes imperative to expedite the analysis of CXRs, with deep-learning being one possible method of automation.<br>
-								<br>
-								During the summer of 2018, I worked on leveraging Fully Convolutional Networks (<b>Global Convolutional Network</b>, <b>VGG UNet, SegNet</b>, <b>HDC/DUC</b> and <b>Mask R-CNN</b> were tested) to segment lungs from CXRs. A hybrid loss function was employed to achieve performance.<br><br>
-								Such work has direct appliciations in various diagnosis such as cardiomegaly (enlargement of the heart), pneumothorax (lung collapse), pleural effusion, emphysema, etc.  Also this can act as an intermediary step in non-spatio-volumetric analysis like computer-aided detection of lung tumours from on CXR. 
-								
+								The algorithm proposed in the paper proposed to work with the magnitude spectrum of the short-time Fourier Transform (STFT) of the audio track to generate the STFTs of the desired component instrument. The algorithm involves a simple 6 layer neural network to obtain the various We used the <i>Demixing Secrets Dataset 100</i> (<a href="https://sigsep.github.io/datasets/dsd100.html" target="_blank">DSD100</a>) for training and testing purposes.
 								<br><br>
 
 							</p>
 						</div>
-						
-						<div class="blog-subheading">
-							<h1>Nuclei Segmentation from Histopathology Images</h1>
-						</div>
 
 						<div class="blog-img">
-							<img class="img-responsive" src="../img/Flowchart_NucleusSeg.PNG" alt="" style="width:80em; height:20em">
+							<img class="img-responsive" src="../img/GCN.PNG" alt="" style="width:80em; height:20em">
 						</div>
 						
 						<div class="blog-content">
 							<p style="text-align:justify">
 								I also worked on applying the same models to segment out Nuclei from h/he stained histopathological sections of various organs. The goal was to be able to generalise nuclei detection across various organs. Finetuning of the models along with conventional image processing techniques as post-processing enabled us to improve the state of the art results of nuclei segmentation to a F1 score to <b>85%</b>
 								<br><br>								
-								This has direct appliciations in detection cancerous cells (eg. by getting a measure of the density of cells) in organs from their histopathology images. This work was used to host the <a href="https://monuseg.grand-challenge.org/">MoNuSeg</a> (Multi-Organ Nuclei-Segmentation) Challenge at <a href="https://www.miccai2018.org/en/">MICCAI 2018</a>.
+								Such work has direct appliciations in detection cancerous cells (eg. by getting a measure of the density of cells) in organs from their histopathology images. This work was used to host the <a href="https://monuseg.grand-challenge.org/">MoNuSeg</a> (Multi-Organ Nuclei-Segmentation) Challenge at <a href="https://www.miccai2018.org/en/">MICCAI 2018</a>.
 								
 								<br><br>
 
