@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Sarthak Consul</title>
+  <title>Sarthak Consul | Semantic Segmentation of Medical Images</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicon.png">
 
   <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/blog/">
+  <link rel="canonical" href="http://localhost:4000/projects/6_project/">
 </head>
 
 
@@ -91,56 +91,53 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>al-folio</h1>
-  <h2>a simple whitespace theme for academics</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Semantic Segmentation of Medical Images</h1>
+    <h4 class="post-description">Summer Internship, Summer 2018</h5>
+    <h5 class="post-description"></h5>	
+  </header>
+
+  <article class="post-content Semantic Segmentation of Medical Images clearfix">
+    <h3>Lung Segmentation from Chest X Rays</h3>
+<p><a href="https://github.com/MEDAL-IITB/Lung-Segmentation" target="\_blank">[Code]</a></p>
+
+<p>With the widespread, prevalance of Chest X-Rays (CXRs) in medical diagnosis, CXRs contribute to a majority of the workload of radiologists and other medical practitioners. Thus, it becomes imperative to expedite the analysis of CXRs, with deep-learning being one possible method of automation.</p>
+
+<div class="img_blog">
+    <img class="col three left" src="/assets/img/Flowchart_lungseg.PNG" alt="" title="Overview of Algorithm" />
+</div>
+<div class="col three caption">
+    Overview of the Algorithm
 </div>
 
+<p>A variety of Fully Convolutional Networks (Global Convolutional Network, VGG UNet, SegNet, HDC/DUC and Mask R-CNN) were tested to segment the lungs from CXRs. A hybrid loss function, combining Soft Dice Loss, Soft Inverse Dice Loss, and Binary Cross-Entropy Loss (with logits), was employed to achieve the peak performance.</p>
 
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/comments/">a post with comments</a></h2>
-      <p class="post-meta">October 20, 2015 — 21:29</p>
-      <p>an example of a blog post with comments</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/math/">a post with math</a></h2>
-      <p class="post-meta">October 20, 2015 — 20:42</p>
-      <p>an example of a blog post with some math</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/code/">a post with code</a></h2>
-      <p class="post-meta">July 15, 2015 — 20:39</p>
-      <p>an example of a blog post with some code</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/images/">a post with images</a></h2>
-      <p class="post-meta">May 16, 2015 — 02:31</p>
-      <p>this is what included images could look like</p>
-    </li>
-  
-</ul>
+<!--Such work has direct appliciations in various diagnosis such as cardiomegaly (enlargement of the heart), pneumothorax (lung collapse), pleural effusion, emphysema, etc. Also this can act as an intermediary step in non-spatio-volumetric analysis like computer-aided detection of lung tumours from on CXR. -->
 
+<h3>Nuclei Segmentation from Histopathological Images</h3>
 
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
+<div class="img_blog">
+    <img class="col three left" src="/assets/img/Flowchart_NucleusSeg.PNG" alt="" title="Overview of Algorithmk" />
+</div>
+<div class="col three caption">
+   Overview of the Algorithm
 </div>
 
+<p class="text-justify">I also worked on applying the same models to segment out Nuclei from h/he stained histopathological sections of various organs. The goal was to be able to generalise nuclei detection across various organs. Finetuning of the models along with conventional post-processing techniques enabled us to improve the state of the art results of nuclei segmentation to a F1 score to <strong>85%</strong>.</p>
+<!--This has direct appliciations in detection cancerous cells (eg. by getting a measure of the density of cells) in organs from their histopathology images. -->
+<p>This work was used to host the MoNuSeg (Multi-Organ Nuclei-Segmentation) Challenge at <a href="https://www.miccai2018.org/en/" target="\_blank">MICCAI 2018</a>.</p>
 
+<!--For this project, we used [Demixing Secrets Dataset 100 (DSD100)](https://sigsep.github.io/datasets/dsd100.html){:target="\_blank"} for training and testing purposes. -->
+
+  </article>
+
+  
+
+  
+
+</div>
 
       </div>
     </div>

@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Sarthak Consul</title>
+  <title>Sarthak Consul | Audio Source Separation</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicon.png">
 
   <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/blog/">
+  <link rel="canonical" href="http://localhost:4000/projects/5_project/">
 </head>
 
 
@@ -91,56 +91,43 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>al-folio</h1>
-  <h2>a simple whitespace theme for academics</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Audio Source Separation</h1>
+    <h4 class="post-description">Course Project for CS419 - Introduction to Machine Learning, Autumn 2018</h5>
+    <h5 class="post-description">P. Khirwadkar, A. Prasad and D. Gopalan</h5>	
+  </header>
+
+  <article class="post-content Audio Source Separation clearfix">
+    <p><a href="https://github.com/SConsul/audio-source-separation" target="\_blank">[Code]</a></p>
+
+<p>The project aimed to isolate the various instruments playing in harmony in a music track. To do this, our approach was to train a low-latency neural network to generate the short-time Fourier Transforms (STFTs) of the various component instruments from the magnitude spectrum of the audio track. Our aproach is inspired by the paper titled, “<a href="https://link.springer.com/chapter/10.1007%2F978-3-319-53547-0_25" target="\_blank">Monoaural Audio Source Separation Using Deep Convolutional Neural Networks</a>”.</p>
+
+<div class="img_blog">
+    <img class="col three left" src="/assets/img/audio-sep-flowchart.PNG" alt="" title="Overview of Algorithm" />
+</div>
+<div class="col three caption">
+    Overview of the Algorithm
 </div>
 
-
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/comments/">a post with comments</a></h2>
-      <p class="post-meta">October 20, 2015 — 21:29</p>
-      <p>an example of a blog post with comments</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/math/">a post with math</a></h2>
-      <p class="post-meta">October 20, 2015 — 20:42</p>
-      <p>an example of a blog post with some math</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/code/">a post with code</a></h2>
-      <p class="post-meta">July 15, 2015 — 20:39</p>
-      <p>an example of a blog post with some code</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/images/">a post with images</a></h2>
-      <p class="post-meta">May 16, 2015 — 02:31</p>
-      <p>this is what included images could look like</p>
-    </li>
-  
-</ul>
-
-
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
+<p>In a bid to reduce the number of parameters in the network, depthwise convolution filters were used. The horizontal and vertical convolutions were incorporated in manner similar to the GCN blocks introduced in <a href="https://arxiv.org/abs/1703.02719">this</a> paper.</p>
+<div class="img_blog">
+    <img class="col three left" src="/assets/img/GCN.PNG" alt="" title="Our Neural Network" />
+</div>
+<div class="col three caption">
+    Our Neural Network
 </div>
 
+<!--For this project, we used [Demixing Secrets Dataset 100 (DSD100)](https://sigsep.github.io/datasets/dsd100.html){:target="\_blank"} for training and testing purposes. -->
 
+  </article>
+
+  
+
+  
+
+</div>
 
       </div>
     </div>

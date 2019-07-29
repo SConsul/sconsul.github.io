@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Sarthak Consul</title>
+  <title>Sarthak Consul | Analog Sound Locator</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicon.png">
 
   <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/blog/">
+  <link rel="canonical" href="http://localhost:4000/projects/7_project/">
 </head>
 
 
@@ -91,56 +91,44 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>al-folio</h1>
-  <h2>a simple whitespace theme for academics</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Analog Sound Locator</h1>
+    <h4 class="post-description">Course Project for EE230 Analog Lab, Spring 2018</h5>
+    <h5 class="post-description"></h5>	
+  </header>
+
+  <article class="post-content Analog Sound Locator clearfix">
+    <div class="img_blog">
+    <img class="col three left" src="/assets/img/soundlocator_demo.gif" alt="" title="Demonstration" />
+</div>
+<div class="col three caption">
+   Sound Locator in action
 </div>
 
+<p>Taking inspiration from mammalian bi-aural hearing, I built a prototype analog circuit that uses phase difference to locate sound sources. The slightly separated microphones recieve sound signals that are slightly differ in phase. The goal of the circuit is to measure the phase differnce, which then be directly correlated to the spatial angle.</p>
 
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/comments/">a post with comments</a></h2>
-      <p class="post-meta">October 20, 2015 — 21:29</p>
-      <p>an example of a blog post with comments</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/math/">a post with math</a></h2>
-      <p class="post-meta">October 20, 2015 — 20:42</p>
-      <p>an example of a blog post with some math</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/code/">a post with code</a></h2>
-      <p class="post-meta">July 15, 2015 — 20:39</p>
-      <p>an example of a blog post with some code</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/images/">a post with images</a></h2>
-      <p class="post-meta">May 16, 2015 — 02:31</p>
-      <p>this is what included images could look like</p>
-    </li>
-  
-</ul>
-
-
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
+<div class="img_blog">
+    <img class="col three left" src="/assets/img/SpatialAngle.jpg" alt="" title="Phase Difference obtained by spaced microphones" />
+</div>
+<div class="col three caption">
+   Phase Difference obtained by spaced microphones
 </div>
 
+<p>To measure phase difference finding the amplitude of the signals, the 2 signals had their phases dynamicaly locked by passing them through voltage controlled delay circuits. The voltage-controlled delay circuits are essentially all pass filers with a variable resistance (realised used a JFET with varying gate potential). 
+Extensive simulation was done on NgSpice to test the circuit design and components (esp. JFETs) were tested both in simulation and in hardware to obtain the variation of source-drain resistance with gate voltage and appropriately desing the remainder of the circuit.</p>
 
+<p>The final prototype was compact and converged quickly (within a second). It was one of the winning projects in the final course evaluation.</p>
+
+
+  </article>
+
+  
+
+  
+
+</div>
 
       </div>
     </div>

@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Sarthak Consul</title>
+  <title>Sarthak Consul | Reaction Game</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="http://localhost:4000/assets/img/favicon.png">
 
   <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/blog/">
+  <link rel="canonical" href="http://localhost:4000/projects/8_project/">
 </head>
 
 
@@ -91,56 +91,44 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>al-folio</h1>
-  <h2>a simple whitespace theme for academics</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Reaction Game</h1>
+    <h4 class="post-description">Course Project for EE214 Digital Lab, Spring 2018</h5>
+    <h5 class="post-description"></h5>	
+  </header>
+
+  <article class="post-content Reaction Game clearfix">
+    <div class="img_blog">
+    <img class="col three left" src="/assets/img/reactiongame.gif" alt="" title="Demonstration" />
+</div>
+<div class="col three caption">
+   Reaction Game in action
 </div>
 
+<p>The goal of this project was to build a reaction game on the Krypton CPLD Board. Reaction games are part standard testing paradimgs employed by neurologists, psychlogists and physiotherapists to test human visual reaction. To do this, a finite state machine was implemented in VHDL. RTL abstraction was used to realise the control flow. 
+While making this reaction game, the following points should be taken into consideration:</p>
 
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/comments/">a post with comments</a></h2>
-      <p class="post-meta">October 20, 2015 — 21:29</p>
-      <p>an example of a blog post with comments</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/math/">a post with math</a></h2>
-      <p class="post-meta">October 20, 2015 — 20:42</p>
-      <p>an example of a blog post with some math</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/code/">a post with code</a></h2>
-      <p class="post-meta">July 15, 2015 — 20:39</p>
-      <p>an example of a blog post with some code</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/images/">a post with images</a></h2>
-      <p class="post-meta">May 16, 2015 — 02:31</p>
-      <p>this is what included images could look like</p>
-    </li>
-  
+<p>Need to ensure proper time intervals between trainsition to next state of FSM</p>
+<ul>
+  <li>A timeout should be called if no reaction is observed to an LED lighting within a window of 2.5s after stimuli</li>
+  <li>Failsafe against button mashing by having a check against multiple reacts and reacts in the absence of LED stimuli</li>
+  <li>Debouncing the button: As multiple presses result in failing, the mechanical swithces have to be debounced 
+This is done by only considering signal levels that are maintained for 2 consecutive clock periods of around 100Hz</li>
+  <li>The delays between LED lighting up should be random. This has been approximated by generating a pseudo-random number by sampling a fast sequence</li>
 </ul>
 
+<p>The game works by finding the average reaction time to an LED lighting up in 8 trials and printing the said time on the LCD.-</p>
 
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
+
+  </article>
+
+  
+
+  
+
 </div>
-
-
 
       </div>
     </div>
