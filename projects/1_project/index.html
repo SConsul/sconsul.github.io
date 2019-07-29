@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Sarthak Consul</title>
+  <title>Sarthak Consul | DPAC</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/projects/1_project/">
 </head>
 
 
@@ -91,56 +91,51 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>al-folio</h1>
-  <h2>a simple whitespace theme for academics</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Digitally Programmable Analog Computer</h1>
+    <h4 class="post-description">Course Project for EE344 - Electronics Design Laboratory, Spring 2019</h5>
+    <h5 class="post-description">with P. Khirwadkar and P. Joshi</h5>	
+  </header>
+
+  <article class="post-content DPAC clearfix">
+    <p><a href="/assets/pdf/dpac.pdf" target="\_blank">[Technical Report]</a> <a href="https://github.com/SConsul/Digitally-Programmable-Analog-Computer" target="\_blank">[Code]</a></p>
+
+<div class="img_blog">
+    <img class="col three left" src="/assets/img/DPAC_board_inverted.png" alt="" title="DPAC Schematic" />
+</div>
+<div class="col three caption">
+    Schematic of Final Prototype
 </div>
 
+<p>Hardware-in-the-loop simulations are very commonly used to test controller design and monitor how the controller responds, in real time, to realistic virtual stimuli. In an HIL simulation, a real-time computer is used as a virtual representation of the plant model and a real version of the concerned controller. Most of these dynamical systems are in the form of coupled differential equations, and digital computers tend to be terribly slow at iteratively approximating solutions to such systems. 
+Hybrid computers try to combine the high speed of the analog comuters with the versatility and precision of digital computers to effectively solve such problems.</p>
 
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/comments/">a post with comments</a></h2>
-      <p class="post-meta">October 20, 2015 — 21:29</p>
-      <p>an example of a blog post with comments</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/math/">a post with math</a></h2>
-      <p class="post-meta">October 20, 2015 — 20:42</p>
-      <p>an example of a blog post with some math</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/code/">a post with code</a></h2>
-      <p class="post-meta">July 15, 2015 — 20:39</p>
-      <p>an example of a blog post with some code</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/images/">a post with images</a></h2>
-      <p class="post-meta">May 16, 2015 — 02:31</p>
-      <p>this is what included images could look like</p>
-    </li>
-  
-</ul>
+<p>DPAC v2.0 is a hybrid computer, capable of solving upto an 8th order system of non-linear differential equations. In DPAC v2.0, we have included a processor in the loop, to perform all the non-linear computations. The integration step has been done in the analog domain.The DPAC is capable of solving non linear dynamical systems upto 8 variables of the form:</p>
 
+<script type="math/tex; mode=display">\frac{\partial x_k(t)}{\partial t} = f_k\big(x_1,x_2,..,x_8, u_1(t),..,u_4(t)\big) \text{ for } k \in \{1,2,...8 \}</script>
 
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
+<p>Where the functions <script type="math/tex">f_k</script> are a wide class of linear/non-linear functions (such as products or trigonometric functions of the state variables <script type="math/tex">x_{k}</script> and forcing functions <script type="math/tex">u_i(t)</script> for <script type="math/tex">i=1,2,3,4</script>).
+The final prototype is completely self-sufficient with an onboard power management circuit and digitally programmable through the onboard microcontroller. The programmability of switches enable the DPAC to change its configuration on the go and hence it can support a large range of frequencies.</p>
+
+<div class="img_blog">
+    <img class="col three left" src="/assets/img/DPAC_BlockDiagram.png" alt="" title="DPAC Oveerview" />
+</div>
+<div class="col three caption">
+    Overview of the system
 </div>
 
+<p>This project was supported by the Prof. Mukul Chandorkar, dept. of Electrical Engg. IIT Bombay for hardware-in-loop simulations in the power electronics lab.</p>
 
+
+  </article>
+
+  
+
+  
+
+</div>
 
       </div>
     </div>

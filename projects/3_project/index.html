@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Sarthak Consul</title>
+  <title>Sarthak Consul | Image Refocus</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
   <link rel="shortcut icon" href="/assets/img/favicon.png">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/projects/3_project/">
 </head>
 
 
@@ -91,56 +91,47 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>al-folio</h1>
-  <h2>a simple whitespace theme for academics</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Tree based Stereo Matching for Postcapture Image Refocus</h1>
+    <h4 class="post-description">Course Project for CS663 - Digital Image Processing, Autumn 2018</h5>
+    <h5 class="post-description">with P. Khirwadkar and B. Dedhia</h5>	
+  </header>
+
+  <article class="post-content Image Refocus clearfix">
+    <p><a href="https://github.com/SConsul/image-refocusing" target="\_blank">[Code]</a></p>
+
+<p>he goal of this project is to build a depth-based refocussing system on MATLAB. The program enables users to arbitrarily select a particular depth to be in focus and suitably adjusts the image to generate the depth of view phenomenon.
+This project is broken into two major steps:</p>
+<ol>
+  <li>Estimating Depth from stereo images</li>
+  <li>Applying blurring kernel using the estimated depth</li>
+</ol>
+
+<p>Stereo images are pairs of images taken from slightly displaced cameras. This has to be done carefully to maintain the epipolar constraint. For this project the stereo images were obtained from the publically available Middlebury Dataset.</p>
+
+<p>To obtain depth from the stero image pair, the two images have to be compared to obtained a per-pixel diparity. From trogonometry, it can be observed that the depth of the object is inversely proportional to the disparity.</p>
+
+<p>The vanilla method to obtain stereo disparity assumes the prior information on the epipolar direction is given and fixed. For a more general procedure, the algorithm employed does not require this prior information. To reduce computation cost and speed up the process, a tree-based comparison has been employed.</p>
+
+<div class="img_blog">
+    <img class="col three left" src="/assets/img/image_refocusing_flowchart.png" alt="" title="Overview of Algorithm" />
+</div>
+<div class="col three caption">
+    Overview of the Algorithm
 </div>
 
-
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/comments/">a post with comments</a></h2>
-      <p class="post-meta">October 20, 2015 — 21:29</p>
-      <p>an example of a blog post with comments</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/math/">a post with math</a></h2>
-      <p class="post-meta">October 20, 2015 — 20:42</p>
-      <p>an example of a blog post with some math</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/code/">a post with code</a></h2>
-      <p class="post-meta">July 15, 2015 — 20:39</p>
-      <p>an example of a blog post with some code</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2015/images/">a post with images</a></h2>
-      <p class="post-meta">May 16, 2015 — 02:31</p>
-      <p>this is what included images could look like</p>
-    </li>
-  
-</ul>
+<p>This has been done in 2 stages: a pixel level comparison and a region level comparison. To obtain the regions, Simple Linear Iterative Clustering (SLIC) is employed. Cost is calculated as a weighted sum of the difference of intensity and gradient magnitude at a pixel, at a horizontal shift ‘d’ between the 2 pixels of the left and right image. Classical techniques would require computing this cost for every pixel, for every possible ‘d’ and then picking the d that minimizes the cost. The tree based approach aggregates this cost, with the underlying assumption that the cost of a distant pixel has little influence on the disparity decision while local pixel cost would influence the decision. Thus a minimum spanning tree is generated using Kruskal’s Algorithm. Each brach is exponentially weighted by the spatial separation of the corresponding node region and the cost can be aggregated by 2 passes of the MST</p>
 
 
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
+  </article>
+
+  
+
+  
+
 </div>
-
-
 
       </div>
     </div>
