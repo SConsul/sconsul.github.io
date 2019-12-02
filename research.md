@@ -4,6 +4,7 @@ title: Research
 permalink: /research/
 ---
 <img style="float: center" src="calvin.png">
+<!--<img style="float: center" src="queen_eliz.png">-->
 
 ## **Publications**
 
@@ -51,7 +52,7 @@ area of interest in explaining the diseases of interest. We explore the use of a
 _Guided by [Prof. Amit Sethi](https://www.ee.iitb.ac.in/~asethi/){:target="\_blank"}_
 <p style='text-align: justify;'>
 Segmentation is a per-pixel clsssification task that is more complicated than classification. We explore the use of Fully-Convolutional Neural Networks for semantic segmentation
-on medical images. This has immense applications in automation and assistance in diagonosis and pathology. The work was used in establishing the baseline in the [MoNuSeg](https://monuseg.grand-challenge.org/){:target="\_blank"} Challenge at [MICCAI 2018](https://www.miccai2018.org/en/){:target="\_blank"}. </p> <br/>
+on medical images. This has immense applications in automation and assistance in diagonosis and pathology. The work was used in establishing the baseline in the <a href="https://monuseg.grand-challenge.org" target="_blank">MoNuSeg</a> Challenge at <a href="https://www.miccai2018.org/en/" target="_blank">MICCAI 2018</a>. </p> <br/>
 [Read More](/research/medal)
 
 

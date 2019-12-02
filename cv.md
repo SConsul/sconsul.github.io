@@ -4,6 +4,5 @@ title: CV
 permalink: /cv/
 ---
 
-# [CV (2 pages)](/assets/pdf/CV_sarthak_consul.pdf	)
+# [CV (2 pages)](./CV_sarthak_consul.pdf)
 
----

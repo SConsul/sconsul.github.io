@@ -20,9 +20,10 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username:  sconsul
-twitter_username: ConsulSarthak
-#instagram_username: glitchinthematrix1.618
-#linkedin_username: bhishma-dedhia-4b9b74124
+#twitter_username: ConsulSarthak
+instagram_username: sarthakconsul
+linkedin_username: sarthak-consul-1483aa138
+
 # Build settings
 markdown: kramdown
 theme: minima
@@ -31,12 +32,12 @@ google_analytics: UA-102623606-2
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-redirect-from
 header_pages:
   - about.md
-  - cv.md
   - research.md
   - projects.md
-
+  - cv.md
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

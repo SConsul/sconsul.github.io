@@ -3,7 +3,7 @@ layout: page
 title: Projects
 permalink: /projects
 ---
-Here is a non-exhaustive list of the major non-research projects I have done as an undergraduate at IIT Bombay.
+Here is a non-exhaustive list of the major non-research projects I have done as an undergraduate at IIT Bombay. For more projects check my [GitHub profile](https://github.com/sconsul){:target="\_blank"}.
 
 # 2019
 
