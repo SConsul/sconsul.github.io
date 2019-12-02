@@ -13,5 +13,7 @@ In the summer of 2019, I had the opportunity to work with [Prof. Ralph Müller](
 
 In 2018, I was a student researcher at Medical Deep Learning and AI Lab - IIT Bombay on using deep-learning for the segmentation of nuclei from various 2D-medical datasets.
 
-I spend most of my time diving into books, videos and blogs across the internet looking for something new to learn and do. I am also fond of hiking, reading fiction and watching movies. 
+I spend most of my time diving into books, videos and blogs across the internet looking for something new to learn and do. I am also fond of reading fiction, biking and hiking. 
+
+
 

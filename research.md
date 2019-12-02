@@ -3,7 +3,7 @@ layout: page
 title: Research
 permalink: /research/
 ---
-<img style="float: center" src="calvin.png">
+<!--<img style="float: center" src="calvin.png">-->
 <!--<img style="float: center" src="queen_eliz.png">-->
 
 ## **Publications**
