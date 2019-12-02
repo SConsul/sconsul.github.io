@@ -9,9 +9,9 @@ permalink: /research/
 ## **Publications**
 
 # 2019
-Sarthak Consul<sup>* </sup>,Bhishma Dedhia<sup>* </sup>, Kumar Ashutosh <sup>* </sup>, Parthasarathi Khirwadkar<sup>* </sup><br/>
-[Analysis of Lower Bounds for Simple Policy Iteration](https://arxiv.org/abs/1911.12842){:target="\_blank"}<br/>
-preprint arXiv:1911.12842<br/>
+Sarthak Consul<sup>*</sup>, Bhishma Dedhia<sup>*</sup>, Kumar Ashutosh<sup>*</sup>, Parthasarathi Khirwadkar<sup>* </sup><br/>
+**Analysis of Lower Bounds for Simple Policy Iteration**<br/>
+preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank"} <sub><sup>*Equal Contributions</sup></sub><br/>
 
 ## **Research Projects**
 
