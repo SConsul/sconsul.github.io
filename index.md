@@ -26,7 +26,7 @@ Feel free to read [a bit more about me](/about)!
  <li> <i> Dec. 2019</i>: Pre-print of our paper on the lower bounds of simple policy iteration is available on <a href="https://arxiv.org/abs/1911.12842" target="_blank">arXiv</a> </li>
 <li> <i> Jun. 2019</i>: Started summer interniship at the Institute of Biomechanics, ETH Zürich</li>
 <li> <i> May 2019</i>: The grades for Spring'19 are out! Got perfect 10 (AA) in all courses! </li>
- <li> <i> Apr. 2019</i>: We presented our hybrid computer for Hardware In Loop (HIL) simulations, <a href="https://sconsul.github.io/proj/DPAC" target"_blank">DPAC</a>, at the EDL demo session.  </li>
+ <li> <i> Apr. 2019</i>: We presented our hybrid computer for Hardware In Loop (HIL) simulations, <a href="https://sconsul.github.io/proj/DPAC" target="_blank">DPAC</a>, at the EDL demo session.  </li>
  <li> <i> May 2018</i>: I will be interning at the Medical Deep Learning and Artificial Intelligence Lab (MeDAL), IIT Bombay, India. </li>
 </ul>
  
