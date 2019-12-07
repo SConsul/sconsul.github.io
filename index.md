@@ -12,13 +12,14 @@ Hello World!
 <p style='text-align: justify;'>
 My name is Sarthak Consul, and I'm a senior undergraduate at <a href="http://iitb.ac.in/" target="_blank">IIT Bombay</a> majoring in Electrical Engineering with a minor in Computer Science and Engineering. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
 </p>
-You can read more about me [here](/about).
 
-You can see my CV [here](/assets/CV.pdf). (Updated in Dec'19)
+I maintain a list of my projects and research experience under the [Research](/research) and [Projects](/research) tabs.
 
-Click [here](/research) to know about my research in detail.
+To get an insight on my professional life so far, you can have a look at my [CV](/assets/CV.pdf).
 
-I maintain a detailed list of my projects [here](/projects).
+
+Feel free to read [a bit more about me](/about)!
+
 
 <h2 id="updates">News</h2>
 <ul id="news">
