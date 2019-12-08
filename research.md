@@ -20,7 +20,7 @@ preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank
 **Analysis of lower Bounds on Simple Policy Iteration for K-action MDPs**<br/>
 _Guided by [Prof. Shivaram Kalyanakrishnan](https://www.cse.iitb.ac.in/~shivaram/){:target="\_blank"}_
 <p style='text-align: justify;'>
-Simple Policy iteration (SPI) is a type of policy iteration where the strategy is to change the policy of exactly one improvable state to an arbitrary improving action at every step. Melekopoglou  and Condon [1990] showed an exponential lower bound on the number of iterations taken by SPI for a family of 2-action MDPs. We generalize the result and obtain a lower bound for the family of k-action MDPs.</p>
+Simple Policy iteration (SPI) is a type of policy iteration where the strategy is to change the policy of exactly one improvable state to an arbitrary improving action at every step. Melekopoglou  and Condon [1990] showed an exponential lower bound on the number of iterations taken by SPI for a family of 2-action MDPs. We generalized the result to obtain a lower bound for the family of k-action MDPs.</p>
 
 <!--[Read More](./SPI_lowerbound.pdf){:target="\_blank"}--> 
 [![Read More](./pdf.png "View preprint") Read More](./SPI_lowerbound.pdf){:target="\_blank"} 
@@ -35,7 +35,7 @@ Style transfer was introduced for images in 2015 and has been quickly commercial
 _Guided by [Prof. Amit Sethi](https://www.ee.iitb.ac.in/~asethi/){:target="\_blank"}_
 <p style='text-align: justify;'>
 While semantic segmentation tasks are tackled by convolutional neural networks, they optimize on a differentiable approximation of the desired metric. 
-Deep Reinforcement learning are explored in a bid to overcome this constrain. A per-pixel agent with an Asynchronous Actor-Critic (A3C) Network is proposed with local neighbourhood reward function which achieved an mIOU of 53.62% on the PASCAL VOC 2012 dataset. A novel hierarchial approach is also being tested for the same. This work would be extended to the interactive segmentation task.
+Deep Reinforcement learning is explored in a bid to overcome this constraint. A per-pixel agent with an Asynchronous Actor-Critic (A3C) Network is proposed with local neighbourhood reward function which achieved an mIOU of 53.62% on the PASCAL VOC 2012 dataset. A novel hierarchical approach is also being tested for the same. This work is being extended to the interactive segmentation task.
 </p>
 
 **Segmentation of Lacunar Objects from Ultra High Resolution µCT Bone Scans**<br/>
