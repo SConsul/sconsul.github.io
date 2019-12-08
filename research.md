@@ -20,8 +20,10 @@ preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank
 **Analysis of lower Bounds on Simple Policy Iteration for K-action MDPs**<br/>
 _Guided by [Prof. Shivaram Kalyanakrishnan](https://www.cse.iitb.ac.in/~shivaram/){:target="\_blank"}_
 <p style='text-align: justify;'>
-Simple Policy iteration (SPI) is a type of policy iteration where the strategy is to change the policy of exactly one improvable state at every step. Melekopoglou  and Condon [1990] showed an exponential lower bound on the number of iterations taken by SPI for a 2 action MDP. The results have not been generalized to a k-action MDP since.</p><br/>
-[Read More](./SPI_lowerbound.pdf){:target="\_blank"} 
+Simple Policy iteration (SPI) is a type of policy iteration where the strategy is to change the policy of exactly one improvable state to an arbitrary improving action at every step. Melekopoglou  and Condon [1990] showed an exponential lower bound on the number of iterations taken by SPI for a family of 2-action MDPs. We generalize the result and obtain a lower bound for the family of k-action MDPs.</p>
+
+<!--[Read More](./SPI_lowerbound.pdf){:target="\_blank"}--> 
+[![Read More](./pdf.png "View preprint") Read More](./SPI_lowerbound.pdf){:target="\_blank"} 
 
 **Style Transfer on Unpaired Music Clips**<br/>
 _Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_
@@ -52,7 +54,7 @@ area of interest in explaining the diseases of interest. We explore the use of a
 _Guided by [Prof. Amit Sethi](https://www.ee.iitb.ac.in/~asethi/){:target="\_blank"}_
 <p style='text-align: justify;'>
 Segmentation is a per-pixel clsssification task that is more complicated than classification. We explore the use of Fully-Convolutional Neural Networks for semantic segmentation
-on medical images. This has immense applications in automation and assistance in diagonosis and pathology. The work was used in establishing the baseline in the <a href="https://monuseg.grand-challenge.org" target="_blank">MoNuSeg</a> Challenge at <a href="https://www.miccai2018.org/en/" target="_blank">MICCAI 2018</a>. </p> <br/>
+on medical images. This has immense applications in automation and assistance in diagonosis and pathology. The work was used in establishing the baseline in the <a href="https://monuseg.grand-challenge.org" target="_blank">MoNuSeg</a> Challenge at <a href="https://www.miccai2018.org/en/" target="_blank">MICCAI 2018</a>. </p>
 [Read More](/research/medal)
 
 
