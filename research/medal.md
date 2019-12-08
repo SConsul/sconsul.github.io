@@ -1,7 +1,3 @@
----
-layout: page
----
-
 <h3><b>Semantic Segmentation of Medical Images</b></h3>
 
 Summer Internship at Medical Deep Learning and AI Lab (MeDAL) IIT Bombay, Summer 2018
@@ -11,7 +7,7 @@ Summer Internship at Medical Deep Learning and AI Lab (MeDAL) IIT Bombay, Summer
 
 With the widespread, prevalance of Chest X-Rays (CXRs) in medical diagnosis, CXRs contribute to a majority of the workload of radiologists and other medical practitioners. Thus, it becomes imperative to expedite the analysis of CXRs, with deep-learning being one possible method of automation.
 
-![](./Flowchart_lungseg.PNG)
+![](medal/Flowchart_lungseg.PNG)
 <p align="center"><em>Overview of Algorithm</em></p>
 
 A variety of Fully Convolutional Networks (Global Convolutional Network, VGG UNet, SegNet, HDC/DUC and Mask R-CNN) were tested to segment the lungs from CXRs. A hybrid loss function, combining Soft Dice Loss, Soft Inverse Dice Loss, and Binary Cross-Entropy Loss (with logits), was employed to achieve the peak performance.
@@ -20,7 +16,7 @@ A variety of Fully Convolutional Networks (Global Convolutional Network, VGG UNe
 
 <h3>Nuclei Segmentation from Histopathological Images</h3>
 
-![](./Flowchart_NucleusSeg.PNG)
+![](medal/Flowchart_NucleusSeg.PNG)
 <p align="center"><em>Overview of Algorithm</em></p>
 
 
@@ -30,7 +26,7 @@ I also worked on applying the same models to segment out Nuclei from h/he staine
 
 <h3>Screening of Precancerous Oral Lesions</h3>
 Oral cancer is the deadliest form of cancer in India, due to the general poor oral hygiene combined with the lateness of symptoms. A user facing Android app was developed to screen patients and speed up remote diagnosis while reducing the workload of doctors. I annotated and pre-processed pictures of oral lesions from around 800 patients which was later used to train a Siamese Network classifier.
-![](./oralcancer_ps.PNG)
+![](medal/oralcancer_ps.PNG)
 <p align="center"><em>Overview of Algorithm</em></p>
 
 

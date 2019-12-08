@@ -1,7 +1,3 @@
----
-layout: page
----
-
 <h3><b> Pipelined and Multicycle Implementation of IITB-RISC ISA </b></h3>
 
 Course Project for EE309 - Microprocessors, Autumn 2018
@@ -10,7 +6,7 @@ with P. Khirwadkar, B. Dedhia and K. Porlikar
 
 [[Code]](https://github.com/SConsul/RISC-Microprocessor-Design){:target="\_blank"}
 
-<img src="./pipeline.png">
+<img src="iitb_risc/pipeline.png">
 
 
 IITB-RISC is a small architecture for doing basic 16 bit operations. The goal of the project was to design a microprocessor for the ISA using the following implementations:

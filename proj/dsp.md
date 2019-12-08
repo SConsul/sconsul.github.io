@@ -1,7 +1,3 @@
----
-layout: page
----
-
 <h3><b>Human Detection from Post-disaster LWIR Imagery</b></h3>
 
 Course Project for EE338 - Digital Signal Processing, Spring 2019
@@ -11,8 +7,8 @@ with P. Khirwadkar, B. Dedhia and K. Porlikar
 [[Code]](https://github.com/SConsul/Human-Detction-from-LWIR-Images){:target="\_blank"}
 
 <p float="left">
-  <img src="./dsp-aa_result.gif" width="300" />
-  <img src="./dsp-aa_result2.gif" width="300" /> 
+  <img src="dsp/dsp-aa_result.gif" width="300" />
+  <img src="dsp/dsp-aa_result2.gif" width="300" /> 
 </p>
 
 
@@ -30,5 +26,5 @@ The pipeline of the tool was as follows:
 The tool was trained on the OTCBVS datset. We achieved a 98.79 % test acccuracy against the OTCBVS dataset and the model worked flawlessly for real-world LWIR disaster images containing a considerable amount of obstructions and illumination variance.
 
 
-![](./overview.PNG)
+![](dsp/overview.PNG)
 <p align="center"><em>Overview of the system</em></p>
