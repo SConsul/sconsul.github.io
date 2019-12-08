@@ -1,8 +1,3 @@
-
----
-layout: page
----
-
 <h3><b>Digitally Programmable Analog Computer</b></h3>
 
 Course Project for EE344 - Electronics Design Laboratory, Spring 2019
