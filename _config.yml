@@ -32,7 +32,6 @@ google_analytics: UA-102623606-2
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-redirect-from
 header_pages:
   - about.md
   - research.md
