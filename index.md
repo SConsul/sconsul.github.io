@@ -7,25 +7,34 @@
 #
 layout: page
 ---
-<img style="float: right;height: 30%;width:30%" src="me.jpg">
+<img style="float: right;height: 20%;width:20%" src="me3.jpg">
 Hello World!
 <p style='text-align: justify;'>
-My name is Sarthak Consul, and I have recently graduated from <a href="http://iitb.ac.in/" target="_blank">IIT Bombay</a> with a B.Tech (Hons.) in Electrical Engineering along with a minor in Computer Science and Engineering. I will be joining Stanford's MS-CS program in Winter 2020. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
+My name is Sarthak Consul, and I have recently graduated from <a href="http://iitb.ac.in/" target="_blank">IIT Bombay</a> with a B.Tech (Hons.) in Electrical Engineering along with a minor in Computer Science and Engineering. I will be joining the Master in <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> at <a href="https://stanford.edu/" target="_blank">Stanford University</a> in Winter 2020. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
 </p>
 
-I maintain a list of my projects and research experience under the [Research](/research) and [Projects](/research) tabs.
+<p style='text-align: justify;'>
+At IIT Bombay, I worked on generative models for transfering singing styles across unpaired music clips with <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> as a part of my Bachelor's thesis. I also worked under the guidance of <a href="https://www.ee.iitb.ac.in/~asethi/" target="_blank">Prof. Amit Sethi</a> to develop a Reinforcement Learning based approach for semantic and interactive segmentation. Furthermore, I worked on deriving novel Lower bounds on policy iteration for multi-action MDPs under 
+<a href="https://www.cse.iitb.ac.in/~shivaram/" target="_blank">Prof. Shivaram Kalyanakrishnan</a>.
+</p>
 
-To get an insight on my professional life so far, you can have a look at my [CV](/assets/CV.pdf).
+<p style='text-align: justify;'>
+In the summer of 2019, I had the opportunity to work with <a href="https://biomech.ethz.ch/research/ralph-mueller.html" target="_blank">Prof. Ralph Müller</a> at the <a href="https://biomech.ethz.ch/" target="_blank">Institute of Biomechanics</a> at ETH Zürich and leveraged deep-learning to segment lacunae from 3D micro-CT scans of trabecular human bone tissue. 
+</p>
 
+<!-- <p style='text-align: justify;'>
+In 2018, I was a student researcher at Medical Deep Learning and AI Lab - IIT Bombay working on using deep-learning for the segmentation of nuclei from various 2D-medical datasets.
+</p> -->
+<!-- I maintain a list of my projects and research experience under the [Research](/research) and [Projects](/research) tabs.
 
-Feel free to read [a bit more about me](/about)!
+To get an insight on my professional life so far, you can have a look at my [CV](/assets/CV.pdf). -->
 
 
 <h2 id="updates">News</h2>
 <ul id="news">
-<li> <i> Jul. 2020</i>: Our work on Lower bounds for Policy Iteration on Multi-Action MDPs was accepted to CDC 2020. Link out soon.</li>
- <li> <i> Dec. 2019</i>: Our work on a novel single-round pooled testing approach, called <a href="https://tapestry-pooling.herokuapp.com/" target="_blank">Tapestry</a>, has entered the clinical trial phase, with promising preliminary results. </li>
- <li> <i> Dec. 2019</i>: Pre-print of our paper on the lower bounds of simple policy iteration is available on <a href="https://arxiv.org/abs/1911.12842" target="_blank">arXiv</a> </li>
+<li> <i> July 2020</i>: &nbsp;Our work on Lower bounds for Policy Iteration on Multi-Action MDPs was accepted to &emsp;&emsp;&emsp;&emsp;&ensp; IEEE CDC 2020. Link out soon.</li>
+ <li> <i> Dec. 2019</i>: Our work on a novel single-round pooled testing approach, called <a href="https://tapestry-pooling.herokuapp.com/" target="_blank">Tapestry</a>, has entered &emsp;&emsp;&emsp;&ensp;&ensp;&ensp; the clinical trial phase, with promising preliminary results. </li>
+ <li> <i> Dec. 2019</i>: Pre-print of our paper on the lower bounds of simple policy iteration is out on <a href="https://arxiv.org/abs/1911.12842" target="_blank">arXiv</a> </li>
 <li> <i> Jun. 2019</i>: Started summer interniship at the Institute of Biomechanics, ETH Zürich</li>
 <li> <i> May 2019</i>: The grades for Spring'19 are out! Got perfect 10 (AA) in all courses! </li>
  <li> <i> Apr. 2019</i>: We presented our hybrid computer, <a href="https://sconsul.github.io/proj/DPAC" target="_blank">DPAC</a>, at the EDL demo session.  </li>
