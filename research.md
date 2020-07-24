@@ -8,12 +8,37 @@ permalink: /research/
 
 ## **Publications**
 
+# 2020
+**Lower Bounds for Policy Iteration on Multi-action MDPs**<br/>
+K. Ashutosh<sup>*</sup>, S. Consul<sup>*</sup>, B. Dedhia<sup>*</sup>, P. Khirwadkar<sup>*</sup>, S. Shah<sup>*</sup>, S. Kalyanakrishnan<sup>*</sup><br/>
+IEEE Conference on Decision and Control 2020 <sub><sup>*Equal Contributions</sup></sub><br/>
+<br/>
+**A Compressed Sensing Approach to Group-testing for COVID-19 Detection**<br/>
+preprint - [arXiv:2005.07895](https://arxiv.org/abs/2005.07895){:target="\_blank"}<br/> 
+
 # 2019
-Sarthak Consul<sup>*</sup>, Bhishma Dedhia<sup>*</sup>, Kumar Ashutosh<sup>*</sup>, Parthasarathi Khirwadkar<sup>* </sup><br/>
 **Analysis of Lower Bounds for Simple Policy Iteration**<br/>
-preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank"} <sub><sup>*Equal Contributions</sup></sub><br/>
+Sarthak Consul<sup>*</sup>, Bhishma Dedhia<sup>*</sup>, Kumar Ashutosh<sup>*</sup>, Parthasarathi Khirwadkar<sup>* </sup><br/>
+preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank"} <sub><sup>*Equal Contributions</sup></sub> (Permanently arXived)<br/>
 
 ## **Research Projects**
+
+# 2020
+
+**Compressed Sensing Approach to Group-testing for COVID-19 Detection**<br/>
+_Guided by [Prof. Manoj Gopalakrishnan](https://www.ee.iitb.ac.in/~manojg/){:target="\_blank"} and [Prof. Ajit Rajwade](https://www.cse.iitb.ac.in/~ajitvr/){:target="\_blank"}_
+<p style='text-align: justify;'>
+A single-round pooled testing approach, called Tapestry, has been devide to detect SARS-CoV-2 viral loads using quantitative RT-PCR that shortens testing time and conserves reagents and testing kits. A combination of combinatoric approaches (such as COMP) and compressed sensing algorithms (such as Sparse Bayesian Learning) acting on specially designed Kirkman sampling matrices are able to recover both the status and estimated viral load of the samples. An accompanying Android application has been developed for easy implementation at testing centres.
+Currently undergoing clinical trials in labs across India, with promising preliminary results.</p>
+[![Official Website](./web.png "Official Website") Official Website](https://tapestry-pooling.herokuapp.com/){:target="\_blank"}  
+<!-- &nbsp;
+ [![Media Coverage](./web.png "Media Coverage") Media Coverage](https://www.nature.com/articles/d41586-020-02053-6){:target="\_blank"}  -->
+
+**Style Transfer on Unpaired Music Clips**<br/>
+_Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_
+<p style='text-align: justify;'>
+Style transfer was introduced for images in 2015 and has been quickly commercialized in the entertainment industry. Style transfer for audio has not enjoyed the same success. We are working towards separating timbral features of the vocals from lyrical and rhythmic features from music clips and recombining appropriately for to transfer the timbral quality of the target-style vocals to the vocals of the source song. The task has been made more difficult by working within the realistic constraints of having the source song and target-style song to be unpaired.
+</p>
 
 # 2019
 
@@ -24,12 +49,6 @@ Simple Policy iteration (SPI) is a type of policy iteration where the strategy i
 
 <!--[Read More](./SPI_lowerbound.pdf){:target="\_blank"}--> 
 [![Read More](./pdf.png "View preprint") Read More](./SPI_lowerbound.pdf){:target="\_blank"} 
-
-**Style Transfer on Unpaired Music Clips**<br/>
-_Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_
-<p style='text-align: justify;'>
-Style transfer was introduced for images in 2015 and has been quickly commercialized in the entertainment industry. Style transfer for audio has not enjoyed the same success. We are working towards separating timbral features of the vocals from lyrical and rhythmic features from music clips and recombining appropriately for to transfer the timbral quality of the target-style vocals to the vocals of the source song. The task has been made more difficult by working within the realistic constraints of having the source song and target-style song to be unpaired.
-</p>
 
 **Leveraging Reinforcement Learning for Semantic and Interactive Segmentation**<br/>
 _Guided by [Prof. Amit Sethi](https://www.ee.iitb.ac.in/~asethi/){:target="\_blank"}_
@@ -55,7 +74,6 @@ _Guided by [Prof. Amit Sethi](https://www.ee.iitb.ac.in/~asethi/){:target="\_bla
 <p style='text-align: justify;'>
 Segmentation is a per-pixel clsssification task that is more complicated than classification. We explore the use of Fully-Convolutional Neural Networks for semantic segmentation
 on medical images. This has immense applications in automation and assistance in diagonosis and pathology. The work was used in establishing the baseline in the <a href="https://monuseg.grand-challenge.org" target="_blank">MoNuSeg</a> Challenge at <a href="https://www.miccai2018.org/en/" target="_blank">MICCAI 2018</a>. </p>
-[Read More](/research/medal)
-
+[![Read More](./web.png "Read More") Project Page](/research/medal)
 
 

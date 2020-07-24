@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 <p style='text-align: justify;'>
-My name is Sarthak Consul and I am a senior undergraduate at IIT Bombay majoring in the Electrical Engineering with a minor in Computer Science. I am interested in leveraging machine learning to find solutions to prevailing issues plaguing mankind. I believe the current form of supervised learning, while achieveing remarkable performance, is not scalable to arbitrary applications due to its reliance of annotations. This has led to my goal of developing semi-supervised and unsupervised techniques of learning and applying them. This has led to my interests in Deep Learning, Reinforcement Learning, Computer Vision, Applied probability and Signal Processing. I am interested in theoretical aspects of problems in these fields and would like to build tools that help solve real world problems.
+My name is Sarthak Consul and I am a senior undergraduate at IIT Bombay majoring in the Electrical Engineering with a minor in Computer Science. I am interested in leveraging machine learning to find solutions to prevailing issues plaguing mankind. I believe the current form of supervised learning, while achieveing remarkable performance, is not scalable to arbitrary applications due to its reliance on annotations. This has led to my goal of developing semi-supervised and unsupervised techniques of learning and applying them. This has led to my interests in Deep Learning, Reinforcement Learning, Computer Vision, Applied probability and Signal Processing. I am interested in theoretical aspects of problems in these fields and would like to build tools that help solve real world problems.
 </p>
 
 <p style='text-align: justify;'>
