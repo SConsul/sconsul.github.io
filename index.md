@@ -14,7 +14,7 @@ My name is Sarthak Consul, and I have recently graduated from <a href="http://ii
 </p>
 
 <p style='text-align: justify;'>
-At IIT Bombay, I worked on generative models for transfering singing styles across unpaired music clips with <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> as a part of my Bachelor's thesis. I also worked under the guidance of <a href="https://www.ee.iitb.ac.in/~asethi/" target="_blank">Prof. Amit Sethi</a> to develop a Reinforcement Learning based approach for semantic and interactive segmentation. Furthermore, I worked on deriving novel Lower bounds on policy iteration for multi-action MDPs under 
+At IIT Bombay, I worked on generative models for transfering singing styles across unpaired music clips with <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> as a part of my Bachelor's thesis. I also worked under the guidance of <a href="https://www.ee.iitb.ac.in/~asethi/" target="_blank">Prof. Amit Sethi</a> to develop a Reinforcement Learning based approach for semantic and interactive segmentation. Furthermore, I worked on deriving novel lower bounds on policy iteration for multi-action MDPs under 
 <a href="https://www.cse.iitb.ac.in/~shivaram/" target="_blank">Prof. Shivaram Kalyanakrishnan</a>.
 </p>
 
@@ -33,7 +33,7 @@ To get an insight on my professional life so far, you can have a look at my [CV]
 <h2 id="updates">News</h2>
 <ul id="news">
 <li> <i> July 2020</i>: &nbsp;Our work on Lower bounds for Policy Iteration on Multi-Action MDPs was accepted to &emsp;&emsp;&emsp;&emsp;&ensp; IEEE CDC 2020. Link out soon.</li>
- <li> <i> Dec. 2019</i>: Our work on a novel single-round pooled testing approach, called <a href="https://tapestry-pooling.herokuapp.com/" target="_blank">Tapestry</a>, has entered &emsp;&emsp;&emsp;&ensp;&ensp;&ensp; the clinical trial phase, with promising preliminary results. </li>
+ <li> <i> Dec. 2019</i>: Our work on a novel single-round pooled testing approach, called <a href="https://tapestry-pooling.herokuapp.com/" target="_blank">Tapestry</a>, has &emsp;&emsp;&emsp;&ensp;&ensp;&ensp; entered the clinical trial phase, with promising preliminary results. </li>
  <li> <i> Dec. 2019</i>: Pre-print of our paper on the lower bounds of simple policy iteration is out on <a href="https://arxiv.org/abs/1911.12842" target="_blank">arXiv</a> </li>
 <li> <i> Jun. 2019</i>: Started summer interniship at the Institute of Biomechanics, ETH Zürich</li>
 <li> <i> May 2019</i>: The grades for Spring'19 are out! Got perfect 10 (AA) in all courses! </li>
