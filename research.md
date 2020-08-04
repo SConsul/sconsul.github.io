@@ -27,7 +27,7 @@ MathJax = {
 # 2020
 <div markdown="1" onmouseover="document.getElementById('pi').style.display='block';" onmouseout="document.getElementById('pi').style.display='none';">
 **Lower Bounds for Policy Iteration on Multi-action MDPs**<br/>
-K. Ashutosh<sup>*</sup>, S. Consul<sup>*</sup>, B. Dedhia<sup>*</sup>, P. Khirwadkar<sup>*</sup>, S. Shah<sup>*</sup>, S. Kalyanakrishnan<sup>*</sup><br/>
+[Kumar Ashutosh](https://thechargedneutron.github.io/){:target="\_blank"}<sup>*</sup>, _Sarthak Consul_<sup>*</sup>, [Bhishma Dedhia](https://glitchinthematrix.github.io/){:target="\_blank"}<sup>*</sup>, [Parthasarathi Khirwadkar](https://scholar.google.com/citations?user=6i8AefAAAAAJ&hl=en){:target="\_blank"}<sup>*</sup>, [Sahil Shah](https://www.cse.iitb.ac.in/~sahilshah/){:target="\_blank"}<sup>*</sup>, [Shivaram Kalyanakrishnan](https://www.cse.iitb.ac.in/~shivaram/){:target="\_blank"}<sup>*</sup><br/>
 IEEE Conference on Decision and Control 2020 <sub><sup>*Equal Contributions</sup></sub><br/>
 <p markdown="1" style='text-align: justify;' id="pi" style="display:none;">
 Devised a family of n-state, k-action MDPs to obtain a strong lower bound of $\Omega(k^n/2)$ for policy iteration. Furthermore, we generalised the existing constructions of 2-action MDPs to k-action MDPs to scale lower bounds by a factor of $k$ for some common deterministic variants of policy iteration, and by $\log(k)$ for the corresponding randomised variants.</p>
@@ -35,13 +35,23 @@ Devised a family of n-state, k-action MDPs to obtain a strong lower bound of $\O
 
 <div markdown="1" onmouseover="document.getElementById('tapestry').style.display='block';" onmouseout="document.getElementById('tapestry').style.display='none';">
 **Compressed Sensing Approach to Group-testing for COVID-19 Detection**<br/>
-_Guided by [Prof. Manoj Gopalakrishnan](https://www.ee.iitb.ac.in/~manojg/){:target="\_blank"} and [Prof. Ajit Rajwade](https://www.cse.iitb.ac.in/~ajitvr/){:target="\_blank"}_
+[Sabyasachi Ghosh](https://sghosh767.wordpress.com/){:target="\_blank"}, 
+[Rishi Agarwal](https://www.cse.iitb.ac.in/~rishiagarwal/index.html){:target="\_blank"}, 
+[Mohammad Ali Rehan](https://www.cse.iitb.ac.in/~alirehan/){:target="\_blank"}, 
+[Shreya Pathak](https://www.cse.iitb.ac.in/~shreyapathak/){:target="\_blank"}, 
+[Pratyush Agrawal](https://www.cse.iitb.ac.in/~pratyush/){:target="\_blank"}, 
+[Yash Gupta](https://www.cse.iitb.ac.in/~yashgupta/){:target="\_blank"}, 
+_Sarthak Consul_, 
+[Nimay Gupta](https://www.cse.iitb.ac.in/~nimay/){:target="\_blank"}, 
+[Ritika Goyal](https://www.cse.iitb.ac.in/~ritikagoyal/){:target="\_blank"}, 
+[Prof. Manoj Gopalakrishnan](https://www.ee.iitb.ac.in/~manojg/){:target="\_blank"} and 
+[Prof. Ajit Rajwade](https://www.cse.iitb.ac.in/~ajitvr/){:target="\_blank"}
 <br>
-preprint - [arXiv:2005.07895](https://arxiv.org/abs/2005.07895){:target="\_blank"} | [![Official Website](./web.png "Official Website") Official Website](https://tapestry-pooling.herokuapp.com/){:target="\_blank"}
+[arXiv](https://arxiv.org/abs/2005.07895){:target="\_blank"} | [code](https://github.com/atoms-to-intelligence/tapestry){:target="\_blank"} | [![Official Website](./web.png "Official Website") Official Website](https://tapestry-pooling.herokuapp.com/){:target="\_blank"}
 <!-- &nbsp;
  [![Media Coverage](./web.png "Media Coverage") Media Coverage](https://www.nature.com/articles/d41586-020-02053-6){:target="\_blank"}  -->
 <p style='text-align: justify;' id="tapestry" style="display:none;">
-A single-round pooled testing approach, called Tapestry, has been devide to detect SARS-CoV-2 viral loads using quantitative RT-PCR that shortens testing time and conserves reagents and testing kits. A combination of combinatoric approaches (such as COMP) and compressed sensing algorithms (such as Sparse Bayesian Learning) acting on specially designed Kirkman sampling matrices are able to recover both the status and estimated viral load of the samples. An accompanying Android application has been developed for easy implementation at testing centres.
+We propose a single-round pooled testing approach, called Tapestry, with an application to detect SARS-CoV-2 viral loads using quantitative RT-PCR that shortens testing time and conserves reagents and testing kits. A combination of combinatoric approaches (such as COMP) and compressed sensing algorithms (such as Sparse Bayesian Learning) with a novel noise model for PCR allows us to be able to recover both the status and estimated viral load of the samples. An accompanying Android application has been developed for easy implementation at testing centres.
 Currently undergoing clinical trials in labs across India, with promising preliminary results.</p>
 </div>
 
