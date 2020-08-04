@@ -45,17 +45,7 @@ A single-round pooled testing approach, called Tapestry, has been devide to dete
 Currently undergoing clinical trials in labs across India, with promising preliminary results.</p>
 </div>
 
-# 2019
-<div markdown="1" onmouseover="document.getElementById('spi').style.display='block';" onmouseout="document.getElementById('spi').style.display='none';">
-**Analysis of lower Bounds on Simple Policy Iteration for K-action MDPs**<br/>
-_Guided by [Prof. Shivaram Kalyanakrishnan](https://www.cse.iitb.ac.in/~shivaram/){:target="\_blank"}_
-<br>
-preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank"} <sub><sup>*Equal Contributions</sup></sub> (Permanently arXived)<br/>
-<!-- [![Read More](./pdf.png "View preprint") Read More](./SPI_lowerbound.pdf){:target="\_blank"}  -->
-<p style='text-align: justify;' id="spi" style="display:none;">
-Simple Policy iteration (SPI) is a type of policy iteration where the strategy is to change the policy of exactly one improvable state to an arbitrary improving action at every step. Melekopoglou  and Condon [1990] showed an exponential lower bound on the number of iterations taken by SPI for a family of 2-action MDPs. We generalized the result to obtain a lower bound for the family of k-action MDPs.</p>
-</div>
-
+<!-- # 2019 -->
 <!-- **Analysis of Lower Bounds for Simple Policy Iteration**<br/>
 Sarthak Consul<sup>*</sup>, Bhishma Dedhia<sup>*</sup>, Kumar Ashutosh<sup>*</sup>, Parthasarathi Khirwadkar<sup>* </sup><br/>
 preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank"} <sub><sup>*Equal Contributions</sup></sub> (Permanently arXived)<br/> -->
@@ -73,6 +63,16 @@ Style transfer was introduced for images in 2015 and has been quickly commercial
 </div>
 
 # 2019
+<div markdown="1" onmouseover="document.getElementById('spi').style.display='block';" onmouseout="document.getElementById('spi').style.display='none';">
+**Analysis of lower Bounds on Simple Policy Iteration for K-action MDPs**<br/>
+_Guided by [Prof. Shivaram Kalyanakrishnan](https://www.cse.iitb.ac.in/~shivaram/){:target="\_blank"}_
+<br>
+<!-- preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank"} <sub><sup>*Equal Contributions</sup></sub> (Permanently arXived)<br/> -->
+<!-- [![Read More](./pdf.png "View preprint") Read More](./SPI_lowerbound.pdf){:target="\_blank"}  -->
+[![Read More](./pdf.png "arXiv:1911.12842") Project Paper](https://arxiv.org/abs/1911.12842){:target="\_blank"} 
+<p style='text-align: justify;' id="spi" style="display:none;">
+Simple Policy iteration (SPI) is a type of policy iteration where the strategy is to change the policy of exactly one improvable state to an arbitrary improving action at every step. Melekopoglou  and Condon [1990] showed an exponential lower bound on the number of iterations taken by SPI for a family of 2-action MDPs. We generalized the result to obtain a lower bound for the family of k-action MDPs.</p>
+</div>
 
 <div markdown="1" onmouseover="document.getElementById('segrl').style.display='block';" onmouseout="document.getElementById('segrl').style.display='none';">
 **Leveraging Reinforcement Learning for Semantic and Interactive Segmentation**<br/>
