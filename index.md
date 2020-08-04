@@ -10,7 +10,7 @@ layout: page
 <img style="float: right;height: 20%;width:20%" src="me3.jpg">
 Hello World!
 <p style='text-align: justify;'>
-My name is Sarthak Consul, and I have recently graduated from <a href="http://iitb.ac.in/" target="_blank">IIT Bombay</a> with a B.Tech (Hons.) in Electrical Engineering along with a minor in Computer Science and Engineering. I will be joining the Master in <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> at <a href="https://stanford.edu/" target="_blank">Stanford University</a> in Fall 2021. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
+My name is Sarthak Consul, and I have recently graduated from <a href="http://iitb.ac.in/" target="_blank">IIT Bombay</a> with a B.Tech (Hons.) in Electrical Engineering along with a minor in Computer Science and Engineering. I will be joining the Masters in <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> program at <a href="https://stanford.edu/" target="_blank">Stanford University</a> in Fall 2021. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
 </p>
 
 <p style='text-align: justify;'>
