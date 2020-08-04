@@ -5,14 +5,34 @@ permalink: /research/
 ---
 <!--<img style="float: center" src="calvin.png">-->
 <!--<img style="float: center" src="queen_eliz.png">-->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 ## **Publications**
 
 # 2020
+<div markdown="1" onmouseover="document.getElementById('pi').style.display='block';" onmouseout="document.getElementById('pi').style.display='none';">
 **Lower Bounds for Policy Iteration on Multi-action MDPs**<br/>
 K. Ashutosh<sup>*</sup>, S. Consul<sup>*</sup>, B. Dedhia<sup>*</sup>, P. Khirwadkar<sup>*</sup>, S. Shah<sup>*</sup>, S. Kalyanakrishnan<sup>*</sup><br/>
 IEEE Conference on Decision and Control 2020 <sub><sup>*Equal Contributions</sup></sub><br/>
-<br/>
+<p markdown="1" style='text-align: justify;' id="pi" style="display:none;">
+Devised a family of n-state, k-action MDPs to obtain a strong lower bound of $\Omega(k^n/2)$ for policy iteration. Furthermore, we generalised the existing constructions of 2-action MDPs to k-action MDPs to scale lower bounds by a factor of $k$ for some common deterministic variants of policy iteration, and by $\log(k)$ for the corresponding randomised variants.</p>
+</div>
+
 <div markdown="1" onmouseover="document.getElementById('tapestry').style.display='block';" onmouseout="document.getElementById('tapestry').style.display='none';">
 **Compressed Sensing Approach to Group-testing for COVID-19 Detection**<br/>
 _Guided by [Prof. Manoj Gopalakrishnan](https://www.ee.iitb.ac.in/~manojg/){:target="\_blank"} and [Prof. Ajit Rajwade](https://www.cse.iitb.ac.in/~ajitvr/){:target="\_blank"}_
