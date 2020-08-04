@@ -64,7 +64,7 @@ Style transfer was introduced for images in 2015 and has been quickly commercial
 
 # 2019
 <div markdown="1" onmouseover="document.getElementById('spi').style.display='block';" onmouseout="document.getElementById('spi').style.display='none';">
-**Analysis of lower Bounds on Simple Policy Iteration for K-action MDPs**<br/>
+**Analysis of Lower Bounds on Simple Policy Iteration for K-action MDPs**<br/>
 _Guided by [Prof. Shivaram Kalyanakrishnan](https://www.cse.iitb.ac.in/~shivaram/){:target="\_blank"}_
 <br>
 <!-- preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank"} <sub><sup>*Equal Contributions</sup></sub> (Permanently arXived)<br/> -->
