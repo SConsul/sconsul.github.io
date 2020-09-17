@@ -32,7 +32,8 @@ To get an insight on my professional life so far, you can have a look at my [CV]
 
 <h2 id="updates">News</h2>
 <ul id="news">
-<li> <i> July 2020</i>: &nbsp;Our work on Lower bounds for Policy Iteration on Multi-Action MDPs was accepted to IEEE CDC 2020. Link out soon.</li>
+<li> <i> Aug 2020</i>: Graduated from IIT Bombay with a Bachelor's (with Honours) in Electrical Engineering and a minor in Computer Science.</li>
+<li> <i> July 2020</i>: Our work on Lower bounds for Policy Iteration on Multi-Action MDPs was accepted to IEEE CDC 2020. Paper is available on <a href="https://arxiv.org/abs/2009.07842" target="_blank">arXiv</a>.</li>
  <li> <i> Dec. 2019</i>: Our work on a novel single-round pooled testing approach, called <a href="https://tapestry-pooling.herokuapp.com/" target="_blank">Tapestry</a>, has entered the clinical trial phase, with promising preliminary results. </li>
  <li> <i> Dec. 2019</i>: Pre-print of our paper on the lower bounds of simple policy iteration is out on <a href="https://arxiv.org/abs/1911.12842" target="_blank">arXiv</a> </li>
 <li> <i> Jun. 2019</i>: Started summer interniship at the Institute of Biomechanics, ETH Zürich</li>

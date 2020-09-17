@@ -34,6 +34,7 @@ Parthasarathi Khirwadkar](https://scholar.google.com/citations?user=6i8AefAAAAAJ
 [Sahil Shah](https://www.cse.iitb.ac.in/~sahilshah/){:target="\_blank"}<sup>*</sup>, 
 [Shivaram Kalyanakrishnan](https://www.cse.iitb.ac.in/~shivaram/){:target="\_blank"}<sup>*</sup><br/>
 IEEE Conference on Decision and Control 2020 <sub><sup>*Equal Contributions</sup></sub><br/>
+[paper](https://arxiv.org/abs/2009.07842){:target="\_blank"}<br/>
 <p markdown="1" style='text-align: justify;' id="pi" style="display:none;">
 Devised a family of n-state, k-action MDPs to obtain a strong lower bound of $\Omega(k^n/2)$ for policy iteration. Furthermore, we generalised the existing constructions of 2-action MDPs to k-action MDPs to scale lower bounds by a factor of $k$ for some common deterministic variants of policy iteration, and by $\log(k)$ for the corresponding randomised variants.</p>
 </div>
