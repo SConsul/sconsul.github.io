@@ -9,12 +9,14 @@ layout: page
 ---
 <img style="float: right;height: 20%;width:20%" src="me.png">
 Hello World!
-<p style='text-align: justify;'>
+<!--<p style='text-align: justify;'>
 My name is Sarthak Consul, and I have recently graduated from <a href="http://iitb.ac.in/" target="_blank">IIT Bombay</a> with a B.Tech (Hons.) in Electrical Engineering along with a minor in Computer Science and Engineering. I will be joining the Masters in <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> program at <a href="https://stanford.edu/" target="_blank">Stanford University</a> in Fall 2021. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
-</p>
-
+</p>-->
 <p style='text-align: justify;'>
-At IIT Bombay, I worked on generative models for transfering singing styles across unpaired music clips with <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> as a part of my Bachelor's thesis. I also worked under the guidance of <a href="https://www.ee.iitb.ac.in/~asethi/" target="_blank">Prof. Amit Sethi</a> to develop a Reinforcement Learning based approach for semantic and interactive segmentation. Furthermore, I worked on deriving novel lower bounds on policy iteration for multi-action MDPs under 
+My name is Sarthak Consul, and I am an imcoming graduate student at <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> department at <a href="https://stanford.edu/" target="_blank">Stanford University</a>. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
+</p>
+<p style='text-align: justify;'>
+<!--At IIT Bombay, -->I worked on generative models for transfering singing styles across unpaired music clips with <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> as a part of my Bachelor's thesis. I also worked under the guidance of <a href="https://www.ee.iitb.ac.in/~asethi/" target="_blank">Prof. Amit Sethi</a> to develop a Reinforcement Learning based approach for semantic and interactive segmentation. Furthermore, I worked on deriving novel lower bounds on policy iteration for multi-action MDPs under 
 <a href="https://www.cse.iitb.ac.in/~shivaram/" target="_blank">Prof. Shivaram Kalyanakrishnan</a>.
 </p>
 
@@ -32,7 +34,7 @@ To get an insight on my professional life so far, you can have a look at my [CV]
 
 <h2 id="updates">News</h2>
 <ul id="news">
-<li> <i> Aug 2020</i>: Graduated from IIT Bombay with a Bachelor's (with Honours) in Electrical Engineering and a minor in Computer Science.</li>
+<!--<li> <i> Aug 2020</i>: Graduated from IIT Bombay with a Bachelor's (with Honours) in Electrical Engineering and a minor in Computer Science.</li>-->
 <li> <i> July 2020</i>: Our work on Lower bounds for Policy Iteration on Multi-Action MDPs was accepted to IEEE CDC 2020. Paper is available on <a href="https://arxiv.org/abs/2009.07842" target="_blank">arXiv</a>.</li>
  <li> <i> Dec. 2019</i>: Our work on a novel single-round pooled testing approach, called <a href="https://tapestry-pooling.herokuapp.com/" target="_blank">Tapestry</a>, has entered the clinical trial phase, with promising preliminary results. </li>
  <li> <i> Dec. 2019</i>: Pre-print of our paper on the lower bounds of simple policy iteration is out on <a href="https://arxiv.org/abs/1911.12842" target="_blank">arXiv</a> </li>
