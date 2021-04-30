@@ -53,7 +53,8 @@ _Sarthak Consul_,
 [Prof. Manoj Gopalakrishnan](https://www.ee.iitb.ac.in/~manojg/){:target="\_blank"} and 
 [Prof. Ajit Rajwade](https://www.cse.iitb.ac.in/~ajitvr/){:target="\_blank"}
 <br>
-[Preprint](https://arxiv.org/abs/2005.07895){:target="\_blank"} | [Code](https://github.com/atoms-to-intelligence/tapestry){:target="\_blank"} | [![Official Website](./web.png "Official Website") Official Website](https://tapestry-pooling.herokuapp.com/){:target="\_blank"}
+IEEE Open Journal of Signal Processing 2021<br/>
+[Paper](https://ieeexplore.ieee.org/document/9416868){:target="\_blank"} | [Code](https://github.com/atoms-to-intelligence/tapestry){:target="\_blank"} | [![Official Website](./web.png "Official Website") Official Website](https://tapestry-pooling.herokuapp.com/){:target="\_blank"}
 <!-- &nbsp;
  [![Media Coverage](./web.png "Media Coverage") Media Coverage](https://www.nature.com/articles/d41586-020-02053-6){:target="\_blank"}  -->
 <p style='text-align: justify;' id="tapestry" style="display:none;">

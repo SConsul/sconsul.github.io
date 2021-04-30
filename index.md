@@ -34,14 +34,16 @@ To get an insight on my professional life so far, you can have a look at my [CV]
 
 <h2 id="updates">News</h2>
 <ul id="news">
+ <li> <i> Apr. 2021</i>: Our journal paper based on a novel single-round pooled testing approach for COVID has been accepted in IEEE Open Journal of Signal Processing. Paper is available <a href="https://ieeexplore.ieee.org/document/9416868" target="_blank">here</a>. </li>
+ <li> <i>Apr. 2021</i>: Selected as a Section Leader for <a href="https://codeinplace.stanford.edu/" target="_blank">Code In Place, 2021</a>.</li>
 <!--<li> <i> Aug 2020</i>: Graduated from IIT Bombay with a Bachelor's (with Honours) in Electrical Engineering and a minor in Computer Science.</li>-->
 <li> <i> July 2020</i>: Our work on Lower bounds for Policy Iteration on Multi-Action MDPs was accepted to IEEE CDC 2020. Paper is available on <a href="https://arxiv.org/abs/2009.07842" target="_blank">arXiv</a>.</li>
  <li> <i> Dec. 2019</i>: Our work on a novel single-round pooled testing approach, called <a href="https://tapestry-pooling.herokuapp.com/" target="_blank">Tapestry</a>, has entered the clinical trial phase, with promising preliminary results. </li>
  <li> <i> Dec. 2019</i>: Pre-print of our paper on the lower bounds of simple policy iteration is out on <a href="https://arxiv.org/abs/1911.12842" target="_blank">arXiv</a> </li>
 <li> <i> Jun. 2019</i>: Started summer interniship at the Institute of Biomechanics, ETH Zürich</li>
-<li> <i> May 2019</i>: The grades for Spring'19 are out! Got perfect 10 (AA) in all courses! </li>
+<!-- <li> <i> May 2019</i>: The grades for Spring'19 are out! Got perfect 10 (AA) in all courses! </li> -->
  <li> <i> Apr. 2019</i>: We presented our hybrid computer, <a href="https://sconsul.github.io/proj/DPAC" target="_blank">DPAC</a>, at the EDL demo session.  </li>
- <li> <i> May 2018</i>: Interned at the Medical Deep Learning and AI Lab (MeDAL), IIT Bombay, India. </li>
+ <!-- <li> <i> May 2018</i>: Interned at the Medical Deep Learning and AI Lab (MeDAL), IIT Bombay, India. </li> -->
 </ul>
  
 <style>
