@@ -35,7 +35,7 @@ To get an insight on my professional life so far, you can have a look at my [CV]
 <h2 id="updates">News</h2>
 <ul id="news">
  <li> <i> Apr. 2021</i>: Our journal paper based on a novel single-round pooled testing approach for COVID has been accepted in IEEE Open Journal of Signal Processing. Paper is available <a href="https://ieeexplore.ieee.org/document/9416868" target="_blank">here</a>. </li>
- <li> <i>Apr. 2021</i>: Selected as a Section Leader for <a href="https://codeinplace.stanford.edu/" target="_blank">Code In Place, 2021</a>.</li>
+ <li> <i>Apr. 2021</i>: Begun volunteering as a Section Leader for <a href="https://codeinplace.stanford.edu/" target="_blank">Code In Place, 2021</a>.</li>
 <!--<li> <i> Aug 2020</i>: Graduated from IIT Bombay with a Bachelor's (with Honours) in Electrical Engineering and a minor in Computer Science.</li>-->
 <li> <i> July 2020</i>: Our work on Lower bounds for Policy Iteration on Multi-Action MDPs was accepted to IEEE CDC 2020. Paper is available on <a href="https://arxiv.org/abs/2009.07842" target="_blank">arXiv</a>.</li>
  <li> <i> Dec. 2019</i>: Our work on a novel single-round pooled testing approach, called <a href="https://tapestry-pooling.herokuapp.com/" target="_blank">Tapestry</a>, has entered the clinical trial phase, with promising preliminary results. </li>
