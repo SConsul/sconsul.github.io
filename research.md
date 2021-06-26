@@ -59,7 +59,7 @@ IEEE Open Journal of Signal Processing 2021<br/>
  [![Media Coverage](./web.png "Media Coverage") Media Coverage](https://www.nature.com/articles/d41586-020-02053-6){:target="\_blank"}  -->
 <p style='text-align: justify;' id="tapestry" style="display:none;">
 We propose a single-round pooled testing approach, called Tapestry, with an application to detect SARS-CoV-2 viral loads using quantitative RT-PCR that shortens testing time and conserves reagents and testing kits. A combination of combinatoric approaches (such as COMP) and compressed sensing algorithms (such as Sparse Bayesian Learning) with a novel noise model for PCR allows us to be able to recover both the status and estimated viral load of the samples. An accompanying Android application has been developed for easy implementation at testing centres.
-Currently undergoing clinical trials in labs across India, with promising preliminary results.</p>
+Tapestry has been approved by the Drugs Controller General of India (DCGI) for commericial deployment after extensive testing!</p>
 </div>
 
 <!-- # 2019 -->
