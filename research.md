@@ -54,7 +54,7 @@ _Sarthak Consul_,
 [Prof. Ajit Rajwade](https://www.cse.iitb.ac.in/~ajitvr/){:target="\_blank"}
 <br>
 IEEE Open Journal of Signal Processing 2021<br/>
-[Paper](https://ieeexplore.ieee.org/document/9416868){:target="\_blank"} | [Code](https://github.com/atoms-to-intelligence/tapestry){:target="\_blank"} | [![Official Website](./web.png "Official Website") Official Website](https://tapestry-pooling.herokuapp.com/){:target="\_blank"}
+[Paper](https://ieeexplore.ieee.org/document/9416868){:target="\_blank"} | [Code](https://github.com/atoms-to-intelligence/tapestry){:target="\_blank"} | [![Official Website](./web.png "Official Website") Official Website](https://tapestry-pooling.com/){:target="\_blank"}
 <!-- &nbsp;
  [![Media Coverage](./web.png "Media Coverage") Media Coverage](https://www.nature.com/articles/d41586-020-02053-6){:target="\_blank"}  -->
 <p style='text-align: justify;' id="tapestry" style="display:none;">
@@ -110,7 +110,7 @@ where the shape of the lacuna is important. In an effort to understand differenc
 and patients suffering from rare forms of osteoporosis (specifically pregnancy-associated osteoporosis), the detection
 and characterization of these lacunae can serve as a biomarker. The classical approach involves simply thresholding the scan
 on a single value of bone mineral density. This method fails to capture many small lacunae, which is believed to be the main
-area of interest in explaining the diseases of interest. We propose a 2 stage approach of adaptive thresholding followed by a CNN classifier to remove noise structures, to obtain good estimates of the lacunar location and shape.
+area of interest in explaining the diseases of interest. We propose a 2 stage approach of adaptive thresholding followed by a classifier to remove noise structures, to obtain good estimates of the lacunar location and shape.
 </p>
 </div>
 
