@@ -69,15 +69,15 @@ preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank
 
 ## **Research Projects**
 
-# 2020
+<!-- # 2020 -->
 
-<div markdown="1" onmouseover="document.getElementById('btp').style.display='block';" onmouseout="document.getElementById('btp').style.display='none';">
-**Style Transfer on Unpaired Music Clips**<br/>
-_Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_
-<p style='text-align: justify;' id="btp" style="display:none;">
-Style transfer was introduced for images in 2015 and has been quickly commercialized in the entertainment industry. Style transfer for audio has not enjoyed the same success. We are working towards separating timbral features of the vocals from lyrical and rhythmic features from music clips and recombining appropriately for to transfer the timbral quality of the target-style vocals to the vocals of the source song. The task has been made more difficult by working within the realistic constraints of having the source song and target-style song to be unpaired.
-</p>
-</div>
+<!-- <div markdown="1" onmouseover="document.getElementById('btp').style.display='block';" onmouseout="document.getElementById('btp').style.display='none';"> -->
+<!-- **Style Transfer on Unpaired Music Clips**<br/> -->
+<!-- _Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_ -->
+<!-- <p style='text-align: justify;' id="btp" style="display:none;"> -->
+<!-- Style transfer was introduced for images in 2015 and has been quickly commercialized in the entertainment industry. Style transfer for audio has not enjoyed the same success. We are working towards separating timbral features of the vocals from lyrical and rhythmic features from music clips and recombining appropriately for to transfer the timbral quality of the target-style vocals to the vocals of the source song. The task has been made more difficult by working within the realistic constraints of having the source song and target-style song to be unpaired.
+</p> -->
+<!-- </div> -->
 
 # 2019
 <div markdown="1" onmouseover="document.getElementById('spi').style.display='block';" onmouseout="document.getElementById('spi').style.display='none';">
@@ -92,11 +92,12 @@ Simple Policy iteration (SPI) is a type of policy iteration where the strategy i
 </div>
 
 <div markdown="1" onmouseover="document.getElementById('segrl').style.display='block';" onmouseout="document.getElementById('segrl').style.display='none';">
-**Leveraging Reinforcement Learning for Semantic and Interactive Segmentation**<br/>
+**Leveraging Reinforcement Learning for Semantic Segmentation**<br/>
 _Guided by [Prof. Amit Sethi](https://www.ee.iitb.ac.in/~asethi/){:target="\_blank"}_
 <p style='text-align: justify;' id="segrl" style="display:none;">
-While semantic segmentation tasks are tackled by convolutional neural networks, they optimize on a differentiable approximation of the desired metric. 
-Deep Reinforcement learning is explored in a bid to overcome this constraint. A per-pixel agent with an Asynchronous Actor-Critic (A3C) Network is proposed with local neighbourhood reward function which achieved an mIOU of 53.62% on the PASCAL VOC 2012 dataset. A novel hierarchical approach is also being tested for the same. This work is being extended to the interactive segmentation task.
+Developed an hierarchical segmentation agent trained using the REINFORCE policy gradient algorithm to achieve an mIOU of 53.62% on the PASCAL VOC 2012 dataset.
+<!-- While semantic segmentation tasks are tackled by convolutional neural networks, they optimize on a differentiable approximation of the desired metric. 
+Deep Reinforcement learning is explored in a bid to overcome this constraint. A per-pixel agent with an Asynchronous Actor-Critic (A3C) Network is proposed with local neighbourhood reward function which achieved an mIOU of 53.62% on the PASCAL VOC 2012 dataset. A novel hierarchical approach is also being tested for the same. This work is being extended to the interactive segmentation task. -->
 </p>
 </div>
 
@@ -109,19 +110,18 @@ where the shape of the lacuna is important. In an effort to understand differenc
 and patients suffering from rare forms of osteoporosis (specifically pregnancy-associated osteoporosis), the detection
 and characterization of these lacunae can serve as a biomarker. The classical approach involves simply thresholding the scan
 on a single value of bone mineral density. This method fails to capture many small lacunae, which is believed to be the main
-area of interest in explaining the diseases of interest. We explore the use of a fully convolutional network, WNet, for segmenting lacuna in an unsupervised setting. We propose a 2 stage approach of adaptive thresholding followed by a CNN classifier to remove noise structures, to obtain good estimates of the lacunar location and shape.
+area of interest in explaining the diseases of interest. We propose a 2 stage approach of adaptive thresholding followed by a CNN classifier to remove noise structures, to obtain good estimates of the lacunar location and shape.
 </p>
 </div>
 
 # 2018
 
 <div markdown="1" onmouseover="document.getElementById('medal').style.display='block';" onmouseout="document.getElementById('medal').style.display='none';">
-**Semantic Segmentation of Medical Images using Fully Convolutional Networks**<br/>
+**Semantic Segmentation of Medical Images**<br/>
 _Guided by [Prof. Amit Sethi](https://www.ee.iitb.ac.in/~asethi/){:target="\_blank"}_
 <br>
-[![Read More](./web.png "Read More") Project Page](/research/medal)
+<!-- [![Read More](./web.png "Read More") Project Page](/research/medal) -->
 <p style='text-align: justify;' id="medal" style="display:none;">
-Segmentation is a per-pixel clsssification task that is more complicated than classification. We explore the use of Fully-Convolutional Neural Networks for semantic segmentation
-on medical images. This has immense applications in automation and assistance in diagonosis and pathology. The work was used in establishing the baseline in the <a href="https://monuseg.grand-challenge.org" target="_blank">MoNuSeg</a> Challenge at <a href="https://www.miccai2018.org/en/" target="_blank">MICCAI 2018</a>. </p>
+Segmentation is a per-pixel clsssification task that is more complicated than classification. We explore the task of semantic segmentation of medical images. This has immense applications in diagonosis and pathology. The work was used in establishing the baseline in the <a href="https://monuseg.grand-challenge.org" target="_blank">MoNuSeg</a> Challenge at <a href="https://www.miccai2018.org/en/" target="_blank">MICCAI 2018</a>. </p>
 </div>
 
