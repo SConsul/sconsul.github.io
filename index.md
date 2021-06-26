@@ -15,21 +15,8 @@ My name is Sarthak Consul, and I have recently graduated from <a href="http://ii
 <p style='text-align: justify;'>
 My name is Sarthak Consul, and I am an incoming graduate student at the <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> department at <a href="https://stanford.edu/" target="_blank">Stanford University</a>. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
 </p>
-<p style='text-align: justify;'>
-<!--At IIT Bombay, -->I worked on generative models for transfering singing styles across unpaired music clips with <a href="https://www.ee.iitb.ac.in/~sc/" target="_blank">Prof. Subhasis Chaudhuri</a> as a part of my Bachelor's thesis. I also worked under the guidance of <a href="https://www.ee.iitb.ac.in/~asethi/" target="_blank">Prof. Amit Sethi</a> to develop a Reinforcement Learning based approach for semantic and interactive segmentation. Furthermore, I worked on deriving novel lower bounds on policy iteration for multi-action MDPs under 
-<a href="https://www.cse.iitb.ac.in/~shivaram/" target="_blank">Prof. Shivaram Kalyanakrishnan</a>.
-</p>
 
-<p style='text-align: justify;'>
-In the summer of 2019, I had the opportunity to work with <a href="https://biomech.ethz.ch/research/ralph-mueller.html" target="_blank">Prof. Ralph Müller</a> at the <a href="https://biomech.ethz.ch/" target="_blank">Institute of Biomechanics</a> at ETH Zürich and leveraged deep-learning to segment lacunae from 3D micro-CT scans of trabecular human bone tissue. 
-</p>
-
-<!-- <p style='text-align: justify;'>
-In 2018, I was a student researcher at Medical Deep Learning and AI Lab - IIT Bombay working on using deep-learning for the segmentation of nuclei from various 2D-medical datasets.
-</p> -->
-<!-- I maintain a list of my projects and research experience under the [Research](/research) and [Projects](/research) tabs.
-
-To get an insight on my professional life so far, you can have a look at my [CV](/assets/CV.pdf). -->
+To get an insight on my professional life so far, you can have a look at my [CV](/assets/CV.pdf).
 
 
 <h2 id="updates">News</h2>
