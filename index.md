@@ -16,7 +16,7 @@ My name is Sarthak Consul, and I have recently graduated from <a href="http://ii
 My name is Sarthak Consul, and I am an incoming graduate student at the <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> department at <a href="https://stanford.edu/" target="_blank">Stanford University</a>. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
 </p>
 
-To get an insight on my professional life so far, you can have a look at my [CV](/assets/CV.pdf).
+<!-- To get an insight on my professional life so far, you can have a look at my [CV](/assets/CV.pdf). -->
 
 
 <h2 id="updates">News</h2>
