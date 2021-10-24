@@ -75,7 +75,7 @@ preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank
 **Style Transfer on Unpaired Music Clips**<br/>
 _Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_
 <p style='text-align: justify;' id="btp" style="display:none;">
-Style transfer was introduced for images in 2015 and has been quickly commercialized in the entertainment industry. Style transfer for audio has not enjoyed the same success. A <b>cyclical Wasserstein GAN</b> was trained to tranform the vocals of songs to mimic the singer of an unpaired target source. Vocals were separated from YouTube music clips using a <b>onvTasNet</b> trained on the DSD100 dataset.
+Style transfer was introduced for images in 2015 and has been quickly commercialized in the entertainment industry. Style transfer for audio has not enjoyed the same success. A <b>cyclical Wasserstein GAN</b> was trained to tranform the vocals of songs to mimic the singer of an unpaired target source. Vocals were separated from YouTube music clips using a <b>ConvTasNet</b> trained on the DSD100 dataset.
 </p>
 </div>
 
