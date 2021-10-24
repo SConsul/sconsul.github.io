@@ -69,15 +69,15 @@ preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank
 
 ## **Research Projects**
 
-<!-- # 2020 -->
+# 2020
 
-<!-- <div markdown="1" onmouseover="document.getElementById('btp').style.display='block';" onmouseout="document.getElementById('btp').style.display='none';"> -->
-<!-- **Style Transfer on Unpaired Music Clips**<br/> -->
-<!-- _Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_ -->
-<!-- <p style='text-align: justify;' id="btp" style="display:none;"> -->
-<!-- Style transfer was introduced for images in 2015 and has been quickly commercialized in the entertainment industry. Style transfer for audio has not enjoyed the same success. We are working towards separating timbral features of the vocals from lyrical and rhythmic features from music clips and recombining appropriately for to transfer the timbral quality of the target-style vocals to the vocals of the source song. The task has been made more difficult by working within the realistic constraints of having the source song and target-style song to be unpaired.
-</p> -->
-<!-- </div> -->
+<div markdown="1" onmouseover="document.getElementById('btp').style.display='block';" onmouseout="document.getElementById('btp').style.display='none';"> -->
+**Style Transfer on Unpaired Music Clips**<br/>
+_Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_
+<p style='text-align: justify;' id="btp" style="display:none;">
+Style transfer was introduced for images in 2015 and has been quickly commercialized in the entertainment industry. Style transfer for audio has not enjoyed the same success. A _cyclical Wasserstein GAN_ was trained to tranform the vocals of songs to mimic the singer of an unpaired target source. Vocals were separated from YouTube music clips using a _ConvTasNet_ trained on the DSD100 dataset.
+</p>
+</div>
 
 # 2019
 <div markdown="1" onmouseover="document.getElementById('spi').style.display='block';" onmouseout="document.getElementById('spi').style.display='none';">
@@ -120,7 +120,7 @@ area of interest in explaining the diseases of interest. We propose a 2 stage ap
 **Semantic Segmentation of Medical Images**<br/>
 _Guided by [Prof. Amit Sethi](https://www.ee.iitb.ac.in/~asethi/){:target="\_blank"}_
 <br>
-<!-- [![Read More](./web.png "Read More") Project Page](/research/medal) -->
+[![Read More](./web.png "Read More") Project Page](/research/medal)
 <p style='text-align: justify;' id="medal" style="display:none;">
 Segmentation is a per-pixel clsssification task that is more complicated than classification. We explore the task of semantic segmentation of medical images. This has immense applications in diagonosis and pathology. The work was used in establishing the baseline in the <a href="https://monuseg.grand-challenge.org" target="_blank">MoNuSeg</a> Challenge at <a href="https://www.miccai2018.org/en/" target="_blank">MICCAI 2018</a>. </p>
 </div>
