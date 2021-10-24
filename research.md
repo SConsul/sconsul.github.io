@@ -71,7 +71,7 @@ preprint - [arXiv:1911.12842](https://arxiv.org/abs/1911.12842){:target="\_blank
 
 # 2020
 
-<div markdown="1" onmouseover="document.getElementById('btp').style.display='block';" onmouseout="document.getElementById('btp').style.display='none';"> -->
+<div markdown="1" onmouseover="document.getElementById('btp').style.display='block';" onmouseout="document.getElementById('btp').style.display='none';">
 **Style Transfer on Unpaired Music Clips**<br/>
 _Bachelor's thesis guided by [Prof. Subhasis Chaudhuri](https://www.ee.iitb.ac.in/~sc/){:target="\_blank"}_
 <p style='text-align: justify;' id="btp" style="display:none;">
