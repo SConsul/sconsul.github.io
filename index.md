@@ -13,7 +13,7 @@ Hello World!
 My name is Sarthak Consul, and I have recently graduated from <a href="http://iitb.ac.in/" target="_blank">IIT Bombay</a> with a B.Tech (Hons.) in Electrical Engineering along with a minor in Computer Science and Engineering. I will be joining the Masters in <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> program at <a href="https://stanford.edu/" target="_blank">Stanford University</a> in Fall 2021. I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
 </p>-->
 <p style='text-align: justify;'>
-My name is Sarthak Consul, and I a first-year Master's student in the <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> department at <a href="https://stanford.edu/" target="_blank">Stanford University</a>.
+My name is Sarthak Consul, and I am a first-year Master's student in the <a href="http://cs.stanford.edu/" target="_blank">Computer Science</a> department at <a href="https://stanford.edu/" target="_blank">Stanford University</a>.
 
 I intend to use this little corner of the internet to give a peek into my mind and share my work experience. 
 </p>
