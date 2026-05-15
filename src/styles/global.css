@@ -139,7 +139,11 @@ nav.site-nav .theme-toggle:hover {
 
 .bento {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* 8 underlying columns for sub-half-step granularity. Most cards use
+     `.span-N` which maps to N*2 underlying columns (so the visible
+     widths match the previous 4-col layout exactly); Education and
+     Contact use `.span-1half` / `.span-half` for 1.5× / 0.5× widths. */
+  grid-template-columns: repeat(8, 1fr);
   gap: 16px;
   /* Default `align-items: stretch` (omitted) — cards in the same row
      share the row's height, so the grid lines up horizontally. */
@@ -206,10 +210,15 @@ nav.site-nav .theme-toggle:hover {
 }
 .card .meta-link:hover { color: var(--accent); }
 
-.span-1 { grid-column: span 1; }
-.span-2 { grid-column: span 2; }
-.span-3 { grid-column: span 3; }
-.span-4 { grid-column: span 4; }
+/* Logical 4-col spans (map onto the 8-col underlying grid). */
+.span-1 { grid-column: span 2; }
+.span-2 { grid-column: span 4; }
+.span-3 { grid-column: span 6; }
+.span-4 { grid-column: span 8; }
+/* Sub-step spans for specific cards (rules below override the logical
+   span class because they share specificity and come later in source). */
+.span-half  { grid-column: span 1; }   /* 0.5× of .span-1 */
+.span-1half { grid-column: span 3; }   /* 1.5× of .span-1 */
 
 /* ─── Card content patterns ──────────────────────────────────────────── */
 
@@ -370,21 +379,21 @@ nav.site-nav .theme-toggle:hover {
   color: var(--fg-muted);
 }
 
-/* education — vertical list. `nowrap` + tightened mono font on the
-   degree line so "B.Tech, Electrical Engg. (Hons.)" fits one line in
-   the narrow span=1 card. Re-enables wrap on small viewports where
-   the card collapses to full width. */
+/* education — vertical list. Education is on the 1.5× span at desktop
+   (.span-1half), so the degree text fits one line at a comfortable
+   11.5px mono. `nowrap` is defensive: it guarantees the line never
+   wraps even at edge viewport widths. */
 .edu-list { display: flex; flex-direction: column; gap: 20px; }
 .edu-list .school { font-size: 13px; font-weight: 600; color: var(--fg); }
 .edu-list .degree {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
+  font-size: 11.5px;
   color: var(--fg-muted);
   margin-top: 3px;
   white-space: nowrap;
 }
 @media (max-width: 600px) {
-  .edu-list .degree { white-space: normal; font-size: 11.5px; }
+  .edu-list .degree { white-space: normal; }
 }
 
 /* contact — one icon per line. Vertical flex column with each anchor
@@ -420,8 +429,13 @@ nav.site-nav .theme-toggle:hover {
 /* ─── Responsive ─────────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
-  .bento { grid-template-columns: repeat(2, 1fr); }
-  .span-3, .span-4 { grid-column: span 2; }
+  /* Collapse to a 4-col underlying grid on tablet. Education + Contact
+     are both span=2 here so they share a row instead of leaving an odd
+     half-width Contact alone. */
+  .bento { grid-template-columns: repeat(4, 1fr); }
+  .span-1 { grid-column: span 2; }
+  .span-2, .span-3, .span-4 { grid-column: span 4; }
+  .span-half, .span-1half { grid-column: span 2; }
 }
 @media (max-width: 600px) {
   .container { padding: 20px 16px 80px; }
@@ -429,5 +443,5 @@ nav.site-nav .theme-toggle:hover {
   nav.site-nav .links { gap: 16px; }
   .hero h1 { font-size: 32px; }
   .bento { grid-template-columns: 1fr; }
-  .span-1, .span-2, .span-3, .span-4 { grid-column: span 1; }
+  .span-1, .span-2, .span-3, .span-4, .span-half, .span-1half { grid-column: span 1; }
 }

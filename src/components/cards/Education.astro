@@ -4,7 +4,7 @@ import Card from '@components/Card.astro';
 import { education } from '@data/education';
 ---
 
-<Card label="education" span={1}>
+<Card label="education" span={1} extraClass="span-1half">
   <ul class="edu-list">
     {education.map((e) => (
       <li>

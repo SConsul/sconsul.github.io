@@ -13,7 +13,7 @@ interface Props {
   badge?: string;
   /** Badge color treatment — `accent` for emphasis, `subtle` for neutral. */
   badgeStyle?: 'accent' | 'subtle';
-  /** Number of bento columns this card spans (1–4). Defaults to 1. */
+  /** Number of logical bento columns this card spans (1–4). Defaults to 1. */
   span?: 1 | 2 | 3 | 4;
   /** Optional one-liner shown in the dashed meta footer. */
   meta?: string;
@@ -22,6 +22,12 @@ interface Props {
    * External URLs (starting with `http`) open in a new tab.
    */
   metaHref?: string;
+  /**
+   * Optional extra CSS class on the root <article>. Used by Education
+   * and Contact to opt into the sub-step grid spans (`span-1half`,
+   * `span-half`); placed after the base span class so it overrides.
+   */
+  extraClass?: string;
 }
 
 const {
@@ -31,12 +37,13 @@ const {
   span = 1,
   meta,
   metaHref,
+  extraClass,
 } = Astro.props;
 
 const isExternal = metaHref?.startsWith('http') ?? false;
 ---
 
-<article class:list={['card', `span-${span}`]}>
+<article class:list={['card', `span-${span}`, extraClass]}>
   <div class="label">
     <span class="label-text">{label}</span>
     {badge && (
