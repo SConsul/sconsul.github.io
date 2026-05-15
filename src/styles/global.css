@@ -333,13 +333,30 @@ nav.site-nav .theme-toggle:hover {
   line-height: 1.5;
 }
 
-/* writing — vertical list of post entries */
+/* writing — vertical list of post entries. The card height is locked
+   by its bento row; if the post list overflows, scroll inside the list
+   instead of stretching the card. `min-height: 0` is the flexbox trick
+   that allows the flex item to shrink below its content (without it,
+   `overflow-y: auto` would never activate because the flex item would
+   grow to fit its children). */
 .writing-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  /* subtle scrollbar — matches the muted card aesthetic */
+  scrollbar-width: thin;
+  scrollbar-color: var(--fg-subtle) transparent;
 }
+.writing-list::-webkit-scrollbar { width: 6px; }
+.writing-list::-webkit-scrollbar-track { background: transparent; }
+.writing-list::-webkit-scrollbar-thumb {
+  background: var(--fg-subtle);
+  border-radius: 3px;
+}
+.writing-list::-webkit-scrollbar-thumb:hover { background: var(--fg-muted); }
 .writing-item {
   display: flex;
   flex-direction: column;

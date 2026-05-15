@@ -1,0 +1,19 @@
+---
+title: "Lessons from building the most performant splat viewer"
+description: "Notes on shipping a streamable 3D Gaussian-splat renderer in Rust + WGPU — what made it fast, and what almost killed the project."
+publishDate: 2026-05-14
+tags: ["rust", "wgpu", "gpu", "splats", "perf"]
+readingTimeMin: 16
+draft: false
+---
+
+_This post is a stub. Coming soon._
+
+What this post will cover:
+
+- Why the depth sort is the bottleneck for million-splat scenes — and the GPU radix sort that beat the obvious CPU implementation by ~20×.
+- Progressive LOD streaming over the wire: encoding tricks, chunk-level sorting, and the right granularity for incremental refinement.
+- Tile-based rasterization on WGPU: the workgroup sizes and shared-memory layouts that actually saturate an M-series GPU.
+- Pipelining decode and upload so fetch latency disappears behind compute.
+- The two ideas that looked great on paper and turned out to be dead ends.
+- Comparing against the reference Inria implementation: where we win, where we lose, and what's not yet worth optimizing.

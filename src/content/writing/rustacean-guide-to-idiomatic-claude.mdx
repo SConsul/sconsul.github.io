@@ -1,0 +1,18 @@
+---
+title: "A Rustacean's guide to idiomatic Claude"
+description: "How to coax Claude into writing real Rust — patterns, anti-patterns, and the prompts that actually work."
+publishDate: 2026-05-13
+tags: ["rust", "claude", "prompting"]
+readingTimeMin: 11
+draft: false
+---
+
+_This post is a stub. Coming soon._
+
+What this post will cover:
+
+- Why Claude reaches for Python-shaped patterns in Rust by default — `Box<dyn Trait>` for everything, `.unwrap()` in production code, gratuitous `.clone()`.
+- Prompts that flip the default: asking for ownership/borrowing decisions explicitly, requesting "no allocations on the hot path", and naming the lifetime arena up front.
+- A tight feedback loop with `cargo check`, `clippy`, and `rustfmt` in the chat — when to paste compiler errors back vs. when to rewrite from scratch.
+- The patterns Claude still gets wrong (lifetimes through trait objects, async cancellation safety, `MaybeUninit` initialization) — and how to catch them in review.
+- A small library of go-to prompts for Rust review, refactor, and unsafe-block sanity checks.

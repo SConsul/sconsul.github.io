@@ -1,17 +1,16 @@
 ---
 /**
- * Writing — 4 most recent posts. Pulls from the `writing` content
- * collection (see src/content.config.ts).
+ * Writing — full list of posts (newest first). The card height is
+ * fixed by the bento row; if there are more entries than fit, the
+ * inner list scrolls. Pulls from the `writing` content collection
+ * (see src/content.config.ts).
  */
 import Card from '@components/Card.astro';
 import { getCollection } from 'astro:content';
 
-const MAX_POSTS = 4;
-
 const posts = (await getCollection('writing'))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
-  .slice(0, MAX_POSTS);
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
 /** "May '26" — short, mono-friendly month/year. */
 function monthYear(d: Date): string {
