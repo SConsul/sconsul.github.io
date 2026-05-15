@@ -194,6 +194,12 @@ nav.site-nav .theme-toggle:hover {
   border-top: 1px dashed var(--border);
   letter-spacing: 0.02em;
 }
+.card .meta-link {
+  display: block;
+  text-decoration: none;
+  transition: color 150ms;
+}
+.card .meta-link:hover { color: var(--accent); }
 
 .span-1 { grid-column: span 1; }
 .span-2 { grid-column: span 2; }
@@ -356,22 +362,36 @@ nav.site-nav .theme-toggle:hover {
   margin-top: 3px;
 }
 
-/* contact */
-.contact-list { display: flex; flex-direction: column; gap: 10px; }
-.contact-list li {
+/* contact — whole row is a single anchor with an icon + label */
+.contact-list { display: flex; flex-direction: column; gap: 2px; }
+.contact-link {
   display: flex;
   gap: 10px;
   align-items: center;
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
+  color: var(--fg);
+  padding: 6px 8px;
+  margin: 0 -8px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 150ms, color 150ms;
 }
-.contact-list .icon {
+.contact-link:hover {
+  background: var(--border-soft);
+  color: var(--accent);
+}
+.contact-link .ic {
   width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--fg-subtle);
-  text-align: center;
+  transition: color 150ms;
 }
-.contact-list a { color: var(--fg); }
-.contact-list a:hover { color: var(--accent); }
+.contact-link:hover .ic { color: var(--accent); }
+.contact-link .lbl { line-height: 1; }
 
 /* ─── Animations ─────────────────────────────────────────────────────── */
 

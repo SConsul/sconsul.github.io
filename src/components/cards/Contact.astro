@@ -1,27 +1,41 @@
 ---
-/** Contact — primary channels, all opened in new tabs except mailto. */
+/**
+ * Contact — primary channels with brand SVG icons. The whole row is a
+ * link target; external links open in a new tab.
+ */
 import Card from '@components/Card.astro';
+import Icon from '@components/Icon.astro';
 import { profile } from '@data/profile';
 
-const links = [
-  { icon: '@', label: profile.email,             href: `mailto:${profile.email}`,                    external: false },
-  { icon: '▸', label: 'github',                   href: `https://github.com/${profile.github}`,      external: true  },
-  { icon: '▸', label: 'linkedin',                 href: `https://linkedin.com/in/${profile.linkedin}`,external: true  },
-  { icon: '▸', label: 'google scholar',           href: profile.scholar,                              external: true  },
-] as const;
+type IconName = 'email' | 'github' | 'linkedin' | 'scholar';
+
+interface ContactLink {
+  readonly icon: IconName;
+  readonly label: string;
+  readonly href: string;
+  readonly external: boolean;
+}
+
+const links: readonly ContactLink[] = [
+  { icon: 'email',    label: profile.email,    href: `mailto:${profile.email}`,                       external: false },
+  { icon: 'github',   label: 'github',         href: `https://github.com/${profile.github}`,         external: true  },
+  { icon: 'linkedin', label: 'linkedin',       href: `https://linkedin.com/in/${profile.linkedin}`,  external: true  },
+  { icon: 'scholar',  label: 'google scholar', href: profile.scholar,                                 external: true  },
+];
 ---
 
 <Card label="contact" span={1}>
   <ul class="contact-list">
     {links.map((l) => (
       <li>
-        <span class="icon" aria-hidden="true">{l.icon}</span>
         <a
           href={l.href}
           target={l.external ? '_blank' : undefined}
           rel={l.external ? 'noopener noreferrer' : undefined}
+          class="contact-link"
         >
-          {l.label}
+          <span class="ic" aria-hidden="true"><Icon name={l.icon} size={14} /></span>
+          <span class="lbl">{l.label}</span>
         </a>
       </li>
     ))}

@@ -17,6 +17,11 @@ interface Props {
   span?: 1 | 2 | 3 | 4;
   /** Optional one-liner shown in the dashed meta footer. */
   meta?: string;
+  /**
+   * If set, the meta footer becomes a clickable link to this URL.
+   * External URLs (starting with `http`) open in a new tab.
+   */
+  metaHref?: string;
 }
 
 const {
@@ -25,7 +30,10 @@ const {
   badgeStyle = 'accent',
   span = 1,
   meta,
+  metaHref,
 } = Astro.props;
+
+const isExternal = metaHref?.startsWith('http') ?? false;
 ---
 
 <article class:list={['card', `span-${span}`]}>
@@ -42,5 +50,18 @@ const {
     <slot />
   </div>
 
-  {meta && <div class="meta">{meta}</div>}
+  {meta && (
+    metaHref ? (
+      <a
+        href={metaHref}
+        class="meta meta-link"
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
+      >
+        {meta}
+      </a>
+    ) : (
+      <div class="meta">{meta}</div>
+    )
+  )}
 </article>

@@ -5,7 +5,7 @@ import { publications } from '@data/publications';
 import { profile } from '@data/profile';
 ---
 
-<Card label="selected papers" span={2} meta={`google scholar →`}>
+<Card label="selected papers" span={2} meta="google scholar →" metaHref={profile.scholar}>
   <ul class="papers-list">
     {publications.map((p) => (
       <li>
@@ -14,5 +14,4 @@ import { profile } from '@data/profile';
       </li>
     ))}
   </ul>
-  <a href={profile.scholar} class="visually-hidden">All publications on Google Scholar</a>
 </Card>
