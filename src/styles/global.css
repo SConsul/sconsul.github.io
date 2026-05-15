@@ -336,25 +336,66 @@ nav.site-nav .theme-toggle:hover {
 /* writing — vertical list of post entries.
    Cap visible height to roughly four posts (each ≈54px tall + 14px gap
    between, so 4*54 + 3*14 = 258px; padded up a bit so the 5th title
-   peeks through as a "more below" affordance). When there are ≤4
-   posts the list sizes to content; ≥5 posts triggers the scrollbar. */
+   peeks through as a "more below" affordance).
+
+   `overflow-y: scroll` (not `auto`) so the scrollbar is always visible
+   — macOS Chromium hides `auto` scrollbars until the user scrolls,
+   which defeats the affordance. */
 .writing-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
   max-height: 280px;
-  overflow-y: auto;
-  /* subtle scrollbar — matches the muted card aesthetic */
+  overflow-y: scroll;
+  /* Firefox: thin, muted thumb */
   scrollbar-width: thin;
-  scrollbar-color: var(--fg-subtle) transparent;
+  scrollbar-color: var(--fg-muted) transparent;
 }
-.writing-list::-webkit-scrollbar { width: 6px; }
-.writing-list::-webkit-scrollbar-track { background: transparent; }
+
+/* WebKit minimal scrollbar:
+     - track is a hairline centered vertical line
+     - thumb is a slightly thicker rounded oblong over the line
+     - tiny chevron buttons at top and bottom */
+.writing-list::-webkit-scrollbar { width: 12px; }
+.writing-list::-webkit-scrollbar-track {
+  background: linear-gradient(
+    to right,
+    transparent 5px,
+    var(--border) 5px,
+    var(--border) 7px,
+    transparent 7px
+  );
+}
 .writing-list::-webkit-scrollbar-thumb {
-  background: var(--fg-subtle);
-  border-radius: 3px;
+  background: var(--fg-muted);
+  border: 3px solid transparent;        /* shrinks visible thumb to 6px */
+  background-clip: padding-box;
+  border-radius: 999px;
+  min-height: 28px;
 }
-.writing-list::-webkit-scrollbar-thumb:hover { background: var(--fg-muted); }
+.writing-list::-webkit-scrollbar-thumb:hover {
+  background: var(--fg);
+  background-clip: padding-box;
+}
+.writing-list::-webkit-scrollbar-button {
+  display: block;
+  height: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 7px;
+  background-color: transparent;
+}
+.writing-list::-webkit-scrollbar-button:vertical:start:decrement {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path d='M1 5 L4 2.5 L7 5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+.writing-list::-webkit-scrollbar-button:vertical:end:increment {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path d='M1 3 L4 5.5 L7 3' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+/* hide the doubled buttons that some WebKit versions render */
+.writing-list::-webkit-scrollbar-button:vertical:start:increment,
+.writing-list::-webkit-scrollbar-button:vertical:end:decrement {
+  display: none;
+}
 .writing-item {
   display: flex;
   flex-direction: column;
