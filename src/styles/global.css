@@ -231,6 +231,24 @@ nav.site-nav .theme-toggle:hover {
 .span-half  { grid-column: span 1; }   /* 0.5× of .span-1 */
 .span-1half { grid-column: span 3; }   /* 1.5× of .span-1 */
 
+/* Row 3 needs sub-cm-precise column widths (Papers +1cm, Education −1cm,
+   Contact unchanged) — the 8-col main grid can't express that since each
+   column is ~3cm. Use a nested 3-col grid with custom fr proportions.
+   The wrapper spans the full bento width; its children's `.span-N`
+   classes are overridden to `auto` so each card takes its own slot in
+   the sub-grid. */
+.papers-row {
+  grid-column: 1 / -1;
+  display: grid;
+  /* Target widths (within the ~1000px row content area):
+       Papers   ≈ 584px   (5.6fr)   — was 546, +38px ≈ +1cm
+       Education ≈ 310px  (2.95fr)  — was 348, −38px ≈ −1cm
+       Contact  ≈ 105px   (1fr)     — unchanged */
+  grid-template-columns: 5.6fr 2.95fr 1fr;
+  gap: 16px;
+}
+.papers-row > .card { grid-column: auto; }
+
 /* ─── Card content patterns ──────────────────────────────────────────── */
 
 /* featured project — hatched placeholder where a real visual will go */
@@ -442,11 +460,15 @@ nav.site-nav .theme-toggle:hover {
 @media (max-width: 900px) {
   /* Collapse to a 4-col underlying grid on tablet. Education + Contact
      are both span=2 here so they share a row instead of leaving an odd
-     half-width Contact alone. */
+     half-width Contact alone. The .papers-row nested grid is flattened
+     via `display: contents` so the cards become direct grid items and
+     pick up the normal tablet spans. */
   .bento { grid-template-columns: repeat(4, 1fr); }
   .span-1 { grid-column: span 2; }
   .span-2, .span-3, .span-4 { grid-column: span 4; }
   .span-half, .span-1half { grid-column: span 2; }
+  .papers-row { display: contents; }
+  .papers-row > .card { grid-column: span 2; }
 }
 @media (max-width: 600px) {
   .container { padding: 20px 16px 80px; }
@@ -455,4 +477,5 @@ nav.site-nav .theme-toggle:hover {
   .hero h1 { font-size: 32px; }
   .bento { grid-template-columns: 1fr; }
   .span-1, .span-2, .span-3, .span-4, .span-half, .span-1half { grid-column: span 1; }
+  .papers-row > .card { grid-column: span 1; }
 }
