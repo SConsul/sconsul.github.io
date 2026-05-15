@@ -15,11 +15,11 @@ export const stack: readonly StackGroup[] = [
   },
   {
     category: 'ML',
-    items: ['PyTorch', 'TensorRT', 'PTQ', 'QAT', 'AMP', 'PEFT', 'DDP', 'NCCL', 'distillation', 'DALI', 'torch.compile'],
+    items: ['PyTorch', 'TensorRT', 'PTQ', 'QAT', 'AMP', 'PEFT', 'DDP', 'NCCL', 'distillation', 'DALI'],
   },
   {
     category: 'Infra',
-    items: ['Docker', 'Kubernetes', 'Ray', 'Bazel', 'Slurm', 'Apache DataFusion', 'Parquet', 'Nsights'],
+    items: ['Docker', 'Kubernetes', 'Ray', 'Bazel', 'Slurm', 'WebDataset', 'DataFusion', 'Parquet', 'Nsights'],
   },
 ];
 
