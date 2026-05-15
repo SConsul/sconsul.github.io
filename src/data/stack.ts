@@ -11,15 +11,15 @@ import type { StackGroup } from '@/types';
 export const stack: readonly StackGroup[] = [
   {
     category: 'Languages',
-    items: ['Python', 'Rust', 'CUDA', 'C/C++', 'TypeScript', 'SQL'],
+    items: ['Python', 'Rust', 'CUDA', 'C/C++', 'SQL', 'TypeScript'],
   },
   {
     category: 'ML',
-    items: ['PyTorch', 'TensorRT', 'PTQ', 'QAT', 'AMP', 'PEFT', 'DDP', 'NCCL', 'distillation', 'DALI'],
+    items: ['PyTorch', 'TensorRT', 'DALI', 'PTQ', 'QAT', 'AMP', 'PEFT', 'DDP', 'distillation'],
   },
   {
     category: 'Infra',
-    items: ['Docker', 'Kubernetes', 'Ray', 'Bazel', 'Slurm', 'WebDataset', 'DataFusion', 'Parquet', 'Nsights'],
+    items: ['Nsights', 'Ray', 'Docker', 'Bazel', 'Slurm', 'Kubernetes', 'WebDataset', 'Parquet'],
   },
 ];
 

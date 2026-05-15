@@ -1,7 +1,16 @@
 ---
-/** Tech stack — full list per category, mono-styled. */
+/**
+ * Tech stack — full list per category, mono-styled.
+ *
+ * Separator is ` · ` (non-breaking space + middot + regular
+ * space). The non-breaking space glues the middot to the preceding word,
+ * so a line wrap can never put a leading `·` at the start of a line —
+ * the break point is the trailing regular space, before the next word.
+ */
 import Card from '@components/Card.astro';
 import { stack } from '@data/stack';
+
+const SEP = ' · ';
 ---
 
 <Card label="stack" span={1} meta="~7y systems code">
@@ -9,7 +18,7 @@ import { stack } from '@data/stack';
     {stack.map((group) => (
       <li>
         <span class="stack-cat">{group.category}</span>
-        <span class="stack-items">{group.items.join(' · ')}</span>
+        <span class="stack-items">{group.items.join(SEP)}</span>
       </li>
     ))}
   </ul>
