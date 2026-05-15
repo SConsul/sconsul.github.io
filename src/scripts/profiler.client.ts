@@ -106,13 +106,14 @@ function wire(): void {
     renderActiveTab();
   });
 
-  // ─── Interactions: bar click, close, tab switch ───────────────────────
+  // ─── Interactions: bar click, close, tab switch, dblclick-to-close ────
   bindBarToggle(profilerEl, renderActiveTab);
   bindClose(profilerEl);
   bindTabs((tab) => {
     activeTab = tab;
     renderActiveTab();
   });
+  bindDblClickToClose(profilerEl);
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -149,6 +150,25 @@ function bindBarToggle(profilerEl: HTMLElement, onOpen: () => void): void {
 function bindClose(profilerEl: HTMLElement): void {
   $('profilerClose').addEventListener('click', (e) => {
     e.stopPropagation();
+    profilerEl.classList.remove('open');
+  });
+}
+
+/**
+ * Double-clicking anywhere on the page outside the profiler closes it
+ * when it's open. Convenience gesture — dismiss the panel without
+ * having to aim for the small × close button.
+ *
+ * Side effect: a dblclick selects the word it lands on (browser
+ * default), which still happens — we just close the panel as well.
+ * Inside the profiler itself we let dblclick behave normally so users
+ * can word-select metric labels.
+ */
+function bindDblClickToClose(profilerEl: HTMLElement): void {
+  document.addEventListener('dblclick', (e) => {
+    if (!profilerEl.classList.contains('open')) return;
+    const target = e.target as HTMLElement | null;
+    if (target?.closest('#profiler')) return;
     profilerEl.classList.remove('open');
   });
 }

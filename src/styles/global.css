@@ -374,7 +374,7 @@ nav.site-nav .theme-toggle:hover {
    degree line so "B.Tech, Electrical Engg. (Hons.)" fits one line in
    the narrow span=1 card. Re-enables wrap on small viewports where
    the card collapses to full width. */
-.edu-list { display: flex; flex-direction: column; gap: 14px; }
+.edu-list { display: flex; flex-direction: column; gap: 20px; }
 .edu-list .school { font-size: 13px; font-weight: 600; color: var(--fg); }
 .edu-list .degree {
   font-family: 'JetBrains Mono', monospace;
@@ -388,12 +388,14 @@ nav.site-nav .theme-toggle:hover {
 }
 
 /* contact — vertical stack of icons in the narrow span=1 card. Flat
-   (no chip background); just color on hover. */
+   (no chip background); just color on hover. Icons centered in their
+   column so the card reads as an intentional thin strip instead of
+   icons clustering on the left with empty space to the right. */
 .contact-row {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  align-items: flex-start;
+  gap: 16px;
+  align-items: center;
 }
 .contact-icon-btn {
   display: inline-flex;
