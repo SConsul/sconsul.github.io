@@ -82,9 +82,14 @@ export function buildSmiTable(stats: RuntimeStats): string {
   const dl     = stats.downlinkMbps ? `${stats.downlinkMbps}Mbps` : 'n/a';
   const netStatus = stats.resourceCount > 0 ? ok('done') : dim('idle');
 
+  const brand = tt(
+    hl('sarthak-smi 0.1.0'),
+    'A faux nvidia-smi for this site — live page-perf telemetry'
+  );
+
   const lines: string[] = [
     BORDER,
-    fullRow(`${hl('sarthak-smi 0.1.0')}     Browser: ${ua}     Build: a3f2c8     up: ${uptime}`),
+    fullRow(`${brand}     Browser: ${ua}     Build: a3f2c8     up: ${uptime}`),
     BORDER,
     row3(
       `${tt('LN', 'Lane number')}  ${tt('Process', 'Browser subsystem being measured')}           ${tt('Pers.', 'Persistence — is this lane currently running')}`,
@@ -100,7 +105,7 @@ export function buildSmiTable(stats: RuntimeStats): string {
 
     // ── Lane 0: render::main ──
     ...lane(
-      ` 0  render::main        ${ok('On')}`,
+      ` 0  ${tt('render::main', 'Main render loop — frame timing (fps, ms/frame) and JS heap')}        ${ok('On')}`,
       `frame:${fid}      ${ok('live')}`,
       `${fps} ${frame}  P0  12W/64W`,
       ` ${heap} / ${heapT}`,
@@ -109,7 +114,7 @@ export function buildSmiTable(stats: RuntimeStats): string {
 
     // ── Lane 1: display::gpu (real GPU info) ──
     ...lane(
-      ` 1  display::gpu        ${ok('On')}`,
+      ` 1  ${tt('display::gpu', 'Display info — real GPU model (WebGL UNMASKED_RENDERER), viewport, DPR, refresh rate')}        ${ok('On')}`,
       `${gpuStr}    ${ok('live')}`,
       `${hz} ${vp}    P2  34W/64W`,
       clipVis(` dpr: ${stats.dpr.toFixed(1)}x  vsync: ${stats.vsync}`, W[1]),
@@ -118,7 +123,7 @@ export function buildSmiTable(stats: RuntimeStats): string {
 
     // ── Lane 2: dom::tree ──
     ...lane(
-      ` 2  dom::tree           ${ok('On')}`,
+      ` 2  ${tt('dom::tree', 'DOM health — node count, paint count, long tasks, cumulative layout shift')}           ${ok('On')}`,
       `paints:${paints}        ${ok('idle')}`,
       `${dom} nodes  long-tasks: ${lts}`,
       `  layout-shifts:${padL(stats.cls.toFixed(3), 5)}`,
@@ -127,7 +132,7 @@ export function buildSmiTable(stats: RuntimeStats): string {
 
     // ── Lane 3: net::xhr ──
     ...lane(
-      ` 3  net::xhr            ${ok('On')}`,
+      ` 3  ${tt('net::xhr', 'Network activity — resource count, bytes transferred, effective connection type')}            ${ok('On')}`,
       `${reqs} reqs        ${netStatus}`,
       ` ${kb}     P8   2W/64W`,
       clipVis(` conn:${conn} ${dl.padStart(6)}`, W[1]),
@@ -137,7 +142,7 @@ export function buildSmiTable(stats: RuntimeStats): string {
     // ── Web Vitals section ──
     '',
     BORDER,
-    fullRow(`${hl('Web Vitals:')}                                              Status`),
+    fullRow(`${tt(hl('Web Vitals:'), 'Lighthouse page-performance metrics — color-coded against good/needs-improvement/poor thresholds')}                                              Status`),
     fullRow('Metric            Value         Threshold              Status'),
     SECTION,
     fullRow(vitalRow('LCP', stats.lcp, 'ms', '< 2500ms', 'lcp')),
