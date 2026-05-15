@@ -156,7 +156,7 @@ nav.site-nav .theme-toggle:hover {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  grid-column: span 1;
+  grid-column: span 2;
   justify-content: space-between;
 }
 .bento-col > .card { flex: 0 0 auto; }
