@@ -1,0 +1,34 @@
+# build output
+dist/
+.astro/
+
+# deps
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment
+.env
+.env.production
+.env.development
+
+# editor / OS
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# legacy Jekyll artifacts (safety net)
+_site/
+.jekyll-cache/
+.sass-cache/
+Gemfile.lock
