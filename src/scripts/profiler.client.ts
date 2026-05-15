@@ -20,7 +20,7 @@ import { refreshNet } from '@utils/network';
 import { detectGpu, probeVsync } from '@utils/gpu';
 import { buildSmiTable } from '@utils/smi-table';
 import { frameLaneHtml, fakeLaneHtml, FAKE_LANE_CONFIG } from '@utils/nsys';
-import { initTheme, toggleTheme } from '@utils/theme';
+import { initTheme, toggleTheme, listenSystemTheme } from '@utils/theme';
 
 /** Tabs available in the expanded profiler panel. */
 type Tab = 'smi' | 'nsys';
@@ -36,6 +36,7 @@ export function initProfiler(): void {
 
 function wire(): void {
   initTheme();
+  listenSystemTheme();
   bindThemeToggle();
 
   const profilerEl = $maybe('profiler');

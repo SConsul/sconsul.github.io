@@ -64,15 +64,28 @@ const { buildHash = 'a3f2c8', version = '0.1.0' } = Astro.props;
     </div>
   </div>
 
-  <!-- Always-visible slim bar (click to expand). -->
+  <!-- Always-visible slim bar (click to expand). Each stat carries a
+       data-tooltip explaining what it measures — see profiler.css. -->
   <div class="profiler-bar" id="profilerBar">
     <div class="left">
-      <span class="brand"><span class="live-dot"></span>smi</span>
-      <span class="stat"><span class="k">fps:</span><span class="v" id="fps">--</span></span>
-      <span class="stat"><span class="k">frame:</span><span class="v" id="frame">--</span></span>
-      <span class="stat"><span class="k">heap:</span><span class="v" id="heap">--</span></span>
-      <span class="stat wide"><span class="k">gpu:</span><span class="v" id="gpu">--</span></span>
-      <span class="stat"><span class="k">dom:</span><span class="v" id="dom">--</span></span>
+      <span class="brand" data-tooltip="click to expand profiler">
+        <span class="live-dot"></span>smi
+      </span>
+      <span class="stat" data-tooltip="frames per second — render throughput">
+        <span class="k">fps:</span><span class="v" id="fps">--</span>
+      </span>
+      <span class="stat" data-tooltip="milliseconds per frame — render latency">
+        <span class="k">frame:</span><span class="v" id="frame">--</span>
+      </span>
+      <span class="stat" data-tooltip="JS heap in use (Chromium only)">
+        <span class="k">heap:</span><span class="v" id="heap">--</span>
+      </span>
+      <span class="stat wide" data-tooltip="GPU model — from WebGL UNMASKED_RENDERER">
+        <span class="k">gpu:</span><span class="v" id="gpu">--</span>
+      </span>
+      <span class="stat" data-tooltip="DOM node count">
+        <span class="k">dom:</span><span class="v" id="dom">--</span>
+      </span>
     </div>
     <div class="right">
       <span class="build">build {buildHash} · v{version}</span>

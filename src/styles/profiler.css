@@ -46,6 +46,38 @@
   box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
   animation: pulse 2s ease-in-out infinite;
 }
+/* Tooltip on hover: any element with data-tooltip inside the slim bar
+   gets a small dark popover floating above. CSS-only — no JS, no flicker. */
+.profiler-bar [data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+.profiler-bar [data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #e5e5e2;
+  border: 1px solid #2a2a2a;
+  padding: 5px 9px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 120ms 80ms, visibility 0s 200ms;
+  pointer-events: none;
+  z-index: 200;
+}
+.profiler-bar [data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 120ms 80ms, visibility 0s;
+}
+
 .profiler-bar .stat { display: flex; gap: 5px; }
 .profiler-bar .stat .k { color: #6a6a6a; }
 .profiler-bar .stat .v {

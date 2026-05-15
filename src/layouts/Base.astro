@@ -36,14 +36,25 @@ const {
     />
 
     <!--
-      Apply persisted theme synchronously before paint to avoid a FOUC.
-      Mirrors the logic in src/utils/theme.ts but inlined for early run.
+      Apply theme synchronously before paint to avoid a FOUC.
+      Precedence (mirrors src/utils/theme.ts):
+        1. explicit override stored in localStorage
+        2. OS-level prefers-color-scheme
+        3. fallback: light
     -->
     <script is:inline>
       (function () {
         try {
-          var t = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
-          document.documentElement.dataset.theme = t;
+          var stored = localStorage.getItem('theme');
+          var theme;
+          if (stored === 'dark' || stored === 'light') {
+            theme = stored;
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = 'dark';
+          } else {
+            theme = 'light';
+          }
+          document.documentElement.dataset.theme = theme;
         } catch (e) {
           document.documentElement.dataset.theme = 'light';
         }

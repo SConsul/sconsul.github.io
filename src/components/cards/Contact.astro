@@ -1,7 +1,8 @@
 ---
 /**
- * Contact — primary channels with brand SVG icons. The whole row is a
- * link target; external links open in a new tab.
+ * Contact — icon-only row. Each icon links to its channel; destination
+ * is communicated via the title attribute (OS tooltip + screen-reader
+ * announcement).
  */
 import Card from '@components/Card.astro';
 import Icon from '@components/Icon.astro';
@@ -11,33 +12,32 @@ type IconName = 'email' | 'github' | 'linkedin' | 'scholar';
 
 interface ContactLink {
   readonly icon: IconName;
-  readonly label: string;
+  readonly title: string;
   readonly href: string;
   readonly external: boolean;
 }
 
 const links: readonly ContactLink[] = [
-  { icon: 'email',    label: profile.email,    href: `mailto:${profile.email}`,                       external: false },
-  { icon: 'github',   label: 'github',         href: `https://github.com/${profile.github}`,         external: true  },
-  { icon: 'linkedin', label: 'linkedin',       href: `https://linkedin.com/in/${profile.linkedin}`,  external: true  },
-  { icon: 'scholar',  label: 'google scholar', href: profile.scholar,                                 external: true  },
+  { icon: 'email',    title: `email · ${profile.email}`, href: `mailto:${profile.email}`,                      external: false },
+  { icon: 'github',   title: 'github',                   href: `https://github.com/${profile.github}`,        external: true  },
+  { icon: 'linkedin', title: 'linkedin',                 href: `https://linkedin.com/in/${profile.linkedin}`, external: true  },
+  { icon: 'scholar',  title: 'google scholar',           href: profile.scholar,                                external: true  },
 ];
 ---
 
 <Card label="contact" span={1}>
-  <ul class="contact-list">
+  <div class="contact-row">
     {links.map((l) => (
-      <li>
-        <a
-          href={l.href}
-          target={l.external ? '_blank' : undefined}
-          rel={l.external ? 'noopener noreferrer' : undefined}
-          class="contact-link"
-        >
-          <span class="ic" aria-hidden="true"><Icon name={l.icon} size={14} /></span>
-          <span class="lbl">{l.label}</span>
-        </a>
-      </li>
+      <a
+        href={l.href}
+        target={l.external ? '_blank' : undefined}
+        rel={l.external ? 'noopener noreferrer' : undefined}
+        title={l.title}
+        aria-label={l.title}
+        class="contact-icon-btn"
+      >
+        <Icon name={l.icon} size={18} ariaLabel={l.title} />
+      </a>
     ))}
-  </ul>
+  </div>
 </Card>

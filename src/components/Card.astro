@@ -38,7 +38,7 @@ const isExternal = metaHref?.startsWith('http') ?? false;
 
 <article class:list={['card', `span-${span}`]}>
   <div class="label">
-    <span>▸ {label}</span>
+    <span class="label-text">{label}</span>
     {badge && (
       <span class:list={['badge', { 'badge-subtle': badgeStyle === 'subtle' }]}>
         {badge}
