@@ -141,17 +141,21 @@ nav.site-nav .theme-toggle:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  /* Let each card size to its own content — short cards stay short. */
-  align-items: start;
+  /* Default `align-items: stretch` (omitted) — cards in the same row
+     share the row's height, so the grid lines up horizontally. */
 }
 
-/* Vertical stack inside one bento column (Education + Contact). */
+/* Vertical stack inside one bento column (Education + Contact). The
+   column itself stretches to row height (= the tall Papers card next
+   to it); its two children split that height evenly with `flex: 1`,
+   keeping the right edge aligned with Papers. */
 .bento-col {
   display: flex;
   flex-direction: column;
   gap: 16px;
   grid-column: span 1;
 }
+.bento-col > .card { flex: 1; }
 
 .card {
   background: var(--card-bg);
