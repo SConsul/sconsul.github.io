@@ -1,0 +1,20 @@
+---
+/** Featured-project card — the splat viewer (or whatever's `featured: true` in data). */
+import Card from '@components/Card.astro';
+import { featuredProject } from '@data/projects';
+
+const proj = featuredProject();
+if (!proj) throw new Error('FeaturedCard: no featured project in src/data/projects.ts');
+
+const badge = proj.status === 'wip' ? 'WIP' : undefined;
+const tech = proj.tech.join(' · ').toLowerCase();
+const meta = `lang: rust · gpu: ${tech} · status: ${proj.status} · v0.1`;
+---
+
+<Card label="featured project" span={2} badge={badge} meta={meta}>
+  <div class="featured-visual" aria-hidden="true"></div>
+  <h3 class="card-title">
+    {proj.url ? <a href={proj.url}>{proj.title}</a> : proj.title}
+  </h3>
+  <p class="card-text">{proj.description}</p>
+</Card>

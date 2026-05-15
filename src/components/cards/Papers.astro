@@ -1,0 +1,18 @@
+---
+/** Selected publications — title links to arxiv/IEEE/etc. */
+import Card from '@components/Card.astro';
+import { publications } from '@data/publications';
+import { profile } from '@data/profile';
+---
+
+<Card label="selected papers" span={2} meta={`google scholar →`}>
+  <ul class="papers-list">
+    {publications.map((p) => (
+      <li>
+        <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a>
+        <div class="paper-venue">{p.venue}, {p.year}</div>
+      </li>
+    ))}
+  </ul>
+  <a href={profile.scholar} class="visually-hidden">All publications on Google Scholar</a>
+</Card>

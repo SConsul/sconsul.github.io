@@ -1,0 +1,21 @@
+---
+/**
+ * Top nav — brand on the left, page links + theme toggle on the right.
+ * Theme toggle wiring lives in src/scripts/profiler.client.ts so it
+ * isn't reimplemented per page.
+ */
+import { profile } from '@data/profile';
+
+const links = [
+  { href: '/writing', label: 'writing' },
+  { href: profile.resumeUrl, label: 'resume.pdf' },
+] as const;
+---
+
+<nav class="site-nav">
+  <a class="brand" href="/">sarthak consul</a>
+  <div class="links">
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <button class="theme-toggle" id="themeToggle" aria-label="toggle theme">[dark]</button>
+  </div>
+</nav>

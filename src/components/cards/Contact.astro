@@ -1,0 +1,29 @@
+---
+/** Contact — primary channels, all opened in new tabs except mailto. */
+import Card from '@components/Card.astro';
+import { profile } from '@data/profile';
+
+const links = [
+  { icon: '@', label: profile.email,             href: `mailto:${profile.email}`,                    external: false },
+  { icon: '▸', label: 'github',                   href: `https://github.com/${profile.github}`,      external: true  },
+  { icon: '▸', label: 'linkedin',                 href: `https://linkedin.com/in/${profile.linkedin}`,external: true  },
+  { icon: '▸', label: 'google scholar',           href: profile.scholar,                              external: true  },
+] as const;
+---
+
+<Card label="contact" span={1}>
+  <ul class="contact-list">
+    {links.map((l) => (
+      <li>
+        <span class="icon" aria-hidden="true">{l.icon}</span>
+        <a
+          href={l.href}
+          target={l.external ? '_blank' : undefined}
+          rel={l.external ? 'noopener noreferrer' : undefined}
+        >
+          {l.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</Card>

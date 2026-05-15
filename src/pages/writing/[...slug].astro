@@ -1,0 +1,128 @@
+---
+/**
+ * /writing/<slug> — individual blog post.
+ * MDX bodies are rendered via Astro's <Content /> component; frontmatter
+ * is type-checked against the schema in src/content.config.ts.
+ */
+import Base from '@/layouts/Base.astro';
+import Nav from '@components/Nav.astro';
+import Profiler from '@components/Profiler.astro';
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('writing');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props as { post: Awaited<ReturnType<typeof getCollection<'writing'>>>[number] };
+const { Content } = await render(post);
+
+function fmtDate(d: Date): string {
+  return d.toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+---
+
+<Base
+  title={`${post.data.title} — Sarthak Consul`}
+  description={post.data.description}
+>
+  <div class="container">
+    <Nav />
+    <article class="post">
+      <header class="post-head">
+        <a href="/writing" class="back">← writing</a>
+        <h1>{post.data.title}</h1>
+        <p class="lede">{post.data.description}</p>
+        <div class="post-meta">
+          <span>{fmtDate(post.data.publishDate)}</span>
+          {post.data.readingTimeMin && <span>· {post.data.readingTimeMin} min read</span>}
+          {post.data.draft && <span class="draft">· draft</span>}
+        </div>
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </div>
+
+  <Profiler />
+</Base>
+
+<style>
+  .post { max-width: 680px; margin: 0 auto; padding-bottom: 80px; }
+  .post-head { padding-bottom: 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+  .post-head .back {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--fg-muted);
+    display: inline-block;
+    margin-bottom: 28px;
+  }
+  .post-head h1 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .post-head .lede {
+    color: var(--fg-muted);
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+  .post-head .post-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+    display: flex;
+    gap: 6px;
+  }
+  .post-head .draft { color: var(--accent); }
+
+  /* Long-form prose. Designed for serif-readable line-length. */
+  .prose { font-size: 16px; line-height: 1.7; color: var(--fg); }
+  .prose :global(p) { margin-bottom: 1.2em; }
+  .prose :global(h2) {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 2em 0 0.6em;
+  }
+  .prose :global(h3) {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 1.6em 0 0.4em;
+  }
+  .prose :global(a) { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  .prose :global(code) {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    background: var(--border-soft);
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+  .prose :global(pre) {
+    background: var(--border-soft);
+    border-radius: 6px;
+    padding: 14px 18px;
+    overflow-x: auto;
+    margin: 1.4em 0;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .prose :global(pre code) { background: transparent; padding: 0; }
+  .prose :global(blockquote) {
+    border-left: 2px solid var(--border);
+    padding-left: 16px;
+    color: var(--fg-muted);
+    margin: 1.4em 0;
+  }
+  .prose :global(ul), .prose :global(ol) { padding-left: 22px; margin-bottom: 1.2em; list-style: revert; }
+  .prose :global(li) { margin-bottom: 0.4em; }
+</style>

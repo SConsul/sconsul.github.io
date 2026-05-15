@@ -1,0 +1,21 @@
+---
+/** Tech stack — top items per category, mono-styled. */
+import Card from '@components/Card.astro';
+import { stack } from '@data/stack';
+
+/** Limit each row to the first N items so the card stays tight. */
+const MAX_ITEMS_PER_GROUP = 4;
+---
+
+<Card label="stack" span={1} meta="~7y systems code">
+  <ul class="stack-list">
+    {stack.map((group) => (
+      <li>
+        <span class="stack-cat">{group.category}</span>
+        <span class="stack-items">
+          {group.items.slice(0, MAX_ITEMS_PER_GROUP).join(' · ')}
+        </span>
+      </li>
+    ))}
+  </ul>
+</Card>

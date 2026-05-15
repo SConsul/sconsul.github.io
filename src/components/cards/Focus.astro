@@ -1,0 +1,11 @@
+---
+/** Current focus — short tag list. */
+import Card from '@components/Card.astro';
+import { focus } from '@data/stack';
+---
+
+<Card label="focus" span={1} meta="@ matic robots">
+  <div class="tag-list">
+    {focus.map((f) => <span class="pill">{f}</span>)}
+  </div>
+</Card>

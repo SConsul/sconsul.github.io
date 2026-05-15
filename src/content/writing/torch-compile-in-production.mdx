@@ -1,0 +1,17 @@
+---
+title: "Notes on torch.compile in production"
+description: "Where it wins, where it bites, and the case for selective compilation in real training loops."
+publishDate: 2026-05-01
+tags: ["pytorch", "perf", "training"]
+readingTimeMin: 14
+draft: false
+---
+
+_This post is a stub. Coming soon._
+
+What this post will cover:
+
+- The places `torch.compile` actually paid for itself in our training pipeline (and the places it cost us a week).
+- Why "compile everything" is the wrong default.
+- A decision tree for choosing between `default`, `reduce-overhead`, and `max-autotune`.
+- Debugging recompilations: how to read the dynamo logs without losing your mind.

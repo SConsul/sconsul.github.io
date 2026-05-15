@@ -1,0 +1,39 @@
+---
+/**
+ * Home page — Nav + Hero + bento grid + profiler overlay.
+ * All cards pull from typed data files in src/data/.
+ */
+import Base from '@/layouts/Base.astro';
+import Nav from '@components/Nav.astro';
+import Hero from '@components/Hero.astro';
+import Profiler from '@components/Profiler.astro';
+
+import Featured   from '@components/cards/Featured.astro';
+import Focus      from '@components/cards/Focus.astro';
+import StackCard  from '@components/cards/Stack.astro';
+import Writing    from '@components/cards/Writing.astro';
+import Experience from '@components/cards/Experience.astro';
+import Papers     from '@components/cards/Papers.astro';
+import Education  from '@components/cards/Education.astro';
+import Contact    from '@components/cards/Contact.astro';
+---
+
+<Base>
+  <div class="container">
+    <Nav />
+    <Hero />
+
+    <section class="bento" aria-label="bento grid">
+      <Featured />
+      <Focus />
+      <StackCard />
+      <Writing />
+      <Experience />
+      <Papers />
+      <Education />
+      <Contact />
+    </section>
+  </div>
+
+  <Profiler />
+</Base>

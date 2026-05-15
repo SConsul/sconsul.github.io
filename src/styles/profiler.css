@@ -1,0 +1,198 @@
+/* ──────────────────────────────────────────────────────────────────────────
+ * Profiler overlay — slim bar (always visible) + expandable panel
+ * (nvidia-smi + nsys tabs).
+ *
+ * The overlay is intentionally dark regardless of site theme, so it
+ * reads as a "tool" rather than site content.
+ * ────────────────────────────────────────────────────────────────────── */
+
+.profiler {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 100;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  color: #d4d4d4;
+}
+
+/* ─── Slim status bar ────────────────────────────────────────────────── */
+
+.profiler-bar {
+  background: #0a0a0a;
+  border-top: 1px solid #1f1f1f;
+  padding: 7px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  cursor: pointer;
+  user-select: none;
+}
+.profiler-bar:hover { background: #111; }
+.profiler-bar .left,
+.profiler-bar .right { display: flex; gap: 18px; align-items: center; }
+
+.profiler-bar .brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #fff;
+  font-weight: 500;
+}
+.profiler-bar .live-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+.profiler-bar .stat { display: flex; gap: 5px; }
+.profiler-bar .stat .k { color: #6a6a6a; }
+.profiler-bar .stat .v {
+  color: #e5e5e2;
+  min-width: 56px;
+  display: inline-block;
+}
+.profiler-bar .stat.wide .v { min-width: 72px; }
+.profiler-bar .build { color: #555; }
+.profiler-bar .chev {
+  color: #6a6a6a;
+  transition: transform 220ms;
+  display: inline-block;
+  width: 12px;
+  text-align: center;
+}
+.profiler.open .profiler-bar .chev { transform: rotate(180deg); }
+
+/* ─── Expandable panel ───────────────────────────────────────────────── */
+
+.profiler-panel {
+  background: #0a0a0a;
+  border-top: 1px solid #1f1f1f;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 260ms ease;
+}
+.profiler.open .profiler-panel { max-height: 380px; }
+
+.profiler-tabs {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #1f1f1f;
+  padding: 0 8px;
+  background: #060606;
+}
+.profiler-tab-btn {
+  background: none;
+  border: none;
+  color: #6a6a6a;
+  font-family: inherit;
+  font-size: 11px;
+  padding: 9px 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 150ms;
+}
+.profiler-tab-btn:hover { color: #d4d4d4; }
+.profiler-tab-btn.active {
+  color: #fff;
+  border-bottom-color: #4ade80;
+}
+.profiler-panel .close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #6a6a6a;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 14px;
+}
+.profiler-panel .close:hover { color: #fff; }
+
+.profiler-pane {
+  padding: 14px 18px;
+  max-height: 330px;
+  overflow: auto;
+}
+.profiler-pane[hidden] { display: none; }
+
+/* ─── nvidia-smi table ───────────────────────────────────────────────── */
+
+.smi-table {
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #d4d4d4;
+  white-space: pre;
+  margin: 0;
+}
+.smi-table .ok   { color: #4ade80; }
+.smi-table .warn { color: #facc15; }
+.smi-table .err  { color: #f87171; }
+.smi-table .dim  { color: #6a6a6a; }
+.smi-table .hl   { color: #fff; }
+
+/* ─── nsys timeline ──────────────────────────────────────────────────── */
+
+.nsys {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+}
+.nsys-header {
+  color: #6a6a6a;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #1f1f1f;
+}
+.nsys-header .title { color: #fff; }
+.nsys-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px;
+  align-items: center;
+  height: 22px;
+}
+.nsys-row .label { color: #d4d4d4; }
+.nsys-row .lane {
+  position: relative;
+  height: 100%;
+  background: #131313;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid #1a1a1a;
+}
+.nsys-row .lane .bar {
+  position: absolute;
+  top: 1px; bottom: 1px;
+  border-radius: 1px;
+}
+.nsys-row .lane.frame .bar {
+  top: auto;
+  bottom: 0;
+  width: 2px;
+}
+.nsys .axis {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px;
+  color: #6a6a6a;
+  padding-top: 8px;
+  font-size: 10px;
+}
+.nsys .axis .ticks { display: flex; justify-content: space-between; }
+
+/* ─── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .profiler-bar { font-size: 10px; padding: 6px 10px; }
+  .profiler-bar .left,
+  .profiler-bar .right { gap: 10px; flex-wrap: wrap; }
+  .profiler.open .profiler-panel { max-height: 280px; }
+}

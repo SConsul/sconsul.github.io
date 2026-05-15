@@ -1,0 +1,89 @@
+---
+/**
+ * Profiler overlay — slim status bar (always visible) that expands into
+ * a panel with nvidia-smi / nsys tabs.
+ *
+ * Visual markup only. All wiring (perf monitor, Web Vitals observers,
+ * GPU detection, tab toggle, table rendering) lives in
+ * src/scripts/profiler.client.ts and is loaded by the <script> block
+ * at the bottom of this file.
+ */
+
+interface Props {
+  /** Short build hash shown on the right of the slim bar. */
+  buildHash?: string;
+  /** Site version label. */
+  version?: string;
+}
+
+const { buildHash = 'a3f2c8', version = '0.1.0' } = Astro.props;
+---
+
+<div class="profiler" id="profiler">
+  <!-- Expandable panel (hidden until .profiler.open is toggled). -->
+  <div class="profiler-panel">
+    <div class="profiler-tabs">
+      <button class="profiler-tab-btn active" data-tab="smi">nvidia-smi</button>
+      <button class="profiler-tab-btn" data-tab="nsys">nsys</button>
+      <button class="close" id="profilerClose" aria-label="close profiler">×</button>
+    </div>
+
+    <div class="profiler-pane" data-pane="smi">
+      <pre class="smi-table" id="smiTable">loading...</pre>
+    </div>
+
+    <div class="profiler-pane" data-pane="nsys" hidden>
+      <div class="nsys">
+        <div class="nsys-header">
+          <span class="title">nsys profile · rolling 5s window</span>
+          <span><span id="nsysFrames">--</span> frames captured</span>
+        </div>
+        <div class="nsys-row">
+          <div class="label">cpu::main</div>
+          <div class="lane" id="laneCpu"></div>
+        </div>
+        <div class="nsys-row">
+          <div class="label">gpu::paint</div>
+          <div class="lane" id="laneGpu"></div>
+        </div>
+        <div class="nsys-row">
+          <div class="label">net::xhr</div>
+          <div class="lane" id="laneNet"></div>
+        </div>
+        <div class="nsys-row">
+          <div class="label">frame::time</div>
+          <div class="lane frame" id="laneFrame"></div>
+        </div>
+        <div class="axis">
+          <div></div>
+          <div class="ticks">
+            <span>-5.0s</span><span>-2.5s</span><span>now</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Always-visible slim bar (click to expand). -->
+  <div class="profiler-bar" id="profilerBar">
+    <div class="left">
+      <span class="brand"><span class="live-dot"></span>smi</span>
+      <span class="stat"><span class="k">fps:</span><span class="v" id="fps">--</span></span>
+      <span class="stat"><span class="k">frame:</span><span class="v" id="frame">--</span></span>
+      <span class="stat"><span class="k">heap:</span><span class="v" id="heap">--</span></span>
+      <span class="stat wide"><span class="k">gpu:</span><span class="v" id="gpu">--</span></span>
+      <span class="stat"><span class="k">dom:</span><span class="v" id="dom">--</span></span>
+    </div>
+    <div class="right">
+      <span class="build">build {buildHash} · v{version}</span>
+      <span class="chev">▲</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Client-side wiring lives here — Astro bundles this into a JS module
+  // and inlines a <script type="module"> at build time.
+  import { initProfiler } from '../scripts/profiler.client';
+  initProfiler();
+</script>

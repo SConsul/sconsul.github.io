@@ -1,0 +1,18 @@
+---
+title: "Distilling a ViT onto a Jetson"
+description: "Replacing a CNN occupancy network with a distilled ViT student that runs in real time on edge — and how it killed two whole classes of failure mode."
+publishDate: 2026-01-22
+tags: ["vit", "distillation", "robotics", "edge"]
+readingTimeMin: 12
+draft: false
+---
+
+_This post is a stub. Coming soon._
+
+What this post will cover:
+
+- Why our CNN occupancy network kept producing irrecoverable failures in specific lighting / clutter conditions.
+- The case for distillation over a fresh ViT train: smaller dataset, faster convergence, and a teacher that already gets the geometry right.
+- Quantizing the student to FP16/INT8 for the Jetson — what survived, what didn't.
+- Latency budget breakdown: input pipeline / attention / decoder / postprocessing.
+- The two failure modes the change eliminated, and the new one we created.

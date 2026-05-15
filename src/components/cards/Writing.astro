@@ -1,0 +1,44 @@
+---
+/**
+ * Writing — 4 most recent posts. Pulls from the `writing` content
+ * collection (see src/content.config.ts).
+ */
+import Card from '@components/Card.astro';
+import { getCollection } from 'astro:content';
+
+const MAX_POSTS = 4;
+
+const posts = (await getCollection('writing'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, MAX_POSTS);
+
+/** "May '26" — short, mono-friendly month/year. */
+function monthYear(d: Date): string {
+  const m = d.toLocaleString('en-US', { month: 'short' }).toLowerCase();
+  const y = String(d.getFullYear()).slice(2);
+  return `${m} '${y}`;
+}
+
+const badge = `${posts.length} post${posts.length === 1 ? '' : 's'}`;
+---
+
+<Card
+  label="writing"
+  span={2}
+  badge={badge}
+  badgeStyle="subtle"
+  meta="all posts →"
+>
+  <div class="writing-list">
+    {posts.map((p) => (
+      <a href={`/writing/${p.id}`} class="writing-item">
+        <div class="title">{p.data.title}</div>
+        <div class="meta-sub">
+          {p.data.readingTimeMin ? `${p.data.readingTimeMin} min · ` : ''}
+          {monthYear(p.data.publishDate)}
+        </div>
+      </a>
+    ))}
+  </div>
+</Card>

@@ -1,0 +1,17 @@
+---
+title: "Beating TensorRT with a hand-written CUDA kernel"
+description: "What 18% looks like, and the three optimizations that got us there. Memory coalescing matters more than you'd think."
+publishDate: 2026-03-12
+tags: ["cuda", "tensorrt", "kernels", "perf"]
+readingTimeMin: 9
+draft: false
+---
+
+_This post is a stub. Coming soon._
+
+What this post will cover:
+
+- The op we couldn't get TensorRT to fuse, and why.
+- Three rewrites of a custom CUDA kernel: naïve → shared-memory tiled → vectorized loads with warp-level reductions.
+- Profiling each variant under Nsight Compute — memory throughput vs. SM occupancy.
+- When *not* to write custom kernels (and why the TensorRT engine pipeline still owns most of our inference path).

@@ -1,0 +1,56 @@
+---
+/**
+ * Root layout — HTML shell, font preconnects, theme bootstrapping.
+ * Pages render their content via the default <slot/>.
+ */
+import '@/styles/global.css';
+import '@/styles/profiler.css';
+import { profile } from '@data/profile';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = profile.name,
+  description = profile.bio,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts (Inter for body, JetBrains Mono for code/labels). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Apply persisted theme synchronously before paint to avoid a FOUC.
+      Mirrors the logic in src/utils/theme.ts but inlined for early run.
+    -->
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+          document.documentElement.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+title: "Building a robot data platform in Rust + DataFusion"
+description: "Parquet + spatial/temporal indexing + async streaming dataloaders. Why we left the Python data stack behind."
+publishDate: 2026-02-18
+tags: ["rust", "datafusion", "mlinfra"]
+readingTimeMin: 18
+draft: false
+---
+
+_This post is a stub. Coming soon._
+
+What this post will cover:
+
+- The pain points of multi-TB multimodal robot logs in a Python-first pipeline.
+- Why columnar Parquet + custom spatial/temporal indices beat both row-oriented logs and naïve cloud storage.
+- An async streaming dataloader in Rust that hides fetch latency behind decode work.
+- Dual-mode deployment: on-prem annotation cluster + cloud query instance, sharing one schema.
+- What porting one team to it cost us, and what we got back.

@@ -1,0 +1,46 @@
+---
+/**
+ * Card — base wrapper used by every bento tile. Provides the consistent
+ * label header, badge slot, body slot, and bottom meta line. Each
+ * specific card (Featured, Focus, Writing, …) renders its own content
+ * inside this wrapper.
+ */
+
+interface Props {
+  /** Lowercase label shown after the `▸` marker. */
+  label: string;
+  /** Optional small badge in the top-right of the label row. */
+  badge?: string;
+  /** Badge color treatment — `accent` for emphasis, `subtle` for neutral. */
+  badgeStyle?: 'accent' | 'subtle';
+  /** Number of bento columns this card spans (1–4). Defaults to 1. */
+  span?: 1 | 2 | 3 | 4;
+  /** Optional one-liner shown in the dashed meta footer. */
+  meta?: string;
+}
+
+const {
+  label,
+  badge,
+  badgeStyle = 'accent',
+  span = 1,
+  meta,
+} = Astro.props;
+---
+
+<article class:list={['card', `span-${span}`]}>
+  <div class="label">
+    <span>▸ {label}</span>
+    {badge && (
+      <span class:list={['badge', { 'badge-subtle': badgeStyle === 'subtle' }]}>
+        {badge}
+      </span>
+    )}
+  </div>
+
+  <div class="body">
+    <slot />
+  </div>
+
+  {meta && <div class="meta">{meta}</div>}
+</article>

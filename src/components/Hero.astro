@@ -1,0 +1,17 @@
+---
+/**
+ * Hero section — name, bio, "now" status pill.
+ * All copy is pulled from src/data/profile.ts.
+ */
+import { profile } from '@data/profile';
+---
+
+<section class="hero">
+  <h1>{profile.name}</h1>
+  <p class="bio">{profile.bio}</p>
+  <div class="now">
+    <span class="dot" aria-hidden="true"></span>
+    <span class="tag">now</span>
+    <span>· {profile.now}</span>
+  </div>
+</section>

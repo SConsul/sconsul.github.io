@@ -1,0 +1,108 @@
+---
+/**
+ * /writing — full chronological list of posts.
+ * Drafts are filtered out unless built in `astro dev` (where you can
+ * still hit /writing/<slug> directly).
+ */
+import Base from '@/layouts/Base.astro';
+import Nav from '@components/Nav.astro';
+import Profiler from '@components/Profiler.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('writing'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+function fmtDate(d: Date): string {
+  return d.toLocaleString('en-US', { month: 'short', year: 'numeric' });
+}
+---
+
+<Base title="Writing — Sarthak Consul" description="Notes on ML systems, Rust, and infrastructure.">
+  <div class="container">
+    <Nav />
+    <header class="page-header">
+      <h1>Writing</h1>
+      <p class="lead">Notes on ML systems, Rust, and the infrastructure underneath.</p>
+    </header>
+
+    <section class="post-index">
+      {posts.map((p) => (
+        <a href={`/writing/${p.id}`} class="post-row">
+          <div class="post-row-left">
+            <h2 class="post-title">{p.data.title}</h2>
+            <p class="post-desc">{p.data.description}</p>
+            <div class="post-tags">
+              {p.data.tags.map((t) => <span class="tag">{t}</span>)}
+            </div>
+          </div>
+          <div class="post-row-right">
+            <div class="post-date">{fmtDate(p.data.publishDate)}</div>
+            {p.data.readingTimeMin && (
+              <div class="post-rt">{p.data.readingTimeMin} min</div>
+            )}
+          </div>
+        </a>
+      ))}
+    </section>
+  </div>
+
+  <Profiler />
+</Base>
+
+<style>
+  .page-header { padding-bottom: 48px; }
+  .page-header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px;
+  }
+  .page-header .lead {
+    color: var(--fg-muted);
+    max-width: 540px;
+  }
+
+  .post-index { display: flex; flex-direction: column; }
+  .post-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+    color: var(--fg);
+    transition: padding-left 200ms;
+  }
+  .post-row:hover { padding-left: 8px; }
+  .post-row:last-child { border-bottom: 1px solid var(--border); }
+
+  .post-title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .post-desc {
+    color: var(--fg-muted);
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .post-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .post-tags .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--fg-muted);
+    padding: 2px 6px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+
+  .post-row-right {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+  }
+  .post-rt { margin-top: 4px; }
+</style>

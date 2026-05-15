@@ -1,0 +1,16 @@
+---
+/** Education — list of schools + degrees. */
+import Card from '@components/Card.astro';
+import { education } from '@data/education';
+---
+
+<Card label="education" span={1}>
+  <ul class="edu-list">
+    {education.map((e) => (
+      <li>
+        <div class="school">{e.school}</div>
+        <div class="degree">{e.degree}{e.notes && ` · ${e.notes}`}</div>
+      </li>
+    ))}
+  </ul>
+</Card>
