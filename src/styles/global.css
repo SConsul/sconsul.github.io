@@ -387,10 +387,11 @@ nav.site-nav .theme-toggle:hover {
   .edu-list .degree { white-space: normal; font-size: 11.5px; }
 }
 
-/* contact — vertical stack of icons in the narrow span=1 card. Flat
-   (no chip background); just color on hover. Icons centered in their
-   column so the card reads as an intentional thin strip instead of
-   icons clustering on the left with empty space to the right. */
+/* contact — one icon per line. Vertical flex column with each anchor
+   forced to its own row via `display: flex` (not `inline-flex`, which
+   could under some rendering paths lay buttons out beside each other).
+   `align-items: center` on the parent centers each icon horizontally
+   in the narrow card. */
 .contact-row {
   display: flex;
   flex-direction: column;
@@ -398,12 +399,14 @@ nav.site-nav .theme-toggle:hover {
   align-items: center;
 }
 .contact-icon-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  width: max-content;
   color: var(--fg-muted);
   text-decoration: none;
   transition: color 150ms;
+  line-height: 0;
 }
 .contact-icon-btn:hover { color: var(--accent); }
 
