@@ -333,18 +333,16 @@ nav.site-nav .theme-toggle:hover {
   line-height: 1.5;
 }
 
-/* writing — vertical list of post entries. The card height is locked
-   by its bento row; if the post list overflows, scroll inside the list
-   instead of stretching the card. `min-height: 0` is the flexbox trick
-   that allows the flex item to shrink below its content (without it,
-   `overflow-y: auto` would never activate because the flex item would
-   grow to fit its children). */
+/* writing — vertical list of post entries.
+   Cap visible height to roughly four posts (each ≈54px tall + 14px gap
+   between, so 4*54 + 3*14 = 258px; padded up a bit so the 5th title
+   peeks through as a "more below" affordance). When there are ≤4
+   posts the list sizes to content; ≥5 posts triggers the scrollbar. */
 .writing-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  flex: 1;
-  min-height: 0;
+  max-height: 280px;
   overflow-y: auto;
   /* subtle scrollbar — matches the muted card aesthetic */
   scrollbar-width: thin;
