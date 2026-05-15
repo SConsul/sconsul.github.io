@@ -2,14 +2,7 @@
 /** Experience — role list with right-aligned date ranges. */
 import Card from '@components/Card.astro';
 import { experience } from '@data/experience';
-
-/** "2023-04" → "Apr '23". Returns "now" for the `null` sentinel. */
-function fmt(iso: string | null): string {
-  if (!iso) return 'now';
-  const [yyyy, mm] = iso.split('-') as [string, string];
-  const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
-  return `${months[parseInt(mm, 10) - 1]} '${yyyy.slice(2)}`;
-}
+import { shortMonthYear } from '@utils/format';
 ---
 
 <Card label="experience" span={2} meta="full resume →" metaHref="/resume">
@@ -24,7 +17,7 @@ function fmt(iso: string | null): string {
           </div>
           <div class="loc">{r.location}</div>
         </div>
-        <div class="rhs">{fmt(r.start)} — {fmt(r.end)}</div>
+        <div class="rhs">{shortMonthYear(r.start)} — {shortMonthYear(r.end)}</div>
       </div>
     ))}
   </div>

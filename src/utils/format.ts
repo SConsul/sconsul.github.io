@@ -51,6 +51,34 @@ export function bytesToMB(bytes: number): number {
   return bytes / 1_048_576;
 }
 
+// ─── Date helpers ───────────────────────────────────────────────────────────
+// ExperienceRole stores dates as ISO month strings ("2023-04"). These two
+// helpers render them in the two shapes the site needs.
+
+const MONTHS_LOWER = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'] as const;
+const MONTHS_TITLE = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] as const;
+
+/**
+ * "2023-04" → "apr '23".
+ * Compact form used inside the bento Experience card.
+ * `null` (the "present" sentinel) renders as `fallback`.
+ */
+export function shortMonthYear(iso: string | null, fallback = 'now'): string {
+  if (!iso) return fallback;
+  const [yyyy, mm] = iso.split('-') as [string, string];
+  return `${MONTHS_LOWER[parseInt(mm, 10) - 1]} '${yyyy.slice(2)}`;
+}
+
+/**
+ * "2023-04" → "Apr 2023".
+ * Long form used on the /resume page.
+ */
+export function longMonthYear(iso: string | null, fallback = 'Present'): string {
+  if (!iso) return fallback;
+  const [yyyy, mm] = iso.split('-') as [string, string];
+  return `${MONTHS_TITLE[parseInt(mm, 10) - 1]} ${yyyy}`;
+}
+
 /**
  * Truncate to N visible characters, ignoring HTML tags.
  * Tags pass through; visible text is sliced. Used when an injected value

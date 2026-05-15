@@ -1,0 +1,334 @@
+---
+/**
+ * /resume — full HTML resume.
+ *
+ * Mirrors the content of public/resume.pdf (rendered from main.tex) but
+ * presented as a web page. The PDF is still available via the "Download
+ * PDF" button in the header.
+ *
+ * All content comes from the typed data files in src/data/, so the
+ * resume and the home bento cards never drift out of sync.
+ */
+import Base from '@/layouts/Base.astro';
+import Nav from '@components/Nav.astro';
+import Profiler from '@components/Profiler.astro';
+import Icon from '@components/Icon.astro';
+
+import { profile } from '@data/profile';
+import { experience } from '@data/experience';
+import { publications } from '@data/publications';
+import { education } from '@data/education';
+import { stack } from '@data/stack';
+import { projects } from '@data/projects';
+import { longMonthYear } from '@utils/format';
+
+const dateRange = (start: string, end: string | null): string =>
+  `${longMonthYear(start)} — ${longMonthYear(end)}`;
+---
+
+<Base
+  title="Resume — Sarthak Consul"
+  description="Resume of Sarthak Consul — ML systems engineer."
+>
+  <div class="container resume-container">
+    <Nav />
+
+    <header class="resume-head">
+      <div>
+        <h1>{profile.name}</h1>
+        <p class="contact-line">
+          <a href={`mailto:${profile.email}`} class="contact-pill">
+            <Icon name="email" size={11} /><span>{profile.email}</span>
+          </a>
+          <a href={`https://github.com/${profile.github}`} class="contact-pill" target="_blank" rel="noopener noreferrer">
+            <Icon name="github" size={11} /><span>github</span>
+          </a>
+          <a href={`https://linkedin.com/in/${profile.linkedin}`} class="contact-pill" target="_blank" rel="noopener noreferrer">
+            <Icon name="linkedin" size={11} /><span>linkedin</span>
+          </a>
+          <a href={profile.scholar} class="contact-pill" target="_blank" rel="noopener noreferrer">
+            <Icon name="scholar" size={11} /><span>scholar</span>
+          </a>
+        </p>
+      </div>
+      <a href={profile.resumeUrl} class="download" download>
+        ↓ PDF
+      </a>
+    </header>
+
+    <section class="resume-section">
+      <h2>Experience</h2>
+      {experience.map((r) => (
+        <article class="resume-role">
+          <header class="role-head">
+            <div>
+              <h3>{r.company}</h3>
+              <div class="role-title">{r.title}</div>
+              <div class="role-loc">{r.location}</div>
+            </div>
+            <div class="role-dates">{dateRange(r.start, r.end)}</div>
+          </header>
+          <ul class="role-highlights">
+            {r.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        </article>
+      ))}
+    </section>
+
+    <section class="resume-section">
+      <h2>Technical Skills</h2>
+      <dl class="skill-list">
+        {stack.map((g) => (
+          <>
+            <dt>{g.category}</dt>
+            <dd>{g.items.join(' · ')}</dd>
+          </>
+        ))}
+      </dl>
+    </section>
+
+    <section class="resume-section">
+      <h2>Selected Publications</h2>
+      <ol class="pub-list">
+        {publications.map((p) => (
+          <li>
+            <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a>
+            <div class="pub-venue">{p.venue}, {p.year}</div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {projects.length > 0 && (
+      <section class="resume-section">
+        <h2>Open Source</h2>
+        {projects.map((p) => (
+          <article class="resume-project">
+            <header class="proj-head">
+              <h3>{p.url ? <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a> : p.title}</h3>
+              {p.status === 'wip' && <span class="proj-status">WIP</span>}
+            </header>
+            <p>{p.description}</p>
+            <div class="proj-tech">{p.tech.join(' · ')}</div>
+          </article>
+        ))}
+      </section>
+    )}
+
+    <section class="resume-section">
+      <h2>Education</h2>
+      <ul class="edu-list-resume">
+        {education.map((e) => (
+          <li>
+            <strong>{e.school}</strong> — {e.degree}
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+
+  <Profiler />
+</Base>
+
+<style>
+  /* Slightly narrower container than the home page; long-form reading. */
+  .resume-container { max-width: 820px; }
+
+  .resume-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 36px;
+  }
+  .resume-head h1 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .contact-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    align-items: center;
+  }
+  .contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 150ms;
+  }
+  .contact-pill:hover { color: var(--accent); }
+  .contact-pill svg { color: var(--fg-subtle); transition: color 150ms; }
+  .contact-pill:hover svg { color: var(--accent); }
+
+  .download {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: all 150ms;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .download:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .resume-section { margin-bottom: 44px; }
+  .resume-section h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-muted);
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 22px;
+  }
+
+  .resume-role { margin-bottom: 28px; }
+  .resume-role:last-child { margin-bottom: 0; }
+  .role-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 14px;
+  }
+  .role-head h3 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .role-title {
+    font-size: 14px;
+    color: var(--fg);
+    margin-top: 2px;
+  }
+  .role-loc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+    margin-top: 4px;
+  }
+  .role-dates {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .role-highlights {
+    list-style: disc;
+    padding-left: 22px;
+    color: var(--fg);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .role-highlights li { margin-bottom: 6px; }
+  .role-highlights li:last-child { margin-bottom: 0; }
+
+  .skill-list {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 10px 24px;
+    font-size: 13.5px;
+  }
+  .skill-list dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 2px;
+  }
+  .skill-list dd { color: var(--fg); }
+
+  .pub-list {
+    list-style: decimal;
+    padding-left: 22px;
+  }
+  .pub-list li {
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .pub-list li:last-child { margin-bottom: 0; }
+  .pub-list a {
+    color: var(--fg);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .pub-list a:hover { color: var(--accent); }
+  .pub-venue {
+    margin-top: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+  }
+
+  .resume-project { margin-bottom: 20px; }
+  .resume-project:last-child { margin-bottom: 0; }
+  .proj-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .proj-head h3 { font-size: 15px; font-weight: 600; }
+  .proj-head a { color: var(--fg); text-decoration: none; }
+  .proj-head a:hover { color: var(--accent); }
+  .proj-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .resume-project p {
+    color: var(--fg);
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin-bottom: 4px;
+  }
+  .proj-tech {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-muted);
+  }
+
+  .edu-list-resume {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--fg);
+  }
+  .edu-list-resume strong { font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .resume-head { flex-direction: column; gap: 16px; }
+    .role-head { flex-direction: column; gap: 6px; }
+    .role-dates { padding-top: 0; }
+    .skill-list { grid-template-columns: 1fr; gap: 4px 0; }
+    .skill-list dd { margin-bottom: 12px; }
+    .skill-list dd:last-child { margin-bottom: 0; }
+  }
+</style>

@@ -3,12 +3,13 @@
  * Top nav — brand on the left, page links + theme toggle on the right.
  * Theme toggle wiring lives in src/scripts/profiler.client.ts so it
  * isn't reimplemented per page.
+ *
+ * Resume is an HTML page (/resume) rather than a direct PDF link; the
+ * page itself surfaces a "Download PDF" button to profile.resumeUrl.
  */
-import { profile } from '@data/profile';
-
 const links = [
   { href: '/writing', label: 'writing' },
-  { href: profile.resumeUrl, label: 'resume.pdf' },
+  { href: '/resume',  label: 'resume' },
 ] as const;
 ---
 
