@@ -19,7 +19,7 @@ export const stack: readonly StackGroup[] = [
   },
   {
     category: 'Infra',
-    items: ['Nsights', 'Ray', 'Docker', 'Bazel', 'Slurm', 'Kubernetes', 'WebDataset', 'Parquet'],
+    items: ['Nsights', 'Ray', 'Docker', 'Bazel', 'Slurm', 'Kubernetes', 'WebDataset', 'DataFusion', 'Parquet'],
   },
 ];
 
