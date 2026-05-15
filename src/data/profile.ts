@@ -1,19 +1,20 @@
 import type { Profile } from '@/types';
 
 /**
- * Top-level personal data — name, contact info, one-liner bio.
- * Sourced from main.tex (\name, \address) and adapted for web.
+ * Top-level personal data — name, contact info, headline + status.
+ * Sourced from main.tex (\name, \address). Headline + now are written
+ * to position broadly (ML systems / perf), not pigeonholed to robotics.
  */
 export const profile: Profile = {
   name: 'Sarthak Consul',
-  tagline: 'Research engineer at Matic Robots',
+  tagline: 'ML systems engineer',
   bio:
-    'I build the machine-learning systems that let robots see and act in the world. ' +
-    'Currently at Matic Robots, working on vision-language models, on-device ' +
-    'inference, and the infrastructure underneath.',
+    'I work on the systems that scale foundation models — distributed ' +
+    'training, low-precision inference, and the GPU kernels in between. ' +
+    'Currently at Matic Robots; previously at Meta and IIT Bombay.',
   now:
-    'shipping a streamable Gaussian-splat viewer in Rust + WGPU · ' +
-    'optimizing edge inference on Jetson SOMs',
+    'tightening inference latency on Jetson · writing a Rust + WGPU ' +
+    'Gaussian-splat viewer on the side',
   location: 'Bay Area, CA',
   email: 'sarthakconsul@gmail.com',
   github: 'SConsul',

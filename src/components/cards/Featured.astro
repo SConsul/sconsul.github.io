@@ -7,8 +7,14 @@ const proj = featuredProject();
 if (!proj) throw new Error('FeaturedCard: no featured project in src/data/projects.ts');
 
 const badge = proj.status === 'wip' ? 'WIP' : undefined;
-const tech = proj.tech.join(' · ').toLowerCase();
-const meta = `lang: rust · gpu: ${tech} · status: ${proj.status} · v0.1`;
+/**
+ * Compose a mono-styled tech summary for the meta footer. Splits the
+ * tech tags into a language head + GPU stack rather than dumping them
+ * all into one CSV.
+ */
+const langs = proj.tech.filter((t) => /^(Rust|Python|C\+\+|TypeScript)$/i.test(t));
+const gpus  = proj.tech.filter((t) => /^(WGPU|CUDA|Metal|Vulkan|OpenGL)$/i.test(t));
+const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.join('+').toLowerCase() || '—'} · status: ${proj.status} · v0.1`;
 ---
 
 <Card label="featured project" span={2} badge={badge} meta={meta}>

@@ -1,15 +1,17 @@
 import type { EducationEntry } from '@/types';
 
-/** Education history. Sourced from main.tex \section{Education}. */
+/**
+ * Education — simplified to the degree + field. School names are kept
+ * full; honors / minors are dropped from the home card and recovered on
+ * the /resume page if needed.
+ */
 export const education: readonly EducationEntry[] = [
   {
-    school: 'Stanford University',
-    degree: 'M.S. Computer Science',
-    notes: 'AI specialization',
+    school: 'Stanford',
+    degree: 'M.S. Computer Science (AI)',
   },
   {
-    school: 'Indian Institute of Technology Bombay',
-    degree: 'B.Tech (with Honors) in Electrical Engineering',
-    notes: 'Minor in Computer Science',
+    school: 'IIT Bombay',
+    degree: 'B.Tech, Electrical Engineering',
   },
 ];

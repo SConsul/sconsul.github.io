@@ -4,7 +4,7 @@ import Card from '@components/Card.astro';
 import { focus } from '@data/stack';
 ---
 
-<Card label="focus" span={1} meta="@ matic robots">
+<Card label="focus" span={1}>
   <div class="tag-list">
     {focus.map((f) => <span class="pill">{f}</span>)}
   </div>

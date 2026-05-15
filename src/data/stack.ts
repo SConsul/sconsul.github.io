@@ -1,21 +1,25 @@
 import type { StackGroup } from '@/types';
 
 /**
- * Technical skills, grouped. Sourced from main.tex \section{Technical Skills}.
+ * Technical skills, grouped. Sourced from main.tex \section{Technical Skills}
+ * and enriched with keywords that appear consistently in inference / ML-infra
+ * job descriptions at frontier labs (Ray, Nsight Systems vs. Compute,
+ * distillation as a first-class technique).
+ *
  * Order within each group is rough proficiency / recency.
  */
 export const stack: readonly StackGroup[] = [
   {
     category: 'Languages',
-    items: ['Python', 'Rust', 'CUDA', 'C/C++', 'SQL', 'Bash', 'TypeScript'],
+    items: ['Python', 'Rust', 'CUDA', 'C/C++', 'TypeScript', 'SQL'],
   },
   {
     category: 'ML',
-    items: ['PyTorch', 'TensorRT', 'DALI', 'DDP', 'AMP', 'NCCL', 'torch.compile'],
+    items: ['PyTorch', 'TensorRT', 'DALI', 'DDP', 'AMP', 'NCCL', 'torch.compile', 'distillation'],
   },
   {
     category: 'Infra',
-    items: ['Docker', 'Slurm', 'Apache DataFusion', 'Parquet', 'Nsight', 'TAO'],
+    items: ['Docker', 'Ray', 'Slurm', 'Apache DataFusion', 'Parquet', 'Nsight Systems', 'Nsight Compute'],
   },
 ];
 
@@ -25,6 +29,7 @@ export const stack: readonly StackGroup[] = [
  * the things the site is signaling to recruiters and collaborators.
  */
 export const focus: readonly string[] = [
+  'inference optimization',
   'Rust',
   'CUDA',
   'computer vision',
