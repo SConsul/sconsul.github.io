@@ -145,17 +145,21 @@ nav.site-nav .theme-toggle:hover {
      share the row's height, so the grid lines up horizontally. */
 }
 
-/* Vertical stack inside one bento column (Education + Contact). The
-   column itself stretches to row height (= the tall Papers card next
-   to it); its two children split that height evenly with `flex: 1`,
-   keeping the right edge aligned with Papers. */
+/* Vertical stack inside one bento column (Education + Contact).
+   The column stretches to row height (matching tall Papers next to it).
+   Children stay at their natural heights — `flex: 0 0 auto` so they
+   never shrink below content (which was clipping Education before).
+   `justify-content: space-between` pushes the top card to the top and
+   the bottom card to the bottom, so the column's right edge lines up
+   with Papers on both top AND bottom. */
 .bento-col {
   display: flex;
   flex-direction: column;
   gap: 16px;
   grid-column: span 1;
+  justify-content: space-between;
 }
-.bento-col > .card { flex: 1; }
+.bento-col > .card { flex: 0 0 auto; }
 
 .card {
   background: var(--card-bg);
@@ -259,38 +263,56 @@ nav.site-nav .theme-toggle:hover {
   line-height: 1.55;
 }
 
-/* focus — tag pills */
-.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+/* focus — tag pills. `flex: 1` + `align-content: center` lets the wrap
+   lines center vertically inside the body, filling the extra height
+   that row-stretch gives this card without leaving a void at the bottom. */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+  align-content: center;
+}
 .tag-list .pill {
   background: var(--border-soft);
   color: var(--fg);
-  height: 24px;
+  height: 32px;
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  padding: 0 10px;
-  font-size: 12px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 500;
 }
 
-/* stack — grouped list */
-.stack-list { display: flex; flex-direction: column; gap: 10px; }
+/* stack — grouped list. `flex: 1` + `justify-content: center` centers
+   the three groups vertically, like the focus card. Bigger items and
+   more inter-group gap fill the card density. */
+.stack-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+}
 .stack-list li {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  font-size: 12px;
+  gap: 4px;
+  font-size: 13px;
 }
 .stack-list .stack-cat {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
+  font-size: 10.5px;
   color: var(--fg-muted);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 .stack-list .stack-items {
   color: var(--fg);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
+  font-size: 12.5px;
+  line-height: 1.5;
 }
 
 /* writing — vertical list of post entries */
