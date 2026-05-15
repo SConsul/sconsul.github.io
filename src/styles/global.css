@@ -241,10 +241,10 @@ nav.site-nav .theme-toggle:hover {
   grid-column: 1 / -1;
   display: grid;
   /* Target widths (within the ~1000px row content area):
-       Papers   ≈ 584px   (5.6fr)   — was 546, +38px ≈ +1cm
-       Education ≈ 310px  (2.95fr)  — was 348, −38px ≈ −1cm
+       Papers   ≈ 603px   (5.74fr)  — +1.5cm vs default-row 8-col layout
+       Education ≈ 291px  (2.77fr)  — −1.5cm vs default-row 8-col layout
        Contact  ≈ 105px   (1fr)     — unchanged */
-  grid-template-columns: 5.6fr 2.95fr 1fr;
+  grid-template-columns: 5.74fr 2.77fr 1fr;
   gap: 16px;
 }
 .papers-row > .card { grid-column: auto; }
