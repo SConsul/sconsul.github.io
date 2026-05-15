@@ -405,6 +405,11 @@ nav.site-nav .theme-toggle:hover {
   color: var(--fg);
   text-decoration: none;
   transition: padding-left 200ms;
+  /* CRITICAL: without this, each item (a flex child of the writing-list
+     flex column) would `flex-shrink: 1` and squash to fit max-height
+     280px — the list would never overflow and the scrollbar would never
+     activate. Keeping items at natural size forces the overflow. */
+  flex-shrink: 0;
 }
 .writing-item:last-child { border-bottom: none; padding-bottom: 0; }
 .writing-item:hover { padding-left: 6px; color: var(--fg); }
