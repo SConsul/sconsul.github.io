@@ -1,16 +1,27 @@
 /**
- * Light/dark theme.
+ * Light/dark theme — three-state model.
  *
- * Three-state model:
- *   - `null` in localStorage → "system" (follows prefers-color-scheme,
- *     and live-updates when the OS theme changes)
- *   - `"light"` or `"dark"`   → explicit user override; ignores the OS
+ * Modes:
+ *   - `'system'`  — follow prefers-color-scheme, live-updating when the OS theme changes.
+ *   - `'light'`   — explicit override; ignores OS.
+ *   - `'dark'`    — explicit override; ignores OS.
  *
- * The active value is mirrored onto `<html data-theme="…">`; CSS keys
- * all palette swaps off that attribute (see styles/global.css).
+ * Storage encoding:
+ *   - `null` in localStorage = "system"
+ *   - `"light"` / `"dark"` = the corresponding explicit override
+ *
+ * The active *rendered* theme is mirrored onto `<html data-theme="…">`;
+ * CSS keys all palette swaps off that attribute.
+ *
+ * The toggle button cycles `system → light → dark → system → …`, which
+ * gives users a way back to "auto" — without that, once you click the
+ * toggle you'd be stuck in an explicit mode forever.
  */
 
 import type { Theme } from '@/types';
+
+/** User-selectable theme mode (`'system'` means: follow the OS). */
+export type ThemeMode = 'system' | Theme;
 
 const STORAGE_KEY = 'theme';
 
@@ -20,40 +31,43 @@ export function systemPreference(): Theme {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-/**
- * Read the *explicit* stored preference, if any. Returns `null` when
- * the user hasn't picked one (in which case callers should fall back
- * to {@link systemPreference}).
- */
-export function getStoredTheme(): Theme | null {
-  if (typeof localStorage === 'undefined') return null;
+/** Current mode (`'system'` when no explicit override is stored). */
+export function getThemeMode(): ThemeMode {
+  if (typeof localStorage === 'undefined') return 'system';
   const v = localStorage.getItem(STORAGE_KEY);
-  return v === 'dark' || v === 'light' ? v : null;
+  return v === 'dark' || v === 'light' ? v : 'system';
 }
 
-/** Resolve the theme that should currently render: stored override → system. */
+/** The theme that should render right now — explicit override or system fallback. */
 export function resolveTheme(): Theme {
-  return getStoredTheme() ?? systemPreference();
+  const mode = getThemeMode();
+  return mode === 'system' ? systemPreference() : mode;
 }
 
-/** Apply a theme to <html> and persist it as an explicit override. */
-export function applyTheme(theme: Theme): void {
-  document.documentElement.dataset['theme'] = theme;
-  try { localStorage.setItem(STORAGE_KEY, theme); } catch { /* private mode */ }
+/**
+ * Set the user's preferred mode. `'system'` clears the override (so the
+ * OS preference takes back over); explicit values are persisted.
+ */
+export function setThemeMode(mode: ThemeMode): void {
+  try {
+    if (mode === 'system') localStorage.removeItem(STORAGE_KEY);
+    else localStorage.setItem(STORAGE_KEY, mode);
+  } catch { /* private mode */ }
+  document.documentElement.dataset['theme'] = mode === 'system' ? systemPreference() : mode;
 }
 
-/** Flip the *currently rendered* theme. Always sets an explicit override. */
-export function toggleTheme(): Theme {
-  const current = (document.documentElement.dataset['theme'] as Theme | undefined) ?? resolveTheme();
-  const next: Theme = current === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
+/** Cycle: system → light → dark → system → … . Returns the new mode. */
+export function cycleTheme(): ThemeMode {
+  const current = getThemeMode();
+  const next: ThemeMode =
+    current === 'system' ? 'light' :
+    current === 'light'  ? 'dark'  :
+                           'system';
+  setThemeMode(next);
   return next;
 }
 
-/**
- * Apply the resolved theme. Safe to call from a `<script>` block in
- * `<head>` — `localStorage` and `matchMedia` are both synchronous.
- */
+/** Apply the resolved theme. Safe to call from a pre-paint `<script>` block. */
 export function initTheme(): Theme {
   const theme = resolveTheme();
   document.documentElement.dataset['theme'] = theme;
@@ -61,14 +75,14 @@ export function initTheme(): Theme {
 }
 
 /**
- * Subscribe to OS-level theme changes. The handler only fires when the
- * user has NOT set an explicit override; an explicit choice always wins.
+ * Subscribe to OS-level theme changes. The handler only updates the page
+ * when the user is in `'system'` mode — explicit overrides always win.
  */
 export function listenSystemTheme(): void {
   if (typeof window === 'undefined' || !window.matchMedia) return;
   const mql = window.matchMedia('(prefers-color-scheme: dark)');
   mql.addEventListener('change', (e) => {
-    if (getStoredTheme() !== null) return; // explicit override wins
+    if (getThemeMode() !== 'system') return;
     document.documentElement.dataset['theme'] = e.matches ? 'dark' : 'light';
   });
 }

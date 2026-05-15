@@ -20,7 +20,7 @@ import { refreshNet } from '@utils/network';
 import { detectGpu, probeVsync } from '@utils/gpu';
 import { buildSmiTable } from '@utils/smi-table';
 import { frameLaneHtml, fakeLaneHtml, FAKE_LANE_CONFIG } from '@utils/nsys';
-import { initTheme, toggleTheme, listenSystemTheme } from '@utils/theme';
+import { initTheme, cycleTheme, getThemeMode, listenSystemTheme } from '@utils/theme';
 
 /** Tabs available in the expanded profiler panel. */
 type Tab = 'smi' | 'nsys';
@@ -122,14 +122,15 @@ function bindThemeToggle(): void {
   if (!btn) return;
   syncLabel(btn);
   btn.addEventListener('click', () => {
-    toggleTheme();
+    cycleTheme();
     syncLabel(btn);
   });
 }
 
+/** Button shows the current MODE (auto / light / dark), not the active theme. */
 function syncLabel(btn: HTMLButtonElement): void {
-  const theme = document.documentElement.dataset['theme'];
-  btn.textContent = theme === 'dark' ? '[light]' : '[dark]';
+  const mode = getThemeMode();
+  btn.textContent = `[${mode === 'system' ? 'auto' : mode}]`;
 }
 
 function bindBarToggle(profilerEl: HTMLElement, onOpen: () => void): void {

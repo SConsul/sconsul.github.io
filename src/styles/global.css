@@ -141,7 +141,16 @@ nav.site-nav .theme-toggle:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  grid-auto-rows: minmax(160px, auto);
+  /* Let each card size to its own content — short cards stay short. */
+  align-items: start;
+}
+
+/* Vertical stack inside one bento column (Education + Contact). */
+.bento-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  grid-column: span 1;
 }
 
 .card {
@@ -365,32 +374,23 @@ nav.site-nav .theme-toggle:hover {
   margin-top: 3px;
 }
 
-/* contact — icons only, single row of clickable squares.
-   Destination is communicated via the title attribute (OS tooltip + screen
-   reader) so no label text is needed. */
+/* contact — flat icon row. No chip background, no hover box; just color
+   on hover. Destination conveyed via title + aria-label. */
 .contact-row {
   display: flex;
-  gap: 10px;
+  gap: 18px;
   flex-wrap: wrap;
   align-items: center;
 }
 .contact-icon-btn {
-  width: 38px;
-  height: 38px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
   color: var(--fg-muted);
-  background: var(--border-soft);
   text-decoration: none;
-  transition: background 150ms, color 150ms, transform 150ms;
+  transition: color 150ms;
 }
-.contact-icon-btn:hover {
-  color: var(--accent);
-  background: var(--accent-soft);
-  transform: translateY(-1px);
-}
+.contact-icon-btn:hover { color: var(--accent); }
 
 /* ─── Animations ─────────────────────────────────────────────────────── */
 
