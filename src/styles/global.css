@@ -346,6 +346,11 @@ nav.site-nav .theme-toggle:hover {
   flex-direction: column;
   gap: 14px;
   max-height: 280px;
+  /* CRITICAL: flex items default to `min-height: auto` (= content size),
+     which overrides max-height when content is taller. Without this
+     `min-height: 0`, max-height never kicks in and the list grows to
+     fit all posts — no overflow, no scrollbar. */
+  min-height: 0;
   overflow-y: scroll;
   /* Firefox: thin, muted thumb */
   scrollbar-width: thin;
