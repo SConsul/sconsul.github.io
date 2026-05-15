@@ -21,6 +21,7 @@ import { detectGpu, probeVsync } from '@utils/gpu';
 import { buildSmiTable } from '@utils/smi-table';
 import { frameLaneHtml, fakeLaneHtml, FAKE_LANE_CONFIG } from '@utils/nsys';
 import { initTheme, cycleTheme, getThemeMode, listenSystemTheme } from '@utils/theme';
+import { initTooltips } from '@utils/tooltip';
 
 /** Tabs available in the expanded profiler panel. */
 type Tab = 'smi' | 'nsys';
@@ -38,6 +39,7 @@ function wire(): void {
   initTheme();
   listenSystemTheme();
   bindThemeToggle();
+  initTooltips();
 
   const profilerEl = $maybe('profiler');
   if (!profilerEl) return; // profiler not present on this page

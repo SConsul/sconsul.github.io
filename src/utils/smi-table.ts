@@ -44,6 +44,15 @@ const warn = (s: string): string => span('warn', s);
 const err  = (s: string): string => span('err',  s);
 const hl   = (s: string): string => span('hl',   s);
 
+/**
+ * Wrap a header token in a tooltip-bearing span. The tooltip popover
+ * is rendered globally by src/utils/tooltip.ts; this just attaches the
+ * `data-tooltip` attribute. {@link padToVis} only counts visible text,
+ * so the extra markup doesn't perturb column alignment.
+ */
+const tt = (token: string, tip: string): string =>
+  `<span data-tooltip="${tip}">${token}</span>`;
+
 // ─── Public API ─────────────────────────────────────────────────────────────
 
 /**
@@ -77,8 +86,16 @@ export function buildSmiTable(stats: RuntimeStats): string {
     BORDER,
     fullRow(`${hl('sarthak-smi 0.1.0')}     Browser: ${ua}     Build: a3f2c8     up: ${uptime}`),
     BORDER,
-    row3('LN  Process           Pers.', 'Identifier        Disp.', 'Volatile   Status'),
-    row3('Metric            Perf  Pwr', '       Usage', 'Util       Mode'),
+    row3(
+      `${tt('LN', 'Lane number')}  ${tt('Process', 'Browser subsystem being measured')}           ${tt('Pers.', 'Persistence — is this lane currently running')}`,
+      `${tt('Identifier', 'Lane-specific identifier (frame number, GPU model, etc.)')}        ${tt('Disp.', 'Display status — live / cold')}`,
+      `${tt('Volatile', 'Volatile error indicator (always OK on web — purely cosmetic)')}   ${tt('Status', 'Overall lane health')}`
+    ),
+    row3(
+      `${tt('Metric', 'Primary metric reading for the lane')}            ${tt('Perf', 'Performance state P0–P8 (cosmetic — mirrors real nvidia-smi)')}  ${tt('Pwr', 'Power draw — cosmetic')}`,
+      `       ${tt('Usage', 'Resource usage (heap, KB transferred, etc.)')}`,
+      `${tt('Util', 'Utilization percentage')}       ${tt('Mode', 'Operating mode (RAF, paint, idle, …)')}`
+    ),
     SECTION,
 
     // ── Lane 0: render::main ──
@@ -146,6 +163,14 @@ function lane(top1: string, top2: string, bot1: string, bot2: string, bot3: stri
 }
 
 /** Format a Web Vitals row with a colored status tag. */
+const VITAL_TIPS: Readonly<Record<VitalMetric, string>> = {
+  lcp: 'Largest Contentful Paint — time until the main content is visible',
+  fcp: 'First Contentful Paint — time until any text/image is drawn',
+  cls: 'Cumulative Layout Shift — sum of unexpected layout movement (0 = perfect)',
+  inp: 'Interaction to Next Paint — input responsiveness',
+  tbt: 'Total Blocking Time — sum of long-task time blocking the main thread',
+};
+
 function vitalRow(
   name: string,
   value: number,
@@ -159,7 +184,8 @@ function vitalRow(
     status === 'good' ? ok(status) :
     status === 'poor' ? err(status) :
                         warn(status);
-  return `${padR(name, 17)} ${padR(displayValue, 13)} ${padR(threshold, 22)} ${colored}`;
+  const labeled = tt(name, VITAL_TIPS[metric]);
+  return `${padR(labeled, 17)} ${padR(displayValue, 13)} ${padR(threshold, 22)} ${colored}`;
 }
 
 /** Best-effort short user-agent tag (e.g. "Chrome/138", "Safari/605"). */

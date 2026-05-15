@@ -39,19 +39,19 @@ const { buildHash = 'a3f2c8', version = '0.1.0' } = Astro.props;
           <span><span id="nsysFrames">--</span> frames captured</span>
         </div>
         <div class="nsys-row">
-          <div class="label">cpu::main</div>
+          <div class="label" data-tooltip="JavaScript main thread — script execution, layout, paint">cpu::main</div>
           <div class="lane" id="laneCpu"></div>
         </div>
         <div class="nsys-row">
-          <div class="label">gpu::paint</div>
+          <div class="label" data-tooltip="GPU compositor — paint operations, transform animations">gpu::paint</div>
           <div class="lane" id="laneGpu"></div>
         </div>
         <div class="nsys-row">
-          <div class="label">net::xhr</div>
+          <div class="label" data-tooltip="Network requests — fetch / XHR / resource loads">net::xhr</div>
           <div class="lane" id="laneNet"></div>
         </div>
         <div class="nsys-row">
-          <div class="label">frame::time</div>
+          <div class="label" data-tooltip="Per-frame render time — taller bars = slower frames (green <17ms, red >33ms)">frame::time</div>
           <div class="lane frame" id="laneFrame"></div>
         </div>
         <div class="axis">
