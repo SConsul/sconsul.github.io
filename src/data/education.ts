@@ -12,6 +12,6 @@ export const education: readonly EducationEntry[] = [
   },
   {
     school: 'IIT Bombay',
-    degree: 'B.Tech, Electrical Engg. (Hons.)',
+    degree: 'B.Tech, Electrical Engg. (Hons. + Minor)',
   },
 ];
