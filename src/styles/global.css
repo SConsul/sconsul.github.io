@@ -140,10 +140,21 @@ nav.site-nav .theme-toggle:hover {
 .bento {
   display: grid;
   /* 8 underlying columns for sub-half-step granularity. Most cards use
-     `.span-N` which maps to N*2 underlying columns (so the visible
-     widths match the previous 4-col layout exactly); Education and
-     Contact use `.span-1half` / `.span-half` for 1.5× / 0.5× widths. */
-  grid-template-columns: repeat(8, 1fr);
+     `.span-N` which maps to N*2 underlying columns; Education and
+     Contact use `.span-1half` / `.span-half` for 1.5× / 0.5× widths.
+
+     Asymmetric column widths: left half (cols 1-4) get 1.18fr each,
+     right half (cols 5-8) get 1fr each. This shifts ~1cm of width
+     from the right side cards to the left side cards:
+
+       Featured / Writing / Papers  (cols 1-4): +1cm
+       Focus / Stack                (cols 5-8): -0.5cm each
+       Experience                   (cols 5-8): -1cm
+       Education                    (cols 5-7): -0.75cm
+       Contact                      (col 8):    -0.25cm
+
+     Note that the shrink hits Education more than Contact, by design. */
+  grid-template-columns: repeat(4, 1.18fr) repeat(4, 1fr);
   gap: 16px;
   /* Default `align-items: stretch` (omitted) — cards in the same row
      share the row's height, so the grid lines up horizontally. */

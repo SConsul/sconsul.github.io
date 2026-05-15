@@ -9,7 +9,7 @@ export const experience: readonly ExperienceRole[] = [
   {
     company: 'Matic Robots',
     location: 'Mountain View, CA',
-    title: 'Research Engineer, Mapping & Neural Networks',
+    title: 'Research Engineer',
     start: '2023-04',
     end: null,
     highlights: [
