@@ -270,6 +270,11 @@ nav.site-nav .theme-toggle:hover {
 .featured-visual.live {
   background-image: none;
   background-color: #000;          /* match the splat page bg */
+  /* The static poster works at 140px (it's an abstract preview).
+     The live viewer needs more pixels for the bonsai to fit; give
+     `.live` mode a taller box. The row stretches Focus and Stack to
+     match, which is fine — they get a bit of extra breathing room. */
+  height: 220px;
 }
 .splat-iframe {
   display: block;
