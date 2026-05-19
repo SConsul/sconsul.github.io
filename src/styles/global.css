@@ -286,6 +286,31 @@ nav.site-nav .theme-toggle:hover {
   line-height: 1.55;
 }
 
+/* Featured-card CTA — the "Launch viewer" button. Inline, self-sized
+   (`align-self: flex-start`) so it sits under the description without
+   stretching to card width. Hidden until the client script confirms
+   WebGPU support — see src/components/cards/Featured.astro. */
+.featured-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  margin-top: 6px;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 150ms, color 150ms;
+}
+.featured-cta:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
 /* focus — tag pills. Top-aligned (no `flex: 1`) so the label→content
    gap matches every other card (16px from .card .label margin-bottom).
    Bigger pills keep the card from looking sparse. */

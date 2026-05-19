@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>splat viewer · sarthak consul</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="noindex">
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      background: #000;
+      overflow: hidden;
+      color: #ddd;
+      font: 13px/1.4 'JetBrains Mono', ui-monospace, monospace;
+    }
+    canvas#gsplat-canvas {
+      display: block;
+      width: 100vw; height: 100vh;
+      outline: none;
+    }
+
+    /* Back link, top-left. Subtle so it doesn't fight the scene for attention. */
+    .home-link {
+      position: fixed;
+      top: 14px; left: 14px;
+      color: rgba(220, 220, 220, 0.7);
+      background: rgba(0, 0, 0, 0.45);
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 12px;
+      transition: color 150ms, background 150ms;
+      z-index: 10;
+    }
+    .home-link:hover {
+      color: #fff;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Status banner — loading message, or hard-fail message if WebGPU missing. */
+    #status {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px 14px;
+      border-radius: 4px;
+      max-width: 70vw;
+      pointer-events: none;
+      font-size: 12px;
+      z-index: 10;
+    }
+    #status.hidden { display: none; }
+    #status.error {
+      background: rgba(160, 0, 0, 0.75);
+      pointer-events: auto;
+    }
+    #status code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-family: inherit;
+    }
+
+    /* Hint card, bottom-left — only shown when WebGPU is missing. */
+    .fallback {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      color: #bbb;
+    }
+    .fallback h1 {
+      font-size: 20px;
+      color: #fff;
+      margin: 0 0 12px;
+      letter-spacing: -0.01em;
+    }
+    .fallback p { margin: 6px 0; max-width: 460px; }
+    .fallback a { color: #6aaeff; }
+    .fallback code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <a href="/" class="home-link" aria-label="back to home">← home</a>
+
+  <canvas id="gsplat-canvas" tabindex="0"></canvas>
+  <div id="status">loading…</div>
+
+  <!-- Shown only when navigator.gpu is missing (WebGPU unsupported). -->
+  <div id="fallback" class="fallback hidden">
+    <h1>WebGPU not available</h1>
+    <p>This viewer is WebGPU-only. Open in Chrome / Edge 113+, or Safari Tech Preview, or Firefox Nightly with <code>dom.webgpu.enabled</code>.</p>
+    <p><a href="/">← back to home</a></p>
+  </div>
+
+  <script type="module">
+    // Mirrors gsplat_rs/web/index.html, with two changes:
+    //   1. Scene defaults to bonsai-7k.splat (no need for ?scene=…).
+    //   2. WebGPU-missing case swaps the canvas for a friendlier fallback
+    //      block; the home page only links here when navigator.gpu is
+    //      present, but we belt-and-brace in case someone deep-links.
+
+    const canvas   = document.getElementById('gsplat-canvas');
+    const status   = document.getElementById('status');
+    const fallback = document.getElementById('fallback');
+    const params   = new URLSearchParams(window.location.search);
+    const scene    = params.get('scene') || 'bonsai-7k.splat';
+
+    // Keep the canvas backing buffer in sync with its visible CSS size.
+    // winit-web's ResizeObserver path will fire WindowEvent::Resized when we
+    // update width/height attributes.
+    function sizeCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      const w = Math.max(1, Math.floor(canvas.clientWidth  * dpr));
+      const h = Math.max(1, Math.floor(canvas.clientHeight * dpr));
+      if (canvas.width  !== w) canvas.width  = w;
+      if (canvas.height !== h) canvas.height = h;
+    }
+    sizeCanvas();
+    new ResizeObserver(sizeCanvas).observe(canvas);
+    window.addEventListener('resize', sizeCanvas);
+
+    if (!('gpu' in navigator)) {
+      status.classList.add('hidden');
+      canvas.classList.add('hidden');
+      fallback.classList.remove('hidden');
+    } else {
+      status.textContent = `loading ${scene}…`;
+      canvas.focus(); // give TAB / arrow keys to the viewer's profiler
+
+      import('./pkg/gsplat_web.js').then(({ default: init }) => init())
+        .then(() => {
+          // Brief hold so a quick load still shows the loading state, then fade.
+          setTimeout(() => status.classList.add('hidden'), 1200);
+        })
+        .catch((err) => {
+          status.classList.add('error');
+          status.textContent = 'error: ' + (err && err.message ? err.message : String(err));
+          console.error(err);
+        });
+    }
+  </script>
+</body>
+</html>

@@ -23,4 +23,22 @@ const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.joi
     {proj.url ? <a href={proj.url}>{proj.title}</a> : proj.title}
   </h3>
   <p class="card-text">{proj.description}</p>
+  <!--
+    "Launch viewer" CTA. Hidden by default; the client script below
+    reveals it only if `navigator.gpu` is present, so users on
+    non-WebGPU browsers don't see a button that would take them to a
+    dead end.
+  -->
+  <a id="splatLaunch" class="featured-cta" href="/splat/" hidden>
+    ▶ Launch viewer
+  </a>
 </Card>
+
+<script>
+  // WebGPU feature detection. The viewer's bundle (~7MB WASM + 35MB
+  // scene file) only loads on the /splat page itself; here we just
+  // reveal the entry point if the browser can render it.
+  if (typeof navigator !== 'undefined' && 'gpu' in navigator) {
+    document.getElementById('splatLaunch')?.removeAttribute('hidden');
+  }
+</script>
