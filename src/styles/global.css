@@ -251,20 +251,31 @@ nav.site-nav .theme-toggle:hover {
 
 /* ─── Card content patterns ──────────────────────────────────────────── */
 
-/* featured project — placeholder poster (swap for a real screenshot
-   when one is captured). The SVG suggests a Gaussian-splat scene
-   (blurred green/brown blobs over dark), with a `BONSAI · 7K SPLATS`
-   label so it's clear what's coming. */
+/* featured project — SVG poster by default. On WebGPU-capable
+   browsers the Featured.astro client script swaps the contents for a
+   <iframe class="splat-iframe"> embedding /splat/?embed=1 (live
+   preview). The `.live` class signals "iframe inside, drop the
+   poster background" so the iframe isn't fighting an underlay. */
 .featured-visual {
   background-image: url('/splat-poster.svg');
   background-size: cover;
   background-position: center;
-  background-color: #0b0d0b;       /* matches the SVG bg if it fails to load */
+  background-color: #0b0d0b;
   border-radius: 8px;
   height: 140px;
   margin-bottom: 14px;
   position: relative;
   overflow: hidden;
+}
+.featured-visual.live {
+  background-image: none;
+  background-color: #000;          /* match the splat page bg */
+}
+.splat-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .card-title {

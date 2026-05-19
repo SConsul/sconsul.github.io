@@ -18,27 +18,52 @@ const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.joi
 ---
 
 <Card label="featured project" span={2} badge={badge} meta={meta}>
-  <div class="featured-visual" aria-hidden="true"></div>
+  <!--
+    Visual area: SVG poster by default (works for non-WebGPU browsers).
+    On a WebGPU-capable browser the client script below replaces this
+    div's contents with an <iframe> that embeds the live /splat/
+    viewer in `embed` mode.
+  -->
+  <div class="featured-visual" id="featuredVisual" aria-hidden="true"></div>
+
   <h3 class="card-title">
     {proj.url ? <a href={proj.url}>{proj.title}</a> : proj.title}
   </h3>
   <p class="card-text">{proj.description}</p>
+
   <!--
-    "Launch viewer" CTA. Hidden by default; the client script below
-    reveals it only if `navigator.gpu` is present, so users on
-    non-WebGPU browsers don't see a button that would take them to a
-    dead end.
+    "Launch viewer" CTA — opens the standalone fullscreen page.
+    Hidden by default; revealed by the client script only on
+    WebGPU-capable browsers so the button never leads to a dead end.
   -->
-  <a id="splatLaunch" class="featured-cta" href="/splat/" hidden>
-    ▶ Launch viewer
+  <a id="splatLaunch" class="featured-cta" href="/splat/?scene=bonsai-7k.splat" hidden>
+    ▶ Launch fullscreen
   </a>
 </Card>
 
 <script>
-  // WebGPU feature detection. The viewer's bundle (~7MB WASM + 35MB
-  // scene file) only loads on the /splat page itself; here we just
-  // reveal the entry point if the browser can render it.
+  // WebGPU feature detection. On a supporting browser:
+  //   1. Replace the SVG poster with an <iframe> embedding /splat/ in
+  //      embed mode — gives a live, interactive preview right in the
+  //      card without polluting the home page's URL or pulling the
+  //      WASM into the home bundle.
+  //   2. Reveal the "Launch fullscreen" CTA underneath.
+  //
+  // On non-WebGPU browsers we do neither — the static SVG poster
+  // remains and the CTA never appears.
   if (typeof navigator !== 'undefined' && 'gpu' in navigator) {
+    const visual = document.getElementById('featuredVisual');
+    if (visual) {
+      const iframe = document.createElement('iframe');
+      iframe.src   = '/splat/?scene=bonsai-7k.splat&embed=1';
+      iframe.title = 'Gaussian splat viewer (bonsai-7k)';
+      iframe.loading = 'lazy';        // hold off the 42MB load if not in view
+      iframe.allow = 'webgpu';        // explicit permission policy (no-op same-origin, defensive)
+      iframe.setAttribute('scrolling', 'no');
+      iframe.className = 'splat-iframe';
+      visual.replaceChildren(iframe);
+      visual.classList.add('live');
+    }
     document.getElementById('splatLaunch')?.removeAttribute('hidden');
   }
 </script>

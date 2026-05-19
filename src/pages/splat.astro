@@ -109,6 +109,15 @@
         border-radius: 3px;
       }
       .hidden { display: none !important; }
+
+      /* Embed mode (when iframed into the home page): strip the chrome
+         so it looks like a live preview, not a navigable page. */
+      body.embed .home-link { display: none; }
+      body.embed #status {
+        top: 8px;
+        font-size: 10px;
+        padding: 4px 8px;
+      }
     </style>
   </head>
   <body>
@@ -132,8 +141,25 @@
       const canvas   = document.getElementById('gsplat-canvas');
       const status   = document.getElementById('status');
       const fallback = document.getElementById('fallback');
-      const params   = new URLSearchParams(window.location.search);
-      const scene    = params.get('scene') || 'bonsai-7k.splat';
+      let   params   = new URLSearchParams(window.location.search);
+
+      // Embed mode (iframed into the home page) hides the home link
+      // and shrinks the status banner. Triggered by ?embed=1.
+      if (params.has('embed')) {
+        document.body.classList.add('embed');
+      }
+
+      // The WASM reads `?scene=…` directly from window.location.search
+      // — it doesn't consume any JS variable we'd pass in. If the URL
+      // doesn't carry a scene, rewrite the URL via replaceState BEFORE
+      // we call init() so the WASM finds it.
+      if (!params.has('scene')) {
+        const u = new URL(window.location.href);
+        u.searchParams.set('scene', 'bonsai-7k.splat');
+        history.replaceState(null, '', u);
+        params = new URLSearchParams(window.location.search);
+      }
+      const scene = params.get('scene');
 
       // Keep the canvas backing buffer in sync with its visible CSS size.
       function sizeCanvas() {
