@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Placeholder poster for the Featured card on the home page.
+  Renders an abstract "Gaussian splats on dark" look as a stand-in for
+  a real screenshot of the bonsai-7k scene. Swap this file for an
+  actual viewer screenshot when one is captured.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 600 200"
+     preserveAspectRatio="xMidYMid slice"
+     role="img" aria-label="Gaussian splat scene preview">
+  <defs>
+    <!-- Heavy blur to give the ellipses a real "gaussian" softness. -->
+    <filter id="splat-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" />
+    </filter>
+    <!-- Subtle vignette to focus the eye toward the middle. -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="65%">
+      <stop offset="60%"  stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.55" />
+    </radialGradient>
+  </defs>
+
+  <!-- Dark background, matches the splat viewer page. -->
+  <rect width="600" height="200" fill="#0b0d0b" />
+
+  <!-- Splat cloud: green canopy + brown trunk/pot, blurred. -->
+  <g filter="url(#splat-blur)">
+    <!-- canopy -->
+    <ellipse cx="100" cy="105" rx="55" ry="38" fill="#34a352" opacity="0.55"/>
+    <ellipse cx="180" cy="85"  rx="60" ry="42" fill="#2f8a44" opacity="0.65"/>
+    <ellipse cx="265" cy="100" rx="50" ry="35" fill="#3aa66a" opacity="0.55"/>
+    <ellipse cx="355" cy="80"  rx="62" ry="44" fill="#2c9655" opacity="0.6"/>
+    <ellipse cx="450" cy="95"  rx="50" ry="36" fill="#3eaf5b" opacity="0.5"/>
+    <ellipse cx="520" cy="110" rx="45" ry="32" fill="#2f8a4b" opacity="0.45"/>
+
+    <!-- trunk + pot row -->
+    <ellipse cx="170" cy="160" rx="55" ry="22" fill="#7a4d24" opacity="0.55"/>
+    <ellipse cx="290" cy="170" rx="85" ry="24" fill="#8a5a2c" opacity="0.55"/>
+    <ellipse cx="430" cy="160" rx="60" ry="22" fill="#704620" opacity="0.5"/>
+
+    <!-- a few stray foreground splats for depth -->
+    <ellipse cx="80"  cy="55"  rx="22" ry="18" fill="#7fd99a" opacity="0.4"/>
+    <ellipse cx="395" cy="48"  rx="20" ry="16" fill="#9be1b1" opacity="0.35"/>
+    <ellipse cx="555" cy="45"  rx="24" ry="20" fill="#5fc380" opacity="0.4"/>
+  </g>
+
+  <!-- Vignette + label. -->
+  <rect width="600" height="200" fill="url(#vignette)" />
+  <text x="300" y="184"
+        text-anchor="middle"
+        fill="#9b9b9b"
+        font-family="ui-monospace, monospace"
+        font-size="10"
+        letter-spacing="0.08em">
+    BONSAI · 7K SPLATS
+  </text>
+</svg>

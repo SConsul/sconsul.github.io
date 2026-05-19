@@ -251,28 +251,20 @@ nav.site-nav .theme-toggle:hover {
 
 /* ─── Card content patterns ──────────────────────────────────────────── */
 
-/* featured project — hatched placeholder where a real visual will go */
+/* featured project — placeholder poster (swap for a real screenshot
+   when one is captured). The SVG suggests a Gaussian-splat scene
+   (blurred green/brown blobs over dark), with a `BONSAI · 7K SPLATS`
+   label so it's clear what's coming. */
 .featured-visual {
-  background:
-    repeating-linear-gradient(45deg, transparent 0 8px, var(--hatch-dark) 8px 9px),
-    var(--hatch);
+  background-image: url('/splat-poster.svg');
+  background-size: cover;
+  background-position: center;
+  background-color: #0b0d0b;       /* matches the SVG bg if it fails to load */
   border-radius: 8px;
   height: 140px;
   margin-bottom: 14px;
   position: relative;
   overflow: hidden;
-}
-.featured-visual::after {
-  content: '[ splat viewer preview ]';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--fg-subtle);
-  letter-spacing: 0.05em;
 }
 
 .card-title {
