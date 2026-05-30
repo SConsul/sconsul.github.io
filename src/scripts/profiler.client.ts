@@ -19,7 +19,7 @@ import { observeVitals } from '@utils/vitals';
 import { refreshNet } from '@utils/network';
 import { detectGpu, probeVsync } from '@utils/gpu';
 import { buildSmiTable } from '@utils/smi-table';
-import { frameLaneHtml, fakeLaneHtml, FAKE_LANE_CONFIG } from '@utils/nsys';
+import { frameLaneHtml } from '@utils/nsys';
 import { initTheme, cycleTheme, getThemeMode, listenSystemTheme } from '@utils/theme';
 import { initTooltips } from '@utils/tooltip';
 
@@ -59,7 +59,10 @@ function wire(): void {
 
   // ─── Render functions ─────────────────────────────────────────────────
   let activeTab: Tab = 'smi';
-  let fakeLanesPrimed = false;
+  /** Counter for the per-tick aggregator. Used to throttle expensive
+      refreshes (DOM scan, resource enumeration) when the profiler
+      panel is closed — see the comment in `monitor.start(...)` below. */
+  let tickCount = 0;
 
   const renderBar = (): void => {
     $('fps').textContent  = String(stats.fps);
@@ -81,14 +84,6 @@ function wire(): void {
 
     const framesEl = $maybe('nsysFrames');
     if (framesEl) framesEl.textContent = String(monitor.history.length);
-
-    if (!fakeLanesPrimed) {
-      const { cpu, gpu: gpuLane, net } = FAKE_LANE_CONFIG;
-      $('laneCpu').innerHTML = fakeLaneHtml(cpu.count,     cpu.color,     cpu.maxWidth,     cpu.opacity);
-      $('laneGpu').innerHTML = fakeLaneHtml(gpuLane.count, gpuLane.color, gpuLane.maxWidth, gpuLane.opacity);
-      $('laneNet').innerHTML = fakeLaneHtml(net.count,     net.color,     net.maxWidth,     net.opacity);
-      fakeLanesPrimed = true;
-    }
   };
 
   /** Render the active tab if the panel is open. */
@@ -98,12 +93,26 @@ function wire(): void {
     else renderNsys();
   };
 
-  // ─── Tick handler — runs at perf.TICK_MS cadence ──────────────────────
+  // ─── Tick handler — runs at perf.TICK_MS cadence (500 ms) ────────────
+  // When the profiler panel is collapsed we don't need fresh values
+  // for the expensive fields (`refreshLive` does an O(N) DOM scan,
+  // `refreshNet` enumerates resource entries) — the only things the
+  // slim bar displays are fps/frame/heap/gpu/dom, and dom rarely
+  // changes between mounts. Throttle the expensive refreshes to
+  // every 6 ticks (~3 s) when the panel is closed, keep them at every
+  // tick when it's open.
   monitor.start(() => {
-    refreshLive(stats);
-    refreshNet(stats);
+    tickCount++;
+    const open = profilerEl.classList.contains('open');
+    if (open || tickCount % 6 === 0) {
+      refreshLive(stats);
+      refreshNet(stats);
+    }
     renderBar();
-    renderActiveTab();
+    if (open) {
+      if (activeTab === 'smi') renderSmi();
+      else renderNsys();
+    }
   });
 
   // ─── Interactions: bar click, close, tab switch, dblclick-to-close ────

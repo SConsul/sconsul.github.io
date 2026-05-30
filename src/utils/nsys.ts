@@ -1,13 +1,16 @@
 /**
  * Renderer for the nsys-style timeline tab.
  *
- * The `frame::time` lane is driven by REAL frame samples — bar height is
- * proportional to frame duration (taller = slower frame), color steps
- * from green to yellow to red as the frame budget tightens.
+ * Currently only one lane is drawn: `frame::time`, fed from the real
+ * 5-second frame ring buffer maintained by the perf monitor. Earlier
+ * versions had three additional lanes (`cpu::main`, `gpu::paint`,
+ * `net::xhr`) drawn with deterministic mock bars — they're gone now
+ * because "static-looking placeholder" was worse than "no lane".
  *
- * The CPU / GPU / network lanes currently render deterministic mock
- * activity so the timeline shape is visible. Wiring them to real
- * PerformanceObserver events (paint timings, longtask) is a follow-up.
+ * If we want to bring those lanes back, the path is real
+ * PerformanceObserver streams: `longtask` for CPU, `paint` for paint
+ * events, `resource` for network. They'd be sparse during idle but
+ * accurate.
  */
 
 import type { FrameSample } from '@/types';
@@ -40,41 +43,3 @@ export function frameLaneHtml(now: number, history: readonly FrameSample[], lane
     })
     .join('');
 }
-
-/**
- * Deterministic faux-busy bars for the CPU/GPU/network lanes.
- *
- * Uses a tiny LCG seeded by `count` so the same parameters yield the
- * same bar pattern across renders — avoids visual jitter on re-open.
- */
-export function fakeLaneHtml(
-  count: number,
-  color: string,
-  maxWidthPct: number,
-  opacity: number
-): string {
-  let seed = count * 1337;
-  const rand = (): number => {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280;
-  };
-
-  const bars: string[] = [];
-  for (let i = 0; i < count; i++) {
-    const xPct = rand() * 100;
-    const wPct = rand() * maxWidthPct + 0.4;
-    bars.push(
-      `<div class="bar" ` +
-      `style="left:${xPct.toFixed(1)}%;width:${wPct.toFixed(2)}%;` +
-      `background:${color};opacity:${opacity};"></div>`
-    );
-  }
-  return bars.join('');
-}
-
-/** Pre-baked configurations for the three mock lanes. */
-export const FAKE_LANE_CONFIG = {
-  cpu: { count: 45, color: '#60a5fa', maxWidth: 1.6, opacity: 0.7 },
-  gpu: { count: 28, color: '#a78bfa', maxWidth: 2.4, opacity: 0.75 },
-  net: { count: 7,  color: '#fbbf24', maxWidth: 5.0, opacity: 0.85 },
-} as const;
