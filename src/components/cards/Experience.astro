@@ -1,8 +1,8 @@
 ---
-/** Experience — role list with right-aligned date ranges. */
+/** Experience — role list. Dates intentionally omitted on the home card
+    (the resume PDF carries the full timeline). */
 import Card from '@components/Card.astro';
 import { experience } from '@data/experience';
-import { shortMonthYear } from '@utils/format';
 ---
 
 <Card label="experience" span={2}>
@@ -17,7 +17,6 @@ import { shortMonthYear } from '@utils/format';
           </div>
           <div class="loc">{r.location}</div>
         </div>
-        <div class="rhs">{shortMonthYear(r.start)} — {shortMonthYear(r.end)}</div>
       </div>
     ))}
   </div>
