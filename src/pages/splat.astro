@@ -181,7 +181,39 @@
         status.textContent = 'loading ' + scene + '…';
         canvas.focus(); // give TAB / arrow keys to the viewer's profiler
 
-        import('./pkg/gsplat_web.js')
+        // Wait for the canvas to have real (non-zero) dimensions before
+        // calling init(). When this page is iframed, layout hasn't run
+        // by the time the script executes — `canvas.clientWidth` is 0,
+        // we'd clamp to 1px, and the viewer's `Orbit::from_bbox(aspect)`
+        // would initialize for a 1:1 frame. ResizeObserver later grows
+        // the canvas but the initial orbit is already baked in, so the
+        // scene appears wrongly framed. The fullscreen page never hits
+        // this because the window has its real size before scripts run.
+        function waitForCanvasSize() {
+          return new Promise((resolve) => {
+            if (canvas.clientWidth > 0 && canvas.clientHeight > 0) {
+              resolve();
+              return;
+            }
+            const ro = new ResizeObserver(() => {
+              if (canvas.clientWidth > 0 && canvas.clientHeight > 0) {
+                ro.disconnect();
+                resolve();
+              }
+            });
+            ro.observe(canvas);
+            // Safety net: don't wait forever — if for some reason the
+            // canvas never gets a size (display:none etc.), give up
+            // after 2s and let init use whatever's there.
+            setTimeout(() => { ro.disconnect(); resolve(); }, 2000);
+          });
+        }
+
+        waitForCanvasSize()
+          .then(() => {
+            sizeCanvas(); // ensure backing buffer matches the now-known CSS size
+            return import('./pkg/gsplat_web.js');
+          })
           .then(({ default: init }) => init())
           .then(() => {
             setTimeout(() => status.classList.add('hidden'), 1200);
