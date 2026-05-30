@@ -1,10 +1,10 @@
 name: Deploy site to GitHub Pages
 
-# Triggered by pushes to main (the default branch on user/org Pages repos)
-# and manually via the Actions tab.
+# Triggered by pushes to the default branch (either name works) and
+# manually via the Actions tab.
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 # Permissions required by actions/deploy-pages (OIDC token + Pages writer).
