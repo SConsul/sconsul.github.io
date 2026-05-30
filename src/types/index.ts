@@ -139,3 +139,14 @@ export interface FrameSample {
   readonly t: number;
   readonly dt: number;
 }
+
+/**
+ * One sample for the event-driven nsys lanes (`cpu::main`,
+ * `gpu::paint`, `net::xhr`). `t` is the event's start time
+ * (`performance.now()` epoch). `duration` is its observed length in
+ * ms; 0 for instantaneous events (e.g. paint markers).
+ */
+export interface EventSample {
+  readonly t: number;
+  readonly duration: number;
+}

@@ -39,6 +39,18 @@ const { buildHash = 'a3f2c8', version = '0.1.0' } = Astro.props;
           <span><span id="nsysFrames">--</span> frames captured</span>
         </div>
         <div class="nsys-row">
+          <div class="label" data-tooltip="Long tasks (>50ms) blocking the main thread — fed by the longtask PerformanceObserver. Sparse during idle by design.">cpu::main</div>
+          <div class="lane" id="laneCpu"></div>
+        </div>
+        <div class="nsys-row">
+          <div class="label" data-tooltip="Paint events + layout shifts — fed by the paint and layout-shift PerformanceObservers. Mostly initial-load activity.">gpu::paint</div>
+          <div class="lane" id="laneGpu"></div>
+        </div>
+        <div class="nsys-row">
+          <div class="label" data-tooltip="Network activity — every PerformanceResourceTiming entry over the last 5s. Includes scripts, stylesheets, images, fetch/XHR.">net::xhr</div>
+          <div class="lane" id="laneNet"></div>
+        </div>
+        <div class="nsys-row">
           <div class="label" data-tooltip="Per-frame render time — taller bars = slower frames (green <17ms, red >33ms)">frame::time</div>
           <div class="lane frame" id="laneFrame"></div>
         </div>

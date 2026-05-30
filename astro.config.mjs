@@ -12,22 +12,24 @@ import mdx from '@astrojs/mdx';
  * `npm run dev` / `npm run preview` — see the splat README for
  * production options.
  */
+/**
+ * @typedef {{ setHeader: (k: string, v: string) => void }} ResLike
+ * @typedef {{ middlewares: { use: (mw: (req: unknown, res: ResLike, next: () => void) => void) => void } }} ServerLike
+ */
+const setHeaders = (/** @type {ServerLike} */ server) => {
+  server.middlewares.use((_req, res, next) => {
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+    res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+    next();
+  });
+};
+
 const coopCoep = {
   name: 'coop-coep-headers',
-  configureServer(server) {
-    server.middlewares.use((_req, res, next) => {
-      res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-      res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-      next();
-    });
-  },
-  configurePreviewServer(server) {
-    server.middlewares.use((_req, res, next) => {
-      res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
-      res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-      next();
-    });
-  },
+  /** @param {ServerLike} server */
+  configureServer(server) { setHeaders(server); },
+  /** @param {ServerLike} server */
+  configurePreviewServer(server) { setHeaders(server); },
 };
 
 // https://astro.build/config

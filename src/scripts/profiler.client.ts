@@ -19,7 +19,8 @@ import { observeVitals } from '@utils/vitals';
 import { refreshNet } from '@utils/network';
 import { detectGpu, probeVsync } from '@utils/gpu';
 import { buildSmiTable } from '@utils/smi-table';
-import { frameLaneHtml } from '@utils/nsys';
+import { frameLaneHtml, eventLaneHtml, trimHistory, EVENT_LANE_STYLE } from '@utils/nsys';
+import type { EventSample } from '@/types';
 import { initTheme, cycleTheme, getThemeMode, listenSystemTheme } from '@utils/theme';
 import { initTooltips } from '@utils/tooltip';
 
@@ -57,6 +58,39 @@ function wire(): void {
 
   observeVitals(stats);
 
+  // ─── Event histories for the nsys lanes ───────────────────────────────
+  // Each lane keeps its own rolling 5s buffer of real events. Separate
+  // PerformanceObservers from vitals.ts because vitals tracks aggregate
+  // stats (counts, CLS sum, INP max) while these need per-event samples.
+  const longTaskHistory: EventSample[] = [];
+  const paintHistory:    EventSample[] = [];   // paint events + layout shifts
+  const resourceHistory: EventSample[] = [];
+
+  /** Subscribe to a PerformanceObserver type, silently skipping unsupported. */
+  const obs = <T extends PerformanceEntry>(
+    type: string,
+    cb: (entries: T[]) => void,
+  ): void => {
+    try {
+      new PerformanceObserver((list) => cb(list.getEntries() as T[]))
+        .observe({ type, buffered: true } as PerformanceObserverInit);
+    } catch { /* not supported */ }
+  };
+
+  obs('longtask', (entries) => {
+    for (const e of entries) longTaskHistory.push({ t: e.startTime, duration: e.duration });
+  });
+  obs('paint', (entries) => {
+    for (const e of entries) paintHistory.push({ t: e.startTime, duration: 0 });
+  });
+  obs('layout-shift', (entries) => {
+    // Treat each shift as an instantaneous paint-side event.
+    for (const e of entries) paintHistory.push({ t: e.startTime, duration: 0 });
+  });
+  obs('resource', (entries) => {
+    for (const e of entries) resourceHistory.push({ t: e.startTime, duration: e.duration });
+  });
+
   // ─── Render functions ─────────────────────────────────────────────────
   let activeTab: Tab = 'smi';
   /** Counter for the per-tick aggregator. Used to throttle expensive
@@ -79,8 +113,24 @@ function wire(): void {
   const renderNsys = (): void => {
     const frameLane = $maybe('laneFrame');
     if (!frameLane) return;
-    const h = frameLane.clientHeight || 20;
-    frameLane.innerHTML = frameLaneHtml(performance.now(), monitor.history, h);
+    const now = performance.now();
+
+    // Trim each rolling buffer to the visible window before rendering.
+    trimHistory(longTaskHistory, now);
+    trimHistory(paintHistory, now);
+    trimHistory(resourceHistory, now);
+
+    // Frame::time lane uses the perf monitor's frame ring buffer.
+    const fh = frameLane.clientHeight || 20;
+    frameLane.innerHTML = frameLaneHtml(now, monitor.history, fh);
+
+    // Event lanes — bars positioned by age across the 5-second window.
+    const cpuLane = $maybe('laneCpu');
+    const gpuLane = $maybe('laneGpu');
+    const netLane = $maybe('laneNet');
+    if (cpuLane) cpuLane.innerHTML = eventLaneHtml(now, longTaskHistory, EVENT_LANE_STYLE.cpu);
+    if (gpuLane) gpuLane.innerHTML = eventLaneHtml(now, paintHistory,    EVENT_LANE_STYLE.gpu);
+    if (netLane) netLane.innerHTML = eventLaneHtml(now, resourceHistory, EVENT_LANE_STYLE.net);
 
     const framesEl = $maybe('nsysFrames');
     if (framesEl) framesEl.textContent = String(monitor.history.length);
