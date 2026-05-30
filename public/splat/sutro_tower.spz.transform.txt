@@ -1,0 +1,10 @@
+# 4x4 row-major rigid transform applied to splat positions + rotations.
+#
+# Sutro Tower's source frame (drone-captured + COLMAP-aligned, then
+# SOGS-encoded) has the tower's vertical axis lying along world Z and a
+# very thin Y span. A −90° rotation around X (Z→Y, Y→−Z) stands it
+# upright in the viewer's Y-up convention.
+1  0  0  0
+0  0  1  0
+0 -1  0  0
+0  0  0  1
