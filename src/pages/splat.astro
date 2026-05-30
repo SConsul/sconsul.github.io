@@ -36,9 +36,18 @@
         color: #ddd;
         font: 13px/1.4 'JetBrains Mono', ui-monospace, monospace;
       }
+      /* gsplat-viewer calls winit's `with_inner_size(1280, 720)` on
+         the window it owns. The winit-web backend implements that by
+         writing `width: 1280px; height: 720px` inline on the canvas's
+         style attribute, which beats a normal CSS rule. The
+         `!important` declarations here override the inline style so
+         the canvas stays viewport-sized. ResizeObserver in the script
+         below keeps the backing buffer (canvas.width / canvas.height)
+         in sync with the now-fullscreen CSS dimensions. */
       canvas#gsplat-canvas {
         display: block;
-        width: 100vw; height: 100vh;
+        width: 100vw !important;
+        height: 100vh !important;
         outline: none;
       }
 
