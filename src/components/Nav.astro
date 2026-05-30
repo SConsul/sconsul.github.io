@@ -7,11 +7,10 @@
  * Resume is an HTML page (/resume) rather than a direct PDF link; the
  * page itself surfaces a "Download PDF" button to profile.resumeUrl.
  */
-// `resume` link hidden for now — the /resume page still exists and is
-// reachable by URL, just not linked from the nav.
-const links = [
-  { href: '/writing', label: 'writing' },
-] as const;
+// Both `writing` and `resume` are hidden from the nav for now.
+// `/resume` still exists as a page; `/writing` pages are removed
+// entirely (see src/pages/writing/, which no longer has routes).
+const links: { href: string; label: string }[] = [];
 ---
 
 <nav class="site-nav">

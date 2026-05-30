@@ -366,6 +366,20 @@ nav.site-nav .theme-toggle:hover {
   line-height: 1.5;
 }
 
+/* writing card placeholder — replaces the per-post list while
+   /writing pages are hidden. Centered vertically in the body so it
+   doesn't sit at the top with a void underneath. */
+.writing-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--fg-subtle);
+  letter-spacing: 0.05em;
+}
+
 /* writing — vertical list of post entries.
    Cap visible height to roughly four posts (each ≈54px tall + 14px gap
    between, so 4*54 + 3*14 = 258px; padded up a bit so the 5th title

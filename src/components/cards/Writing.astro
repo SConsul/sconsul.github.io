@@ -1,25 +1,24 @@
 ---
 /**
- * Writing — full list of posts (newest first). The card height is
- * fixed by the bento row; if there are more entries than fit, the
- * inner list scrolls. Pulls from the `writing` content collection
- * (see src/content.config.ts).
+ * Writing — placeholder card. The MDX content under
+ * src/content/writing/ is all stubs ("coming soon" + an outline), so
+ * the home card collapses to a single muted "drafts in progress"
+ * line. The card still reads the collection so the badge reflects the
+ * real draft count.
+ *
+ * The /writing index and per-post pages have been removed too — no
+ * `meta` / `metaHref` to link to from the card footer.
+ *
+ * To restore the post listing: revert the body to a `.writing-list`
+ * mapping over `posts` and re-add `src/pages/writing/index.astro` +
+ * `src/pages/writing/[...slug].astro`. The dead `.writing-list` /
+ * `.writing-item` CSS in global.css is still there.
  */
 import Card from '@components/Card.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('writing'))
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
-
-/** "May '26" — short, mono-friendly month/year. */
-function monthYear(d: Date): string {
-  const m = d.toLocaleString('en-US', { month: 'short' }).toLowerCase();
-  const y = String(d.getFullYear()).slice(2);
-  return `${m} '${y}`;
-}
-
-const badge = `${posts.length} post${posts.length === 1 ? '' : 's'}`;
+const posts = (await getCollection('writing')).filter((p) => !p.data.draft);
+const badge = `${posts.length} draft${posts.length === 1 ? '' : 's'}`;
 ---
 
 <Card
@@ -27,18 +26,6 @@ const badge = `${posts.length} post${posts.length === 1 ? '' : 's'}`;
   span={2}
   badge={badge}
   badgeStyle="subtle"
-  meta="all posts →"
-  metaHref="/writing"
 >
-  <div class="writing-list">
-    {posts.map((p) => (
-      <a href={`/writing/${p.id}`} class="writing-item">
-        <div class="title">{p.data.title}</div>
-        <div class="meta-sub">
-          {p.data.readingTimeMin ? `${p.data.readingTimeMin} min · ` : ''}
-          {monthYear(p.data.publishDate)}
-        </div>
-      </a>
-    ))}
-  </div>
+  <div class="writing-empty">drafts in progress</div>
 </Card>
