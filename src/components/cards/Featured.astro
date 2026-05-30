@@ -52,17 +52,22 @@ const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.joi
   // On non-WebGPU browsers we do neither — the static SVG poster
   // remains and the CTA never appears.
   console.log('[featured] WebGPU:', 'gpu' in (globalThis.navigator ?? {}));
+  console.log('[featured] crossOriginIsolated:', globalThis.crossOriginIsolated);
   if (typeof navigator !== 'undefined' && 'gpu' in navigator) {
     const visual = document.getElementById('featuredVisual');
     if (visual) {
       const iframe = document.createElement('iframe');
       iframe.src   = '/splat/?scene=bonsai-7k.splat&embed=1';
       iframe.title = 'Gaussian splat viewer (bonsai-7k)';
-      // No `loading="lazy"` — the Featured card is above the fold so
-      // lazy loading was unnecessarily delaying initialization in dev.
-      iframe.allow = 'webgpu';        // explicit permission policy (no-op same-origin, defensive)
+      // Permissions-Policy: explicitly delegate WebGPU AND cross-origin
+      // isolation into the iframe so its document can use
+      // SharedArrayBuffer (needed by wasm-bindgen-rayon's thread pool).
+      iframe.allow = 'webgpu; cross-origin-isolated';
       iframe.setAttribute('scrolling', 'no');
       iframe.className = 'splat-iframe';
+      iframe.addEventListener('load', () => {
+        console.log('[featured] iframe loaded:', iframe.contentDocument?.title ?? '(opaque)');
+      });
       visual.replaceChildren(iframe);
       visual.classList.add('live');
       console.log('[featured] iframe injected:', iframe.src);
