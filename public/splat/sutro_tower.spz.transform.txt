@@ -8,3 +8,9 @@
 0  0  1  0
 0 -1  0  0
 0  0  0  1
+
+# init_scale = multiplier on the orbit's default radius
+# (bbox_diag * 1.5). Smaller values pull the start camera inside the
+# bbox so the foreground (the tower itself) dominates the frame
+# instead of dissolving into the surrounding city panorama.
+init_scale: 0.15
