@@ -28,6 +28,21 @@
     <title>splat viewer · sarthak consul</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="robots" content="noindex" />
+
+    <!--
+      COOP/COEP service worker.
+      GitHub Pages can't send the Cross-Origin-Opener-Policy and
+      Cross-Origin-Embedder-Policy headers that `wasm-bindgen-rayon`
+      requires for SharedArrayBuffer. This SW intercepts every fetch
+      under /splat/ and rewrites the headers so the page becomes
+      `crossOriginIsolated`. First load installs the SW and reloads;
+      every load after that just hits the cached registration.
+
+      Must run before the WASM `init()` call, otherwise that init
+      hangs forever waiting for workers that can't share memory —
+      which is exactly what we hit on the deployed site.
+    -->
+    <script is:inline src="/splat/coi-serviceworker.js"></script>
     <style>
       html, body {
         margin: 0; padding: 0; height: 100%;
