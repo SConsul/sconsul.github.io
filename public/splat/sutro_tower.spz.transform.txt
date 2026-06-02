@@ -32,7 +32,8 @@
 # right, press `C` in the viewer to print the current orbit as a
 # CameraPose block, paste it back into this file. Double-left-click
 # on the canvas resets the orbit to whatever this file specifies.
-camera_target_offset: 0 8 0
+camera_target_offset: -0.270 6.596 -0.392
 camera_radius: 10
-camera_pitch_deg: 30
-camera_yaw_deg: 0
+camera_yaw_deg: 0.72
+camera_pitch_deg: -76.04
+camera_roll_deg: 0
