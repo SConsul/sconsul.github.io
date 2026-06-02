@@ -51,6 +51,18 @@ if (typeof window === 'undefined') {
             headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
           }
           headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+
+          // Long-cache the immutable assets: scene file + transform
+          // sidecar. They're versioned implicitly by filename and
+          // never change in place; GH Pages serves them with a
+          // short default Cache-Control. wasm/js artifacts rotate
+          // when we rebuild, so they don't get this treatment —
+          // they ride the normal GH Pages cache (ETag-revalidated).
+          const url = new URL(r.url);
+          if (url.pathname.endsWith('.spz') || url.pathname.endsWith('.transform.txt')) {
+            headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+          }
+
           return new Response(response.body, {
             status: response.status,
             statusText: response.statusText,
