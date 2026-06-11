@@ -30,9 +30,8 @@ export const stack: readonly StackGroup[] = [
  */
 export const focus: readonly string[] = [
   'inference optimization',
-  'Rust',
-  'CUDA',
+  'large-scale ML infra',
   'computer vision',
   'world models',
-  'scalable ML infra',
+  'gaussian splats',
 ];
