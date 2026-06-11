@@ -4,7 +4,7 @@ export const profile: Profile = {
   name: 'Sarthak Consul',
   tagline: 'ML systems engineer',
   bio:
-    'Building end-to-end ML systems across the full hardware spectrum — from power-constrained edge inference on embedded GPUs to large-scale distributed training. Currently at Matic Robots; previously at Meta.',
+    'Building end-to-end ML systems across the full compute spectrum — from power-constrained edge inference on embedded GPUs to large-scale distributed training. Currently at Matic Robots; previously at Meta.',
   now:
     'Optimizing SOTA vision model inference · scaling up training+data platforms · writing a streamable Gaussian-splat viewer',
   location: 'Bay Area, CA',
