@@ -6,7 +6,7 @@ export const profile: Profile = {
   bio:
     'Building end-to-end ML systems across the full hardware spectrum — from power-constrained edge inference on embedded GPUs to large-scale distributed training. Currently at Matic Robots; previously at Meta.',
   now:
-    'Optimizing SOTA vision model inference on Jetson Nanos · scaling up training+data platforms · writing a streamable Gaussian-splat viewer',
+    'Optimizing SOTA vision model inference · scaling up training+data platforms · writing a streamable Gaussian-splat viewer',
   location: 'Bay Area, CA',
   email: 'sarthakconsul@gmail.com',
   github: 'SConsul',

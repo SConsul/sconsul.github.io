@@ -14,7 +14,7 @@ const badge = proj.status === 'wip' ? 'WIP' : undefined;
  */
 const langs = proj.tech.filter((t) => /^(Rust|Python|C\+\+|TypeScript)$/i.test(t));
 const gpus  = proj.tech.filter((t) => /^(WGPU|CUDA|Metal|Vulkan|OpenGL)$/i.test(t));
-const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.join('+').toLowerCase() || '—'} · status: ${proj.status} · v0.1`;
+const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.join('+').toLowerCase() || '—'}`;
 ---
 
 <Card label="featured project" span={2} badge={badge} meta={meta}>
