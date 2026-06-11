@@ -18,10 +18,9 @@ const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.joi
 ---
 
 <Card label="featured project" span={2} badge={badge} meta={meta}>
-  <!-- Static SVG poster — the home page no longer auto-loads the splat
-       viewer. Users click "Launch fullscreen" below to open the live
-       viewer on /splat/. -->
-  <div class="featured-visual" aria-hidden="true"></div>
+  <video class="featured-visual" autoplay muted loop playsinline aria-hidden="true">
+    <source src="/sutro-orbit.mp4" type="video/mp4" />
+  </video>
 
   <h3 class="card-title">
     {proj.url ? <a href={proj.url}>{proj.title}</a> : proj.title}
@@ -31,7 +30,7 @@ const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.joi
   <!-- "Launch fullscreen" CTA. Hidden until the client script confirms
        WebGPU support, so users on non-WebGPU browsers don't see a
        button that leads to a dead end. -->
-  <a id="splatLaunch" class="featured-cta" href="/splat/?scene=sutro_tower.spz" hidden>
+  <a id="splatLaunch" class="featured-cta" href="/splat/?scene=sutro_tower.spzp" hidden>
     ▶ Launch fullscreen
   </a>
 </Card>
@@ -59,8 +58,8 @@ const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.joi
     const cellular = conn?.effectiveType && conn.effectiveType !== '4g';
     if (!saveData && !cellular) {
       const urls = [
-        '/splat/sutro_tower.spz',
-        '/splat/sutro_tower.spz.transform.txt',
+        '/splat/sutro_tower.spzp',
+        '/splat/sutro_tower.spzp.transform.txt',
         '/splat/pkg/gsplat_web.js',
         '/splat/pkg/gsplat_web_bg.wasm',
       ];
