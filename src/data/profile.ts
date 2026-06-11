@@ -4,9 +4,9 @@ export const profile: Profile = {
   name: 'Sarthak Consul',
   tagline: 'ML systems engineer',
   bio:
-    'Building end-to-end ML systems, across the full hardware spectrum, from power constraint edge inference to massive-scale training. Currently at Matic Robots; ex-Meta.',
+    'Building end-to-end ML systems across the full hardware spectrum — from power-constrained edge inference on embedded GPUs to large-scale distributed training. Currently at Matic Robots; previously at Meta.',
   now:
-    'tightening inference latency on Jetson Nanos · scaling up evaluation and training platforms · writing a Rust + wgpu Gaussian-splat viewer',
+    'Optimizing inference of SOTA vision models on Jetson Nanos · scaling up training and data platforms · writing a Rust + wgpu streamable Gaussian-splat viewer',
   location: 'Bay Area, CA',
   email: 'sarthakconsul@gmail.com',
   github: 'SConsul',

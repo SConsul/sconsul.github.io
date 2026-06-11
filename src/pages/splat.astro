@@ -179,7 +179,7 @@
       // we call init() so the WASM finds it.
       if (!params.has('scene')) {
         const u = new URL(window.location.href);
-        u.searchParams.set('scene', 'sutro_tower.spz');
+        u.searchParams.set('scene', 'sutro_tower.spzp');
         history.replaceState(null, '', u);
         params = new URLSearchParams(window.location.search);
       }

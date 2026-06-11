@@ -1,0 +1,24 @@
+# 4x4 row-major rigid transform applied to splat positions + rotations.
+#
+# Sutro Tower's source frame (drone-captured + COLMAP-aligned, then
+# SOGS-encoded) has the tower's vertical axis lying along world Z and a
+# very thin Y span. A −90° rotation around X (Z→Y, Y→−Z) stands it
+# upright in the viewer's Y-up convention.
+1  0  0  0
+0  0  1  0
+0 -1  0  0
+0  0  0  1
+
+# Initial camera (post-transform frame). Every field is independently
+# optional — missing ones fall back to bbox-derived defaults.
+#   camera_radius: distance from target in world units. Robust bbox
+#                  span (0.5%/99.5% percentile clip) is ~88 units; we
+#                  pin the load-time camera at ~20 (≈ 0.22 × bbox_diag),
+#                  inside the dense aerial view of the city rather than
+#                  at the bbox edge looking down on a void.
+#   camera_yaw_deg / camera_pitch_deg / camera_roll_deg: orbit angles
+#                  applied to the default Z-axis viewing direction.
+#   camera_target_offset: extra translation applied to bbox.center().
+camera_radius: 20
+camera_yaw_deg: 0
+camera_pitch_deg: 0

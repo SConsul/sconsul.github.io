@@ -13,7 +13,7 @@ export const projects: readonly Project[] = [
       'High-performance Rust renderer for streamable 3D Gaussian-splat scenes: ' +
       'progressive LOD streaming over the network, on-the-fly decoding, and ' +
       'custom GPU rasterization kernels.',
-    tech: ['Rust', 'WGPU', 'CUDA'],
+    tech: ['Rust', 'WGPU', 'Metal', 'CUDA'],
     status: 'wip',
     featured: true,
   },
