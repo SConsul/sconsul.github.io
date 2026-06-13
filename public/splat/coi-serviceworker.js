@@ -59,7 +59,7 @@ if (typeof window === 'undefined') {
           // when we rebuild, so they don't get this treatment —
           // they ride the normal GH Pages cache (ETag-revalidated).
           const url = new URL(r.url);
-          if (url.pathname.endsWith('.spz') || url.pathname.endsWith('.transform.txt')) {
+          if (url.pathname.endsWith('.spzps') || url.pathname.endsWith('.transform.txt')) {
             headers.set('Cache-Control', 'public, max-age=31536000, immutable');
           }
 

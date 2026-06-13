@@ -30,7 +30,7 @@ const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.joi
   <!-- "Launch fullscreen" CTA. Hidden until the client script confirms
        WebGPU support, so users on non-WebGPU browsers don't see a
        button that leads to a dead end. -->
-  <a id="splatLaunch" class="featured-cta" href="/splat/?scene=sutro_tower.spzp" hidden>
+  <a id="splatLaunch" class="featured-cta" href="/splat/?scene=sutro_tower.spzps" hidden>
     ▶ Launch fullscreen
   </a>
 </Card>
@@ -58,8 +58,8 @@ const meta = `lang: ${langs.join('+').toLowerCase() || '—'} · gpu: ${gpus.joi
     const cellular = conn?.effectiveType && conn.effectiveType !== '4g';
     if (!saveData && !cellular) {
       const urls = [
-        '/splat/sutro_tower.spzp',
-        '/splat/sutro_tower.spzp.transform.txt',
+        '/splat/sutro_tower.spzps',
+        '/splat/sutro_tower.spzps.transform.txt',
         '/splat/pkg/gsplat_web.js',
         '/splat/pkg/gsplat_web_bg.wasm',
       ];

@@ -176,8 +176,9 @@
       // The WASM reads `?scene=…` directly from window.location.search
       // — it doesn't consume any JS variable we'd pass in. If the URL
       // doesn't carry a scene, rewrite the URL via replaceState BEFORE
-      // we call init() so the WASM finds it.
-      if (!params.has('scene')) {
+      // we call init() so the WASM finds it. Also redirect stale .spzp
+      // links (old Featured card href) to .spzps now that .spzp is removed.
+      if (!params.has('scene') || params.get('scene') === 'sutro_tower.spzp') {
         const u = new URL(window.location.href);
         u.searchParams.set('scene', 'sutro_tower.spzps');
         history.replaceState(null, '', u);
