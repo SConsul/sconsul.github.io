@@ -134,6 +134,31 @@
       }
       .hidden { display: none !important; }
 
+      #spin-btn {
+        position: fixed;
+        bottom: 18px; right: 18px;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.45);
+        color: rgba(220, 220, 220, 0.85);
+        font-size: 22px;
+        line-height: 1;
+        display: flex; align-items: center; justify-content: center;
+        transition: background 150ms, color 150ms, transform 150ms;
+        z-index: 10;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      #spin-btn:hover { background: rgba(0, 0, 0, 0.7); color: #fff; }
+      #spin-btn.active {
+        background: rgba(255, 255, 255, 0.18);
+        color: #fff;
+        animation: spin-icon 2s linear infinite;
+      }
+      @keyframes spin-icon { to { transform: rotate(360deg); } }
+
       /* Embed mode (when iframed into the home page): strip the chrome
          so it looks like a live preview, not a navigable page. */
       body.embed .home-link { display: none; }
@@ -142,10 +167,12 @@
         font-size: 10px;
         padding: 4px 8px;
       }
+      body.embed #spin-btn { display: none; }
     </style>
   </head>
   <body>
     <a href="/" class="home-link" aria-label="back to home">← home</a>
+    <button id="spin-btn" aria-label="toggle auto-rotate" title="auto-rotate (R)">↻</button>
 
     <canvas id="gsplat-canvas" tabindex="0"></canvas>
     <div id="status">loading…</div>
@@ -234,6 +261,28 @@
           });
         }
 
+        // Auto-rotate button: dispatches a synthetic KeyR to the canvas so
+        // winit's web backend toggles state.auto_spin, same as pressing R.
+        const spinBtn = document.getElementById('spin-btn');
+        const fireKeyR = () => {
+          canvas.focus();
+          canvas.dispatchEvent(new KeyboardEvent('keydown', {
+            key: 'r', code: 'KeyR', bubbles: true, cancelable: true,
+          }));
+        };
+        spinBtn.addEventListener('click', () => {
+          fireKeyR();
+          spinBtn.classList.toggle('active');
+        });
+
+        // Stop auto-rotate when the user manually drags the scene.
+        canvas.addEventListener('pointerdown', () => {
+          if (spinBtn.classList.contains('active')) {
+            spinBtn.classList.remove('active');
+            fireKeyR();
+          }
+        }, { passive: true });
+
         waitForCanvasSize()
           .then(() => {
             sizeCanvas(); // ensure backing buffer matches the now-known CSS size
@@ -242,6 +291,12 @@
           .then(({ default: init }) => init())
           .then(() => {
             setTimeout(() => status.classList.add('hidden'), 1200);
+            // Highlight the button immediately so it looks active on load.
+            spinBtn.classList.add('active');
+            // Dispatch KeyR after a short delay — winit's keyboard listener is
+            // registered on the first requestAnimationFrame after init(), so
+            // firing synchronously here would be missed.
+            setTimeout(fireKeyR, 200);
           })
           .catch((err) => {
             status.classList.add('error');
