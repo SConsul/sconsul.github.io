@@ -27,6 +27,8 @@ pnpm-debug.log*
 Thumbs.db
 desktop.ini
 
+scratch/
+
 # legacy Jekyll artifacts (safety net)
 _site/
 .jekyll-cache/

@@ -2,7 +2,7 @@
  * coi-serviceworker — vendored copy of github.com/gzuidhof/coi-serviceworker
  * (MIT, v0.1.7). Adds COOP/COEP response headers from a service worker so
  * the page becomes `crossOriginIsolated`, which unlocks SharedArrayBuffer
- * — required by `wasm-bindgen-rayon` for the gsplat-web thread pool.
+ * — required by `wasm-bindgen-rayon` for the gaussamer-web thread pool.
  *
  * GitHub Pages can't set those headers server-side; this is the workaround.
  * Scope is the directory this script lives in (/splat/), so it doesn't
@@ -59,7 +59,7 @@ if (typeof window === 'undefined') {
           // when we rebuild, so they don't get this treatment —
           // they ride the normal GH Pages cache (ETag-revalidated).
           const url = new URL(r.url);
-          if (url.pathname.endsWith('.spzps') || url.pathname.endsWith('.transform.txt')) {
+          if (url.pathname.endsWith('.pspz') || url.pathname.endsWith('.transform.txt')) {
             headers.set('Cache-Control', 'public, max-age=31536000, immutable');
           }
 

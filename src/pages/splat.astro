@@ -10,10 +10,10 @@
  *
  * Other assets (compiled WASM + JS glue + scene file) still live in
  * `public/splat/` and are fetched at runtime from `/splat/pkg/...` and
- * `/splat/<scene>`. The Rust source for gsplat_rs is NOT in this repo.
+ * `/splat/<scene>`. The Rust source for gaussamer is NOT in this repo.
  *
  * The <script> below MUST be `is:inline`: Vite would otherwise try to
- * resolve the dynamic import `./pkg/gsplat_web.js` against the .astro
+ * resolve the dynamic import `./pkg/gaussamer_web.js` against the .astro
  * source file at build time (and fail). `is:inline` tells Astro to
  * emit the script verbatim — the browser runs it at runtime, where
  * the relative path resolves correctly against the page URL `/splat/`.
@@ -51,7 +51,7 @@
         color: #ddd;
         font: 13px/1.4 'JetBrains Mono', ui-monospace, monospace;
       }
-      /* gsplat-viewer calls winit's `with_inner_size(1280, 720)` on
+      /* gaussamer-viewer calls winit's `with_inner_size(1280, 720)` on
          the window it owns. The winit-web backend implements that by
          writing `width: 1280px; height: 720px` inline on the canvas's
          style attribute, which beats a normal CSS rule. The
@@ -59,7 +59,7 @@
          the canvas stays viewport-sized. ResizeObserver in the script
          below keeps the backing buffer (canvas.width / canvas.height)
          in sync with the now-fullscreen CSS dimensions. */
-      canvas#gsplat-canvas {
+      canvas#gaussamer-canvas {
         display: block;
         width: 100vw !important;
         height: 100vh !important;
@@ -174,7 +174,7 @@
     <a href="/" class="home-link" aria-label="back to home">← home</a>
     <button id="spin-btn" aria-label="toggle auto-rotate" title="auto-rotate (R)">↻</button>
 
-    <canvas id="gsplat-canvas" tabindex="0"></canvas>
+    <canvas id="gaussamer-canvas" tabindex="0"></canvas>
     <div id="status">loading…</div>
 
     <!-- Shown only when navigator.gpu is missing (WebGPU unsupported). -->
@@ -189,7 +189,7 @@
     </div>
 
     <script is:inline type="module">
-      const canvas   = document.getElementById('gsplat-canvas');
+      const canvas   = document.getElementById('gaussamer-canvas');
       const status   = document.getElementById('status');
       const fallback = document.getElementById('fallback');
       let   params   = new URLSearchParams(window.location.search);
@@ -203,11 +203,15 @@
       // The WASM reads `?scene=…` directly from window.location.search
       // — it doesn't consume any JS variable we'd pass in. If the URL
       // doesn't carry a scene, rewrite the URL via replaceState BEFORE
-      // we call init() so the WASM finds it. Also redirect stale .spzp
-      // links (old Featured card href) to .spzps now that .spzp is removed.
-      if (!params.has('scene') || params.get('scene') === 'sutro_tower.spzp') {
+      // we call init() so the WASM finds it. Also redirect stale .spzps
+      // and .spzp links (older Featured card hrefs) to .pspz. Skip the
+      // stale-scene redirect when `?bench=…` is set so benchmarks can
+      // load any scene explicitly.
+      const staleScenes = new Set(['sutro_tower.spzps', 'sutro_tower.spzp']);
+      const isBench = params.has('bench');
+      if (!params.has('scene') || (!isBench && staleScenes.has(params.get('scene')))) {
         const u = new URL(window.location.href);
-        u.searchParams.set('scene', 'sutro_tower.spzps');
+        u.searchParams.set('scene', 'sutro_tower.pspz');
         history.replaceState(null, '', u);
         params = new URLSearchParams(window.location.search);
       }
@@ -286,7 +290,7 @@
         waitForCanvasSize()
           .then(() => {
             sizeCanvas(); // ensure backing buffer matches the now-known CSS size
-            return import('./pkg/gsplat_web.js');
+            return import('./pkg/gaussamer_web.js');
           })
           .then(({ default: init }) => init())
           .then(() => {
