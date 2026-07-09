@@ -217,6 +217,19 @@
       }
       const scene = params.get('scene');
 
+      // The splat rasterizer is fragment-bound: an uncapped
+      // retina-fullscreen backing (8-12M px) pushes GPU frame time past a
+      // vsync quantum and the orbit judders. The viewer honors a
+      // `render_px` budget (millions of backing pixels; soft gaussians
+      // upscale near-losslessly) — default it here if the URL doesn't
+      // override.
+      if (!params.has('render_px')) {
+        const u = new URL(window.location.href);
+        u.searchParams.set('render_px', '4.5');
+        history.replaceState(null, '', u);
+        params = new URLSearchParams(window.location.search);
+      }
+
       // Keep the canvas backing buffer in sync with its visible CSS size.
       function sizeCanvas() {
         const dpr = window.devicePixelRatio || 1;
