@@ -223,9 +223,12 @@
       // `render_px` budget (millions of backing pixels; soft gaussians
       // upscale near-losslessly) — default it here if the URL doesn't
       // override.
+      // 3.0 Mpx keeps GPU frame time ~11-12 ms — comfortably inside the
+      // 16.7 ms vsync quantum even with background CPU load, where 4.5 Mpx
+      // sat right at the boundary and juddered whenever anything else ran.
       if (!params.has('render_px')) {
         const u = new URL(window.location.href);
-        u.searchParams.set('render_px', '4.5');
+        u.searchParams.set('render_px', '3.0');
         history.replaceState(null, '', u);
         params = new URLSearchParams(window.location.search);
       }
