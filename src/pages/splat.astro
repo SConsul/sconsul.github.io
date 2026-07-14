@@ -235,6 +235,20 @@
         params = new URLSearchParams(window.location.search);
       }
 
+      // Disable importance-prefix LOD by default. The resolution-scaled
+      // overdraw cull alone holds 60 fps at this framing (it culls harder
+      // at the real, larger-than-1080p backing than the bench measured),
+      // and the LOD prefix drops the lowest-importance ~25% of splats —
+      // which for this scene removes the ground surface (built from many
+      // low-opacity/small splats) as a visible hole. Opt back in per scene
+      // with ?lod=<density> if a denser scene ever needs it.
+      if (!params.has('lod')) {
+        const u = new URL(window.location.href);
+        u.searchParams.set('lod', '0');
+        history.replaceState(null, '', u);
+        params = new URLSearchParams(window.location.search);
+      }
+
       // Keep the canvas backing buffer in sync with its visible CSS size.
       function sizeCanvas() {
         const dpr = window.devicePixelRatio || 1;
